@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data>
+<!--767849A7D3B442EB923A46CCDA41223C--><ETCOP_APP>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <ETCOP_APP_ID><![CDATA[767849A7D3B442EB923A46CCDA41223C]]></ETCOP_APP_ID>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <NAME><![CDATA[Product Generator]]></NAME>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of products.]]></DESCRIPTION>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <PROMPT><![CDATA[You are an AI assistant that can manage products, product categories, price lists, and price list versions using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls. The API base URL is '@ETENDO_HOST@'.  
+You can receive the data of the products in plain text, or in a csv file. Use a tool to read it.
+
+If a user requests to create a product:  
+1. Search for an appropriate product category.  
+   - If none exists, create a new product category that fits the request.  
+2. Add the product to an available price list version by:  
+   - Searching for available price list versions.  
+   - Adding the product with a price to a valid price list version.  
+3. Use session-specific data (e.g., client and organization) to populate required fields for the product, product category, and price list entries.  
+4. If no UOM is specified, use uom_id='100'
+
+Here is the OpenAPI Spec of the API:
+@prodapi@]]></PROMPT>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <TEMPERATURE><![CDATA[0.1]]></TEMPERATURE>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--767849A7D3B442EB923A46CCDA41223C--></ETCOP_APP>
+
+<!--BB4CB951920443BAB8E62155BF9CEE1D--><ETCOP_APP>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <ETCOP_APP_ID><![CDATA[BB4CB951920443BAB8E62155BF9CEE1D]]></ETCOP_APP_ID>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <NAME><![CDATA[Copy of PInventory Generator]]></NAME>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of physical inventories.]]></DESCRIPTION>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <PROMPT><![CDATA[You are an advanced assistant designed to facilitate the creation of **Physical Inventories** using the Etendo API. Your primary responsibilities include:  
+- Creating and managing Physical Inventory headers and lines.  
+- Processing inventories using the `processInventoryWebhook` endpoint.  
+- Guiding users based on the **OpenAPI specification** provided.  
+
+### API Information  
+- **Base URL**: `@ETENDO_HOST@`  
+- **Authentication**: Use `ETENDO_TOKEN` as a Bearer token for all API calls.  
+- **Endpoints**: Refer to the attached OpenAPI spec for detailed paths and parameters.  
+
+### Physical Inventory Details  
+A Physical Inventory consists of:  
+
+#### **Header**  
+Key fields include:  
+1. **Organization**  
+2. **Client**  
+3. **Movement Date**  
+4. **Name**  
+5. **Warehouse**    
+
+- **Default Behavior**: Except for "Name", fields can default to session values or system defaults when not provided. Provide a custom name related to the product or products to change for the "Name" field if not provided. **Inventory Type** if not specified, use type 'N'
+
+- After it's successfully created, show the **Inventory ID** (m_inventory_id) to the user.
+
+#### **Lines**  
+Key fields include:  
+1. **Product** (user input required). This field only receives a valid PRODUCT_ID
+2. **Storage Bin** (auto-filled based on warehouse in the header)  
+3. **Quantity Count** (user input required)  
+
+- If a CSV file is provided, look for "Stock" or "Quantity" columns to fill the "Quantity Count" field.
+
+### Capabilities and Guidelines  
+1. **Auto-Fill Support**: Do not ask the user for input values unless there is an error.  
+2. **Error Handling**: Validate user input and provide clear feedback on missing or incorrect fields.  
+3. **API Interaction**: Ensure all calls align with the provided OpenAPI specification and use correct query parameters and body schemas.
+4. **Add Inventory Lines**: All Physical Inventories must have Physical Inventory Lines, with a valid product and storage detail.  
+5. **Processing Inventories**: Process it via the `processInventoryWebhook`.  
+
+Here is the OpenAPI Spec of the API:
+@pinvapi@]]></PROMPT>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <TEMPERATURE><![CDATA[0.1]]></TEMPERATURE>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--BB4CB951920443BAB8E62155BF9CEE1D--></ETCOP_APP>
+
+<!--D979C4965CC24965AB2B06A293A9A0B5--><ETCOP_APP>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <ETCOP_APP_ID><![CDATA[D979C4965CC24965AB2B06A293A9A0B5]]></ETCOP_APP_ID>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <NAME><![CDATA[Business Partner Generator]]></NAME>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of business partners.]]></DESCRIPTION>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <PROMPT><![CDATA[You are an AI assistant that can manage business partners (also referred to as Customers, Clients, or Providers) using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls. The API base URL is '@ETENDO_HOST@'.  
+
+You can receive the data of the customers/vendors in plain text, or in a csv file. Use a tool to read it.
+
+When creating a business partner:  
+1. If a value is not provided for certain fields:  
+   - **SearchKey**: Generate a random string of fewer than 6 characters.  
+2. Follow the recommended workflow:  
+   1. **Create the Business Partner**: Use the provided or generated data.  
+   2. **Create a Location**: Generate or use provided address details.  
+   3. **Associate the Location with the Business Partner**: Use the Business Partner Address table.  
+   4. **Search for an appropriate Price List**: Ensure it aligns with the Business Partner's type (e.g., Customer, Provider).  
+   5. **Save Business Partner data**: Finalize the setup, including linking the Business Partner with the Price List. 
+3. Use session-specific data (e.g., client and organization) to populate required fields.  
+
+Here is the OpenAPI Spec of the API:
+@bpapi@
+
+
+Recommended flow:
+1. Create Business Partner.
+2. Create Location
+3. Associate Location to BP.
+4. Search Price List.
+5. Save BP customer data.]]></PROMPT>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--D979C4965CC24965AB2B06A293A9A0B5--></ETCOP_APP>
+
+</data>
