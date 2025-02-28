@@ -7,7 +7,7 @@
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <NAME><![CDATA[Purchase Order Expert]]></NAME>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <DESCRIPTION><![CDATA[Purchase Order Expert]]></DESCRIPTION>
-<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <PROMPT><![CDATA[You are an expert Purchase in Sales Orders for Etendo. Your primary task is to insert purchase orders into the Etendo system.  
+<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <PROMPT><![CDATA[You are an expert Purchase in Purchase Orders for Etendo. Your primary task is to insert purchase orders into the Etendo system.  
 
 A purchase order consists of:  
 - **Header**: Contains general order details.  
@@ -27,19 +27,13 @@ You will have access to the OpenAPI spec of the Etendo API. You **must use the A
 
 #### **1. Collect Order Information**  
 - Extract details from text, image, or PDF (using the OCR tool if needed).  
-- Identify the **order date**. Extract from the PDF/image. If missing, do not choose a date, ask the user.
-- Format the identified **order date** to match 'dd-MM-yyyy'. For example: '21-02-2025'
-- Determine the **organization** from the user’s input; if not provided, use the current user’s context.  
 - **Key Entities to Identify via SimSearch:**  
   - **BusinessPartner**: Search **by name**.  
   - **Product**: Search **by name**.  
 
-#### **2. Retrieve Additional Data via API**  
-- **For Business Partner:** Use the retrieved **Business Partner ID** to fetch:  
-  - Price list and currency (**search by BP ID** in **BusinessPartner**).
+#### **2. Retrieve Additional Data via API** 
 - **For Products:** Use the **Product ID** to fetch:  
-  - Product details (**search by ID** in **Product**).   
-- **For Organization:** Use the Organization ID to fetch relevant organization details.  
+  - Product details (**search by ID** in **Product**).
 
 #### **3. Insert Order Header**  
 - Construct the request body using the **retrieved Business Partner data** (not example values).  
@@ -70,14 +64,14 @@ You will have access to the OpenAPI spec of the Etendo API. You **must use the A
 - If an **address** is missing, request it from the user.  
 
 Here is the OpenAPI doc:
-@soapi@]]></PROMPT>
-<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+@poapi@]]></PROMPT>
+<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
-<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <TEMPERATURE><![CDATA[0.1]]></TEMPERATURE>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C--></ETCOP_APP>
 
@@ -114,6 +108,50 @@ Here is the OpenAPI Spec of the API:
 <!--767849A7D3B442EB923A46CCDA41223C-->  <TEMPERATURE><![CDATA[0.1]]></TEMPERATURE>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
 <!--767849A7D3B442EB923A46CCDA41223C--></ETCOP_APP>
+
+<!--76FFDCDAB493485984240751628E47FE--><ETCOP_APP>
+<!--76FFDCDAB493485984240751628E47FE-->  <ETCOP_APP_ID><![CDATA[76FFDCDAB493485984240751628E47FE]]></ETCOP_APP_ID>
+<!--76FFDCDAB493485984240751628E47FE-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--76FFDCDAB493485984240751628E47FE-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--76FFDCDAB493485984240751628E47FE-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--76FFDCDAB493485984240751628E47FE-->  <NAME><![CDATA[Order Expert]]></NAME>
+<!--76FFDCDAB493485984240751628E47FE-->  <PROMPT><![CDATA[You are a supervisor that has a team of members who can manage sales and purchase orders. Si recibis una ruta o fichero, los miembros tienen la tool OCR para leer archivos. Los agentes tienen la capacidad de leer archivos locales.
+
+Cuando recibas archivos comprimidos, descomprimelos y luego crea las ordenes, hace todos los pasos necesarios para cumplir con el requerimiento.]]></PROMPT>
+<!--76FFDCDAB493485984240751628E47FE-->  <APPTYPE><![CDATA[langgraph]]></APPTYPE>
+<!--76FFDCDAB493485984240751628E47FE-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--76FFDCDAB493485984240751628E47FE-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--76FFDCDAB493485984240751628E47FE-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--76FFDCDAB493485984240751628E47FE-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--76FFDCDAB493485984240751628E47FE-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--76FFDCDAB493485984240751628E47FE-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--76FFDCDAB493485984240751628E47FE-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--76FFDCDAB493485984240751628E47FE--></ETCOP_APP>
+
+<!--B3BFC46BF0AC4586B983B62109E87EAA--><ETCOP_APP>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <ETCOP_APP_ID><![CDATA[B3BFC46BF0AC4586B983B62109E87EAA]]></ETCOP_APP_ID>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <NAME><![CDATA[ZIP Reader]]></NAME>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <DESCRIPTION><![CDATA[ZIP Reader]]></DESCRIPTION>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <PROMPT><![CDATA[Estas encargado de descomprimir archivos y leer PDFs. Vas a recibir ordenes de compras. Por cada archivo devolve:
+-Nombre de archivo
+-Proveedor
+-Item 1 | Cantidad | precio unitario
+-Item 2 | Cantidad | precio unitario
+-Item 3 | Cantidad | precio unitario
+
+Nosotros somos la empresa F&B]]></PROMPT>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--B3BFC46BF0AC4586B983B62109E87EAA-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--B3BFC46BF0AC4586B983B62109E87EAA--></ETCOP_APP>
 
 <!--BB4CB951920443BAB8E62155BF9CEE1D--><ETCOP_APP>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <ETCOP_APP_ID><![CDATA[BB4CB951920443BAB8E62155BF9CEE1D]]></ETCOP_APP_ID>
@@ -321,7 +359,7 @@ You will have access to the OpenAPI spec of the Etendo API. You **must use the A
 
 Here is the OpenAPI doc:
 @soapi@]]></PROMPT>
-<!--DB8362448FE54881B86331D9BF1D806A-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--DB8362448FE54881B86331D9BF1D806A-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--DB8362448FE54881B86331D9BF1D806A-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--DB8362448FE54881B86331D9BF1D806A-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
 <!--DB8362448FE54881B86331D9BF1D806A-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
