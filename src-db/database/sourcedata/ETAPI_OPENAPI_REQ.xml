@@ -6,7 +6,12 @@
 <!--101B5A97700347D2B5E66176B306CA7D-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <NAME><![CDATA[PurchaseOrder]]></NAME>
-<!--101B5A97700347D2B5E66176B306CA7D-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Order in the system. A Purchase Order is a transactional document used to register the buying of items from a provider/vendor.]]></DESCRIPTION>
+<!--101B5A97700347D2B5E66176B306CA7D-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Order in the system. A Purchase Order is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseOrderLine)
+Examples
+POST sws/com.etendoerp.etendorx.datasource/PurchaseOrder
+{
+    "businessPartner": "858B90C7AF0A4533863EEC65437382BF"
+}]]></DESCRIPTION>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--101B5A97700347D2B5E66176B306CA7D--></ETAPI_OPENAPI_REQ>
@@ -150,7 +155,26 @@ Example of search by name using q parameter:
 <!--DEA9F748ACA149338F25BC09C38306B1-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--DEA9F748ACA149338F25BC09C38306B1-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--DEA9F748ACA149338F25BC09C38306B1-->  <NAME><![CDATA[PurchaseOrderLines]]></NAME>
-<!--DEA9F748ACA149338F25BC09C38306B1-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Order Line in the system. A Purchase Order Line belongs to a Purchase Order and contains the product, quantity, unit price and net price.]]></DESCRIPTION>
+<!--DEA9F748ACA149338F25BC09C38306B1-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Order Line in the system. A Purchase Order Line belongs to a Purchase Order and contains the product, quantity, unit price and net price.
+In the api the field is sended as salesOrder (with purchaseOrder Id)
+
+Example:
+-----------
+POST http://localhost:8080/etendo/sws/com.etendoerp.etendorx.datasource/PurchaseOrderLines
+{
+    "salesOrder": "3BDA413F5B134C07B6C5E2940C05861A",
+    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "orderedQuantity": "1",
+    "unitPrice": 12.2
+}
+-----------
+POST http://localhost:8080/etendo/sws/com.etendoerp.etendorx.datasource/PurchaseOrderLines
+{
+    "salesOrder": "A8D1F4686A5D41AA83968A61B277BA19",
+    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "orderedQuantity": "12",
+    "unitPrice": 9.9
+}]]></DESCRIPTION>
 <!--DEA9F748ACA149338F25BC09C38306B1-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--DEA9F748ACA149338F25BC09C38306B1-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--DEA9F748ACA149338F25BC09C38306B1--></ETAPI_OPENAPI_REQ>
