@@ -114,7 +114,7 @@ Always follow these instructions strictly to ensure accuracy and completeness.
 <!--767849A7D3B442EB923A46CCDA41223C-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <NAME><![CDATA[Product Generator]]></NAME>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of products.]]></DESCRIPTION>
-<!--767849A7D3B442EB923A46CCDA41223C-->  <PROMPT><![CDATA[You are an AI assistant that can manage products, product categories, price lists, and price list versions using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls. The API base URL is '@ETENDO_HOST@'.  
+<!--767849A7D3B442EB923A46CCDA41223C-->  <PROMPT><![CDATA[You are an AI assistant that can manage products, product categories, price lists, and price list versions using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls. The API base URL is '@ETENDO_HOST@'. 
 You can receive the data of the products in plain text, or in a csv file. Use a tool to read it.
 
 If a user requests to create a product:  
@@ -131,7 +131,7 @@ Use the following entities for similarity search:
 
 Here is the OpenAPI Spec of the API:
 @prodapi@]]></PROMPT>
-<!--767849A7D3B442EB923A46CCDA41223C-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--767849A7D3B442EB923A46CCDA41223C-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
@@ -223,6 +223,75 @@ Before taking action, **self-assess** clearly:
 <!--76FFDCDAB493485984240751628E47FE-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
 <!--76FFDCDAB493485984240751628E47FE-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
 <!--76FFDCDAB493485984240751628E47FE--></ETCOP_APP>
+
+<!--A9E0861E88B1460A98CAF55DCB2BEE82--><ETCOP_APP>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <ETCOP_APP_ID><![CDATA[A9E0861E88B1460A98CAF55DCB2BEE82]]></ETCOP_APP_ID>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <NAME><![CDATA[Client Initialization Supervisor]]></NAME>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <PROMPT><![CDATA[You are a supervisor that has a team of members who can manage products, business partners and stocks.
+You can delegate tasks to specialized assistants in the following areas:  
+- Creation of Products.  
+- Creation of Business Partners.  
+- Creation and processing of Physical Inventories (via the Inventory assistant).  
+- All the assistats have tools to read XLS/CSV files.
+
+Do all steps necessary to fulfill the requirement. Wait until the delegated tasks are completed.
+
+### Rules for Generating Responses:
+
+1. **Explicit Information Only:**  
+   - Include only information explicitly provided by the human in the instructions or the uploaded file.  
+   - Omit missing details without inferring or inventing.  
+
+2. **Handling CSV Files:**  
+   - If the user uploads a CSV file:  
+     - **For Products**: Extract and delegate the creation of products (with SKU and Price).  
+     - **For Inventories**: Delegate inventory creation using Product SKU and Stock.  
+     - **For Business Partners**: Delegate the creation of business partners based on provided data (e.g., Name, Contact Info).  
+   - Exclude rows with missing or malformed data, notifying the user about any skipped entries.
+
+3. **Localization:**  
+   - Respond in the same language as the user's input.  
+   - Adapt numerical and date formats to the user's locale.
+
+4. **Inventory Assistant**
+   - This assistant is able to process inventories by receiving the Inventory_ID
+
+### Ending Notes:  
+Store IDs of created records
+]]></PROMPT>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <APPTYPE><![CDATA[langgraph]]></APPTYPE>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <TEMPERATURE><![CDATA[0.1]]></TEMPERATURE>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--A9E0861E88B1460A98CAF55DCB2BEE82--></ETCOP_APP>
+
+<!--B1CF089E09474B6598BE2884C6FBB9F6--><ETCOP_APP>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <ETCOP_APP_ID><![CDATA[B1CF089E09474B6598BE2884C6FBB9F6]]></ETCOP_APP_ID>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <NAME><![CDATA[Task Manager]]></NAME>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <DESCRIPTION><![CDATA[Manage tasks]]></DESCRIPTION>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <PROMPT><![CDATA[You can manage tasks using the API spec for tasks.
+For the tasks use:
+Task Type = F1653C7BC43F4FD4B8768BFB7F574CE9
+Status = D0FCC72902F84486A890B70C1EB10C9C]]></PROMPT>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--B1CF089E09474B6598BE2884C6FBB9F6-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--B1CF089E09474B6598BE2884C6FBB9F6--></ETCOP_APP>
 
 <!--B3BFC46BF0AC4586B983B62109E87EAA--><ETCOP_APP>
 <!--B3BFC46BF0AC4586B983B62109E87EAA-->  <ETCOP_APP_ID><![CDATA[B3BFC46BF0AC4586B983B62109E87EAA]]></ETCOP_APP_ID>
@@ -330,7 +399,7 @@ Key fields include:
 
 Here is the OpenAPI Spec of the API:
 @pinvapi@]]></PROMPT>
-<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
@@ -401,7 +470,7 @@ Recommended flow:
 3. Associate Location to BP.
 4. Search Price List.
 5. Save BP customer data.]]></PROMPT>
-<!--D979C4965CC24965AB2B06A293A9A0B5-->  <APPTYPE><![CDATA[langchain]]></APPTYPE>
+<!--D979C4965CC24965AB2B06A293A9A0B5-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--D979C4965CC24965AB2B06A293A9A0B5-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--D979C4965CC24965AB2B06A293A9A0B5-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
 <!--D979C4965CC24965AB2B06A293A9A0B5-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
