@@ -1,0 +1,38 @@
+[SendEmailTool]
+resend = "*"
+
+[UncompressTool]
+rarfile = "*"
+bz2file = "*"
+
+[TavilySearchTool]
+rapidfuzz = "*"
+requests-mock= "*"
+pytest-mock = "*"
+
+[PdfToImagesTool]
+pypdfium2 = '*'
+
+[OpenAPIPetStoreTool]
+requests = "*"
+
+[DBQueryGenerator]
+"requests" = "*"
+
+[OcrTool]
+filetype = "==1.2.0"
+pypdfium2 = '*'
+"pillow|PIL" = "*"
+
+[CodbarTool]
+pyzbar = '*'
+
+[DockerTool]
+docker = "*"
+
+[XLSTool]
+"pandas" = "*"
+"openpyxl" = "*"
+
+[APICallTool]
+"curlify" = "*"
