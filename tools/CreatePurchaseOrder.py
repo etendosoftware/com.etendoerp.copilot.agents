@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from copilot.core.langgraph.patterns.langsupervisor_pattern import LangSupervisorState
 from copilot.core.tool_input import ToolInput, ToolField
 from copilot.core.tool_wrapper import ToolWrapper
+import traceback
 
 
 class Line(BaseModel):
@@ -79,7 +80,10 @@ class CreatePurchaseOrder(ToolWrapper):
                 )
 
             return "{'status': 'ok'}"
-        except Exception as e:
-            return "{'error': '" + str(e) + "'}"
+        except Exception as err:
+            print("!!!! CreatePurchaseOrder " )
+            print(traceback.format_exc())
+
+            return "{'error': '" + str(err) + "'}"
 
 # tools.append(create_order)

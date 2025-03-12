@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data>
+<!--31B62D3500564DA3B517E4EC68A59F58--><ETCOP_TOOL>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <ETCOP_TOOL_ID><![CDATA[31B62D3500564DA3B517E4EC68A59F58]]></ETCOP_TOOL_ID>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <VALUE><![CDATA[CreatePurchaseOrder]]></VALUE>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <NAME><![CDATA[CreatePurchaseOrder]]></NAME>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <DESCRIPTION><![CDATA[Tool to create an order. readed from OCR data]]></DESCRIPTION>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <JSON_STRUCTURE><![CDATA[{
+  "type": "function",
+  "function": {
+    "name": "CreatePurchaseOrder",
+    "description": "Tool to create an order. readed from OCR data",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "business_partner_name": {
+          "title": "Business Partner Name",
+          "type": "string"
+        },
+        "lines": {
+          "items": {"$ref": "#\/$defs\/Line"},
+          "title": "Lines",
+          "type": "array"
+        }
+      }
+    }
+  }
+}]]></JSON_STRUCTURE>
+<!--31B62D3500564DA3B517E4EC68A59F58-->  <SYNC_STRUCTURE><![CDATA[N]]></SYNC_STRUCTURE>
+<!--31B62D3500564DA3B517E4EC68A59F58--></ETCOP_TOOL>
+
+</data>
