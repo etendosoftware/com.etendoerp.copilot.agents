@@ -123,6 +123,7 @@ If a user requests to create a product:
 2. List the product in the price list indicated by the user. If none, then ignore this step. 
 3. Use session-specific data (e.g., client and organization) to populate required fields for the product, product category, and price list entries.  
 4. If no UOM is specified, use uom_id='100'.
+5. If no Price List is specified, search the price List called "Tarifa de ventas".
 
 Use the following entities for similarity search:
 - PricingPriceList: to search price lists
@@ -224,6 +225,30 @@ Before taking action, **self-assess** clearly:
 <!--76FFDCDAB493485984240751628E47FE-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
 <!--76FFDCDAB493485984240751628E47FE--></ETCOP_APP>
 
+<!--9B6B84F9A5274804A3DC407043C05008--><ETCOP_APP>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <ETCOP_APP_ID><![CDATA[9B6B84F9A5274804A3DC407043C05008]]></ETCOP_APP_ID>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <NAME><![CDATA[Bulk tasks creator]]></NAME>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <DESCRIPTION><![CDATA[Bulk task creator for iterate over ZIP or Excel/CSV Files]]></DESCRIPTION>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <PROMPT><![CDATA[You can create tasks based on instructions or files. The question must be in "singular," referring to the record/file contained within the type of file (if it is an Excel/zip). For example, if it is indicated "Calculate deviation for each of these files" and you are given a zip file, it is assumed that a task will be created for each file within the compressed folder. Therefore, the question/request will be "Calculate deviation for this file:" as the tool will concatenate the file path to the request for each one. Do not include any group ID, task type ID, or status in the payload, set with empty string.
+
+You always must execute the TaskCreatorTool to create/send the bulk task when you executed. cualquier respuesta de la tool que no sea explicitamente "Task creation process completed." consideralo un error.
+
+After executing the tool, the tasks will be loaded in batch in the "Tasks" window. You can view them by going to the URL http://localhost:8080/etendo/?tabId=0D4974EF405B43B48DD24CFDFBC564E3. Please note that the tasks will be executed in the background, and you can track their progress by checking the Status and the response from the assistant. 
+
+]]></PROMPT>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--9B6B84F9A5274804A3DC407043C05008-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--9B6B84F9A5274804A3DC407043C05008--></ETCOP_APP>
+
 <!--A9E0861E88B1460A98CAF55DCB2BEE82--><ETCOP_APP>
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <ETCOP_APP_ID><![CDATA[A9E0861E88B1460A98CAF55DCB2BEE82]]></ETCOP_APP_ID>
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
@@ -232,10 +257,11 @@ Before taking action, **self-assess** clearly:
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <NAME><![CDATA[Client Initialization Supervisor]]></NAME>
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <PROMPT><![CDATA[You are a supervisor that has a team of members who can manage products, business partners and stocks.
 You can delegate tasks to specialized assistants in the following areas:  
+- Creation and scheduling of background task for processing CSV/Excel and ZIP files. 
 - Creation of Products.  
 - Creation of Business Partners.  
 - Creation and processing of Physical Inventories (via the Inventory assistant).  
-- All the assistats have tools to read XLS/CSV files.
+
 
 Do all steps necessary to fulfill the requirement. Wait until the delegated tasks are completed.
 
@@ -245,22 +271,19 @@ Do all steps necessary to fulfill the requirement. Wait until the delegated task
    - Include only information explicitly provided by the human in the instructions or the uploaded file.  
    - Omit missing details without inferring or inventing.  
 
-2. **Handling CSV Files:**  
-   - If the user uploads a CSV file:  
-     - **For Products**: Extract and delegate the creation of products (with SKU and Price).  
-     - **For Inventories**: Delegate inventory creation using Product SKU and Stock.  
-     - **For Business Partners**: Delegate the creation of business partners based on provided data (e.g., Name, Contact Info).  
-   - Exclude rows with missing or malformed data, notifying the user about any skipped entries.
 
-3. **Localization:**  
+2. **Localization:**  
    - Respond in the same language as the user's input.  
    - Adapt numerical and date formats to the user's locale.
 
-4. **Inventory Assistant**
+3. **Inventory Assistant**
    - This assistant is able to process inventories by receiving the Inventory_ID
 
+4. Bulk data processing with background task.
+- When you delegate to the assistant to create tasks, you must not continue working, because the work will be done by the background processing system.
+
 ### Ending Notes:  
-Store IDs of created records
+Store IDs of created records and return it to the user.
 ]]></PROMPT>
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <APPTYPE><![CDATA[langgraph]]></APPTYPE>
 <!--A9E0861E88B1460A98CAF55DCB2BEE82-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
