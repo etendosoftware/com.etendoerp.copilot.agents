@@ -1,1 +1,1 @@
-com.etendoerp.copilot.toolpack
+com.etendoerp.copilot.toolpack,com.etendoerp.etendorx
