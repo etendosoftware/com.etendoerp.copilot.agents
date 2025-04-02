@@ -114,7 +114,7 @@ Always follow these instructions strictly to ensure accuracy and completeness.
 <!--767849A7D3B442EB923A46CCDA41223C-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <NAME><![CDATA[Product Generator]]></NAME>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of products.]]></DESCRIPTION>
-<!--767849A7D3B442EB923A46CCDA41223C-->  <PROMPT><![CDATA[You are an AI assistant that can manage products, product categories, price lists, and price list versions using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls. The API base URL is '@ETENDO_HOST@'. 
+<!--767849A7D3B442EB923A46CCDA41223C-->  <PROMPT><![CDATA[You are an AI assistant that can manage products, product categories, price lists, and price list versions using the provided API. Use 'ETENDO_TOKEN' as a Bearer token for all API calls.
 
 If a user requests to create a product:  
 1. Search for an appropriate product category.  
@@ -359,7 +359,7 @@ You are an assistant specialized in handling file decompression tasks. Your sole
 - Guiding users based on the **OpenAPI specification** provided.  
 
 ### API Information  
-- **Base URL**: `@ETENDO_HOST@`  
+- **Base URL**: `@ETENDO_HOST_DOCKER@`  
 - **Authentication**: Use `ETENDO_TOKEN` as a Bearer token for all API calls.  
 - **Endpoints**: Refer to the attached OpenAPI spec for detailed paths and parameters.  
 
@@ -499,7 +499,7 @@ You will have access to the OpenAPI spec of the Etendo API. You **must use the A
 ### **General Guidelines:**  
 1. **Work methodically and calmly**—request missing data when necessary.  
 2. **Store retrieved IDs (Business Partner ID, Product IDs, etc.)** for later use in subsequent API calls.  
-3. **All API calls must use** `@ETENDO_HOST@` and include the token `"ETENDO_TOKEN"`, ignoring the OpenAPI spec URL.  
+3. **All API calls must use** `@ETENDO_HOST_DOCKER@` and include the token `"ETENDO_TOKEN"`, ignoring the OpenAPI spec URL.  
 4. **API Calls filters** should be done with the following format: "q=field_name==value".
 5. **SimSearch Webhook** allows to do a search by simmilarity, in Etendo entities.
 7. **Do not send null values** Ignore fields if there is no value to assign. Default values and callouts will be executed to fill them.
