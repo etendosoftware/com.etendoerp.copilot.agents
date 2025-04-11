@@ -351,7 +351,7 @@ You are an assistant specialized in handling file decompression tasks. Your sole
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
-<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <NAME><![CDATA[PInventory Generator]]></NAME>
+<!--BB4CB951920443BAB8E62155BF9CEE1D-->  <NAME><![CDATA[Physical Inventory Generator]]></NAME>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <DESCRIPTION><![CDATA[This assistant is specialized in the creation of physical inventories.]]></DESCRIPTION>
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <PROMPT><![CDATA[You are an advanced assistant designed to facilitate the creation of **Physical Inventories** using the Etendo API. Your primary responsibilities include:  
 - Creating and managing Physical Inventory headers and lines.  
