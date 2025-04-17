@@ -49,7 +49,21 @@ The creditLimit is a number, by default 0.]]></DESCRIPTION>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <NAME><![CDATA[Inventory]]></NAME>
-<!--5AABA324CB00441AA97213E6DE3F2430-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Physical Inventory in the system. A Physical Inventory is a document that changes the stock of one or more products in a warehouse.]]></DESCRIPTION>
+<!--5AABA324CB00441AA97213E6DE3F2430-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Physical Inventory in the system. A Physical Inventory is a document that changes the stock of one or more products in a warehouse.
+Creation example with all details:
+POST sws/com.etendoerp.etendorx.datasource/Inventory
+{
+    "organization": "53FFD8C0BFB540949E0CA14636BD6062",
+    "warehouse": "B2D40D8A5D644DD89E329DC297309055",
+    "movementDate": "2025-01-01",
+    "name": "Inventory 1"
+}
+
+Creation example with only required fields:
+{
+    "movementDate": "2025-01-01",
+    "name": "Inventory 2"
+}]]></DESCRIPTION>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--5AABA324CB00441AA97213E6DE3F2430--></ETAPI_OPENAPI_REQ>
@@ -84,7 +98,22 @@ The field locationAddress should have the ID of the Location created previously.
 <!--87649AD927C7446380C6E971EA845F12-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--87649AD927C7446380C6E971EA845F12-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--87649AD927C7446380C6E971EA845F12-->  <NAME><![CDATA[InventoryLines]]></NAME>
-<!--87649AD927C7446380C6E971EA845F12-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Physical Inventory Line in the system. A Physical Inventory Line belongs to a Physical Inventory and contains the product, stock amount and storage bin.]]></DESCRIPTION>
+<!--87649AD927C7446380C6E971EA845F12-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Physical Inventory Line in the system. A Physical Inventory Line belongs to a Physical Inventory and contains the product, stock amount and storage bin.
+Creation example all fields:
+POST sws/com.etendoerp.etendorx.datasource/InventoryLines
+{
+    "storageBin": "54EB861A446D464EAA433477A1D867A6",
+    "product": "D71ED1FF939347478FEFE8F8F38CE345",
+    "quantityCount": "5",
+    "uOM": "100"
+}
+
+Creation example with only required fields:
+{
+    "product": "D71ED1FF939347478FEFE8F8F38CE345",
+    "quantityCount": "5",
+    "uOM": "100"
+}]]></DESCRIPTION>
 <!--87649AD927C7446380C6E971EA845F12-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--87649AD927C7446380C6E971EA845F12-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--87649AD927C7446380C6E971EA845F12--></ETAPI_OPENAPI_REQ>
