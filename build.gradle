@@ -53,5 +53,5 @@ repositories {
  */
 dependencies {
     implementation('com.etendoerp:copilot.toolpack:1.8.2')
-    implementation('com.etendoerp:etendorx:2.9.2')
+    implementation('com.etendoerp:etendorx:2.9.3')
 }
