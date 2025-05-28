@@ -1,0 +1,103 @@
+[
+    {
+        "run_id": "e9df2951-087a-408f-ade0-c72a0238378d",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea una invoice para el BP \"Bebidas Alegres, S.L.\" con los productos:\nCerveza Ale 0,5L a $1.36 x12"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_tz7vlaGZ7ac7PJIhTgkqbIKg",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"searchTerm\": \"Bebidas Alegres, S.L.\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"858B90C7AF0A4533863EEC65437382BF\\\",\\n    \\\"name\\\": \\\"Bebidas Alegres, S.L.\\\",\\n    \\\"similarity_percent\\\": \\\"100.0000%\\\"\\n}]}\"}",
+                "tool_call_id": "call_tz7vlaGZ7ac7PJIhTgkqbIKg"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_Q13OAQVLkg3Uwot2hMygy3Qp",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"Product\", \"searchTerm\": \"Cerveza Ale 0,5L\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"DA7FC1BB3BA44EC48EC1AB9C74168CED\\\",\\n    \\\"name\\\": \\\"Cerveza Ale 0,5L\\\",\\n    \\\"similarity_percent\\\": \\\"100.0000%\\\"\\n}]}\"}",
+                "tool_call_id": "call_Q13OAQVLkg3Uwot2hMygy3Qp"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_a8gsvolNiOa6uj6XvrQncak8",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseInvoice",
+                            "arguments": "{\"body\": {\"businessPartner\": \"858B90C7AF0A4533863EEC65437382BF\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"data\":[{\"_identifier\":\"10001753 - 22-05-2025 - 0\",\"_entityName\":\"Invoice\",\"$ref\":\"Invoice\\/7A70A7F00DC648C6B52499A80605FD6C\",\"id\":\"7A70A7F00DC648C6B52499A80605FD6C\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-05-22T11:33:18-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-05-22T11:33:18-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesTransaction\":false,\"documentNo\":\"10001753\",\"documentStatus\":\"DR\",\"documentAction\":\"CO\",\"processNow\":false,\"processed\":false,\"posted\":\"N\",\"documentType\":\"0\",\"documentType$_identifier\":\"** New **\",\"transactionDocument\":\"F2EB2EAD2612449A83C28DA84689D78B\",\"transactionDocument$_identifier\":\"AP Invoice\",\"salesOrder\":null,\"description\":null,\"print\":false,\"salesRepresentative\":\"100\",\"salesRepresentative$_identifier\":\"Admin\",\"invoiceDate\":\"2025-05-22\",\"datePrinted\":null,\"accountingDate\":\"2025-05-22\",\"businessPartner\":\"858B90C7AF0A4533863EEC65437382BF\",\"businessPartner$_identifier\":\"Bebidas Alegres, S.L.\",\"partnerAddress\":\"1F38687D74244B369F0B16B3858CD256\",\"partnerAddress$_identifier\":\".Barcelona, C\\\\Mayor, 23\",\"orderReference\":null,\"printDiscount\":false,\"orderDate\":null,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"paymentTerms\":\"66BA1164A7394344BB9CD1A6ECEED05D\",\"paymentTerms$_identifier\":\"30 days\",\"charge\":null,\"chargeAmount\":0,\"summedLineAmount\":0,\"grandTotalAmount\":0,\"priceList\":\"91AE1E96A30844209CD996917E193BE1\",\"priceList$_identifier\":\"Tarifa Bebidas Alegres\",\"priceIncludesTax\":false,\"salesCampaign\":null,\"project\":null,\"activity\":null,\"createLinesFrom\":false,\"generateTo\":false,\"userContact\":\"33FE57CFE5BE4774B9B9EDFD8E27BCAE\",\"userContact$_identifier\":\"Pablo Ramos\",\"copyFrom\":false,\"selfService\":false,\"trxOrganization\":null,\"stDimension\":null,\"ndDimension\":null,\"withholdingamount\":null,\"taxDate\":null,\"withholding\":null,\"paymentComplete\":false,\"totalPaid\":0,\"outstandingAmount\":0,\"daysTillDue\":0,\"dueAmount\":0,\"lastCalculatedOnDate\":null,\"paymentMethod\":\"A97CFD2AFC234B59BB0A72189BD8FC2A\",\"paymentMethod$_identifier\":\"Transferencia\",\"fINPaymentPriority\":null,\"finalSettlementDate\":null,\"daysSalesOutstanding\":null,\"percentageOverdue\":null,\"costcenter\":null,\"calculatePromotions\":false,\"asset\":null,\"aPRMAddpayment\":true,\"cashVAT\":false,\"aPRMProcessinvoice\":\"CO\",\"prepaymentamt\":0,\"createLinesFromOrder\":false,\"createLinesFromShipment\":false,\"paidAmountAtInvoicing\":0,\"externalBusinessPartnerReference\":null,\"etafdpUnvoid\":false,\"recordTime\":1747924398835}]},\"status\":0}",
+                "tool_call_id": "call_a8gsvolNiOa6uj6XvrQncak8"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_lhhjhvZerkKT40ixYj1xOPCv",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseInvoiceLine",
+                            "arguments": "{\"body\": {\"invoice\": \"7A70A7F00DC648C6B52499A80605FD6C\", \"product\": \"DA7FC1BB3BA44EC48EC1AB9C74168CED\", \"invoicedQuantity\": 12, \"unitPrice\": 1.36}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"data\":[{\"_identifier\":\"10001753 - 22-05-2025 - 19.75 - 10 - 16.32\",\"_entityName\":\"InvoiceLine\",\"$ref\":\"InvoiceLine\\/D2AB26EA61FC49BA9EA1473D8C58712C\",\"id\":\"D2AB26EA61FC49BA9EA1473D8C58712C\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-05-22T11:33:22-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-05-22T11:33:22-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"invoice\":\"7A70A7F00DC648C6B52499A80605FD6C\",\"invoice$_identifier\":\"10001753 - 22-05-2025 - 19.75\",\"salesOrderLine\":null,\"goodsShipmentLine\":null,\"lineNo\":10,\"description\":null,\"financialInvoiceLine\":false,\"account\":null,\"product\":\"DA7FC1BB3BA44EC48EC1AB9C74168CED\",\"product$_identifier\":\"Cerveza Ale 0,5L\",\"invoicedQuantity\":12,\"listPrice\":0,\"unitPrice\":1.36,\"priceLimit\":0,\"lineNetAmount\":16.32,\"charge\":null,\"chargeAmount\":0,\"uOM\":\"100\",\"uOM$_identifier\":\"Unit\",\"tax\":\"18A499249FF74A68B79510F0AD341141\",\"tax$_identifier\":\"Adquisiciones IVA 21%\",\"resourceAssignment\":null,\"attributeSetValue\":null,\"descriptionOnly\":false,\"orderQuantity\":null,\"orderUOM\":null,\"invoiceDiscount\":null,\"projectLine\":null,\"priceAdjustment\":null,\"standardPrice\":1.36,\"excludeforwithholding\":false,\"editLineAmount\":false,\"taxableAmount\":16.32,\"grossAmount\":0,\"grossUnitPrice\":0,\"businessPartner\":\"858B90C7AF0A4533863EEC65437382BF\",\"businessPartner$_identifier\":\"Bebidas Alegres, S.L.\",\"periodNumber\":null,\"baseGrossUnitPrice\":0,\"asset\":null,\"deferredPlanType\":null,\"grossListPrice\":0,\"project\":null,\"deferred\":false,\"period\":null,\"costcenter\":null,\"stDimension\":null,\"ndDimension\":null,\"explode\":false,\"bOMParent\":null,\"matchLCCosts\":false,\"operativeUOM\":null,\"operativeQuantity\":null,\"recordTime\":1747924402107}]},\"status\":0}",
+                "tool_call_id": "call_lhhjhvZerkKT40ixYj1xOPCv"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "- **Retrieved IDs:**\n  - **Business Partner ID**: 858B90C7AF0A4533863EEC65437382BF (Bebidas Alegres, S.L.)\n  - **Product ID**: DA7FC1BB3BA44EC48EC1AB9C74168CED (Cerveza Ale 0,5L)\n- **Created Invoice Header**:\n  - **Invoice ID**: 7A70A7F00DC648C6B52499A80605FD6C\n- **Inserted Invoice Line**:\n  - **Product**: Cerveza Ale 0,5L\n  - **Quantity**: 12\n  - **Price**: $1.36\n\n- **Validation & Confirmation**:\n  - All necessary details were successfully extracted, validated, and processed.\n  - **Clickable Link to the Invoice**: [Invoice Link](http://localhost:8080/etendo/?tabId=290&recordId=7A70A7F00DC648C6B52499A80605FD6C)\n\n### \u2705 Self-Check:\n```\n[\u2714] Extracted and validated all required details (Business Partner, products, quantities, prices).\n[\u2714] Stored and reused all required IDs.\n[\u2714] Successfully created Invoice Header.\n[\u2714] Successfully inserted all Invoice lines (no lines missing).\n[\u2714] Validated the total amount (if OCR was used: N/A).\n```"
+        },
+        "creation_date": "2025-05-22-12:59:26",
+        "variants": [
+            {
+                "messages": [
+                    {
+                        "id": "10",
+                        "role": "user",
+                        "content": "@{invoice_template_base.txt}"
+                    }
+                ]
+            }
+        ]
+    }
+]
