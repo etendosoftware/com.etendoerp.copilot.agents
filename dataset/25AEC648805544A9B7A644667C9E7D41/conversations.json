@@ -94,7 +94,7 @@
                     {
                         "id": "10",
                         "role": "user",
-                        "content": "@{invoice_template_base.txt}"
+                        "content": "@{invoice_requests.txt}"
                     }
                 ]
             }
