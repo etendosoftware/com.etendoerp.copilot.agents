@@ -1,0 +1,39 @@
+[
+    {
+        "run_id": "390a7874-7dfe-4694-a5be-7855da7b97a8",
+        "messages": [
+            {
+                "id": "10",
+                "role": "user",
+                "content": "Create product with this data \"Category ID\" : \"52DBC3E9A82C47F2B6298CBC3E12DA67\"' \"Price\":\"1000\" price list version: FDE536FE9D8C4B068C32CD6C3650B6B8  ' ' seachkey: 228 BARRA HUECA GRANDE PANTUPAS name: 228 BARRA HUECA GRANDE PANTUPAS"
+            }
+        ],
+        "considerations": "In this call, te AI must create a product with the provided data. The creation of the product price is a subsequent step that will be handled in a different call. The AI should not include the product price creation in this call.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_FI8tskwHyGiFWaYSKerYxWaA",
+                    "function": {
+                        "name": "POST_sws_com_etendoerp_etendorx_datasource_Product",
+                        "arguments": "{\"body\": {\"searchKey\": \"228 BARRA HUECA GRANDE PANTUPAS\", \"name\": \"228 BARRA HUECA GRANDE PANTUPAS\", \"productCategory\": \"52DBC3E9A82C47F2B6298CBC3E12DA67\", \"description\": \"228 BARRA HUECA GRANDE PANTUPAS\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-05-14-10:19:10",
+        "variants": [
+            {
+                "messages": [
+                    {
+                        "id": "10",
+                        "role": "user",
+                        "content": "@{prod-requests.txt}"
+                    }
+                ]
+            }
+        ]
+    }
+]
