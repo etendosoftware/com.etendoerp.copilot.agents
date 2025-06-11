@@ -1,0 +1,2 @@
+Please create a new product using the following details: Name as {Name}, Search Key {Search Key}, Category ID {Category ID}, and assign it Price List Version {Price List Version}  with Price {Price}.
+<END_OF_INSTANCE>

@@ -1,0 +1,63 @@
+Please create a new product using the following details: Name as 480001  PRUEBAS DE BODA, Search Key 480001, Category ID 52DBC3E9A82C47F2B6298CBC3E12DA67, and assign it Price List Version FDE536FE9D8C4B068C32CD6C3650B6B8  with Price 25,24.
+<END_OF_INSTANCE>
+
+Create a product entry: 480001  PRUEBAS DE BODA, category identifier 52DBC3E9A82C47F2B6298CBC3E12DA67, priced at 25,24 in version FDE536FE9D8C4B068C32CD6C3650B6B8 . Reference key: 480001.
+<END_OF_INSTANCE>
+
+Cree un producto nuevo con estos datos: 480001  PRUEBAS DE BODA, clave de búsqueda 480001, categoría 52DBC3E9A82C47F2B6298CBC3E12DA67, versión de precio FDE536FE9D8C4B068C32CD6C3650B6B8  y precio 25,24.
+<END_OF_INSTANCE>
+
+Por favor, ingrese producto nuevo con: 480001  PRUEBAS DE BODA, 480001, 52DBC3E9A82C47F2B6298CBC3E12DA67, versión de lista de precios FDE536FE9D8C4B068C32CD6C3650B6B8 , y precio 25,24.
+<END_OF_INSTANCE>
+
+Could you add a product named 480001  PRUEBAS DE BODA with category 52DBC3E9A82C47F2B6298CBC3E12DA67 and price 25,24 under the price list version FDE536FE9D8C4B068C32CD6C3650B6B8 ? Use 480001 as the search key.
+<END_OF_INSTANCE>
+
+Make a product entry based on the data: Search Key 480001, Name 480001  PRUEBAS DE BODA, Category ID 52DBC3E9A82C47F2B6298CBC3E12DA67, Price List Version FDE536FE9D8C4B068C32CD6C3650B6B8 , Price 25,24.
+<END_OF_INSTANCE>
+
+Please create this product in the system: Name: 480001  PRUEBAS DE BODA, Search Key: 480001, Category ID: 52DBC3E9A82C47F2B6298CBC3E12DA67, Price List Version: FDE536FE9D8C4B068C32CD6C3650B6B8 , Price: 25,24.
+<END_OF_INSTANCE>
+
+Add a product with these attributes: 480001  PRUEBAS DE BODA (Name), 480001 (Search Key), category ID 52DBC3E9A82C47F2B6298CBC3E12DA67, price list version FDE536FE9D8C4B068C32CD6C3650B6B8 , priced at 25,24.
+<END_OF_INSTANCE>
+
+Utiliza los datos siguientes para crear el producto: Nombre 480001  PRUEBAS DE BODA, Clave de búsqueda 480001, Categoría 52DBC3E9A82C47F2B6298CBC3E12DA67, Versión de lista de precios FDE536FE9D8C4B068C32CD6C3650B6B8 , Precio 25,24.
+<END_OF_INSTANCE>
+
+Add a new product with Search Key 480001, Name 480001  PRUEBAS DE BODA, and Category ID 52DBC3E9A82C47F2B6298CBC3E12DA67; set Price List Version to FDE536FE9D8C4B068C32CD6C3650B6B8  and Price to 25,24.
+<END_OF_INSTANCE>
+
+Input product data: Search Key: 480001, Name: 480001  PRUEBAS DE BODA, Category: 52DBC3E9A82C47F2B6298CBC3E12DA67, Price List Version: FDE536FE9D8C4B068C32CD6C3650B6B8 , Price: 25,24—please create the product accordingly.
+<END_OF_INSTANCE>
+
+Por favor, genera un producto con la siguiente información: Nombre 480001  PRUEBAS DE BODA, Clave de búsqueda 480001, Categoría 52DBC3E9A82C47F2B6298CBC3E12DA67, Versión de lista de precios FDE536FE9D8C4B068C32CD6C3650B6B8 , Precio 25,24.
+<END_OF_INSTANCE>
+
+Please create a product using the name 480001  PRUEBAS DE BODA and search key 480001; categorize it under 52DBC3E9A82C47F2B6298CBC3E12DA67 and set the price 25,24 on price list version FDE536FE9D8C4B068C32CD6C3650B6B8 .
+<END_OF_INSTANCE>
+
+Kindly add a product entry for 480001  PRUEBAS DE BODA with Search Key 480001, category 52DBC3E9A82C47F2B6298CBC3E12DA67, price list version FDE536FE9D8C4B068C32CD6C3650B6B8 , and price 25,24.
+<END_OF_INSTANCE>
+
+Please create a new product using the following details: Name as SERVICIOS VARIOS COOKARTE, Search Key SERV VAR COOK, Category ID 52DBC3E9A82C47F2B6298CBC3E12DA67, and assign it Price List Version FDE536FE9D8C4B068C32CD6C3650B6B8  with Price 25,24.
+<END_OF_INSTANCE>
+
+Using the data: SERV VAR COOK, SERVICIOS VARIOS COOKARTE, 52DBC3E9A82C47F2B6298CBC3E12DA67, FDE536FE9D8C4B068C32CD6C3650B6B8 , and 25,24, generate a product in the system.
+<END_OF_INSTANCE>
+
+Create a product entry: SERVICIOS VARIOS COOKARTE, category identifier 52DBC3E9A82C47F2B6298CBC3E12DA67, priced at 25,24 in version FDE536FE9D8C4B068C32CD6C3650B6B8 . Reference key: SERV VAR COOK.
+<END_OF_INSTANCE>
+
+Cree un producto nuevo con estos datos: SERVICIOS VARIOS COOKARTE, clave de búsqueda SERV VAR COOK, categoría 52DBC3E9A82C47F2B6298CBC3E12DA67, versión de precio FDE536FE9D8C4B068C32CD6C3650B6B8  y precio 25,24.
+<END_OF_INSTANCE>
+
+Por favor, ingrese producto nuevo con: SERVICIOS VARIOS COOKARTE, SERV VAR COOK, 52DBC3E9A82C47F2B6298CBC3E12DA67, versión de lista de precios FDE536FE9D8C4B068C32CD6C3650B6B8 , y precio 25,24.
+<END_OF_INSTANCE>
+
+Could you add a product named SERVICIOS VARIOS COOKARTE with category 52DBC3E9A82C47F2B6298CBC3E12DA67 and price 25,24 under the price list version FDE536FE9D8C4B068C32CD6C3650B6B8 ? Use SERV VAR COOK as the search key.
+<END_OF_INSTANCE>
+
+Make a product entry based on the data: Search Key SERV VAR COOK, Name SERVICIOS VARIOS COOKARTE, Category ID 52DBC3E9A82C47F2B6298CBC3E12DA67, Price List Version FDE536FE9D8C4B068C32CD6C3650B6B8 , Price 25,24.
+<END_OF_INSTANCE>
+
