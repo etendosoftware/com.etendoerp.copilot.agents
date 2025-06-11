@@ -1,0 +1,12 @@
+{
+    "num_templates_analyzed": 100,
+    "lexical_diversity_nltk": {
+        "status": "Skipped (NLTK not available)"
+    },
+    "levenshtein_distance": {
+        "status": "Skipped (python-Levenshtein not available)"
+    },
+    "semantic_diversity_sbert": {
+        "status": "Skipped (sentence-transformers not available)"
+    }
+}

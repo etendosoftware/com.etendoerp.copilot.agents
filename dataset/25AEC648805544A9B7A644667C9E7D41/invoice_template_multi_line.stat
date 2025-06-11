@@ -1,5 +1,5 @@
 {
-    "num_templates_analyzed": 50,
+    "num_templates_analyzed": 33,
     "lexical_diversity_nltk": {
         "status": "Skipped (NLTK not available)"
     },
