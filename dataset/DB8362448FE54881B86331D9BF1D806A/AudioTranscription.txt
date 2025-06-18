@@ -1,0 +1,15 @@
+Please create an order using the following details: Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos..
+<END_OF_INSTANCE>
+
+Could you kindly place an order based on this information? Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.
+<END_OF_INSTANCE>
+
+Necesito que generes una orden con estos datos: Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos..
+<END_OF_INSTANCE>
+
+Create an order immediately with the data: Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos..
+<END_OF_INSTANCE>
+
+Por favor, realiza un pedido con la información proporcionada: Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos..
+<END_OF_INSTANCE>
+
