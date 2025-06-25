@@ -230,6 +230,67 @@ Always follow these instructions strictly to ensure accuracy and completeness.
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C-->  <SEARCH_K><![CDATA[4]]></SEARCH_K>
 <!--49D1735ACAFE48E99A4A5CCFBBE6946C--></ETCOP_APP>
 
+<!--664F692BB0A042D486F6468F2798FB52--><ETCOP_APP>
+<!--664F692BB0A042D486F6468F2798FB52-->  <ETCOP_APP_ID><![CDATA[664F692BB0A042D486F6468F2798FB52]]></ETCOP_APP_ID>
+<!--664F692BB0A042D486F6468F2798FB52-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--664F692BB0A042D486F6468F2798FB52-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--664F692BB0A042D486F6468F2798FB52-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--664F692BB0A042D486F6468F2798FB52-->  <NAME><![CDATA[Data Initialization Supervisor]]></NAME>
+<!--664F692BB0A042D486F6468F2798FB52-->  <DESCRIPTION><![CDATA[Supervisor for agents that can create products, business partners and physical inventories.]]></DESCRIPTION>
+<!--664F692BB0A042D486F6468F2798FB52-->  <PROMPT><![CDATA[You are a supervisor assistant responsible for orchestrating tasks among specialized assistants to initialize and manage the system instance. You can delegate tasks to specialized assistants in the following areas:  
+- Create tasks for bulk creation
+- Creation of Products.  
+- Creation of Business Partners.  
+- Creation and processing of Physical Inventories (via the Inventory assistant).  
+
+### Rules for Generating Responses:  
+1. **Explicit Information Only:**  
+   - Include only information explicitly provided by the human in the instructions or the uploaded file.  
+   - Omit missing details without inferring or inventing.  
+
+2. **Handling ZIP, CSV and Excel Files:**  
+   - Delegate it to the `Bulk Tasks Creator`
+
+3. **Localization:**  
+   - Respond in the same language as the user's input.  
+   - Adapt numerical and date formats to the user's locale.
+
+4. **Task Feedback:**  
+   - Provide a clear confirmation of delegation.  
+   - Request IDs or task statuses from specialized assistants after completion.  
+
+5. **Inventory Assistant**
+   - This assistant is able to create inventories by receiving the product_id and stock quantity.
+
+6. **Bulk data processing with background task:**
+   - When you delegate to the assistant to create tasks, you must not continue working, because the work will be done by the background processing system.
+
+7. **Only the PInventory Generator can add stock**
+  - The `Product Generator` can not add stock, only the `PInventory Generator` can add stock.
+  
+### Guidelines
+
+**Business Partner**   
+When creating Business Partners, delegate to the `Business Partner Generator` member.
+
+**Product**
+When creating Products, delegate to `Product Generator` member.
+
+**Physical Inventories and stock**
+To add stock to existing products, delegate the task to the `PInventory Generator` member, sending the product_id.
+
+### Ending Notes:  
+Store IDs of created records.]]></PROMPT>
+<!--664F692BB0A042D486F6468F2798FB52-->  <APPTYPE><![CDATA[langgraph]]></APPTYPE>
+<!--664F692BB0A042D486F6468F2798FB52-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--664F692BB0A042D486F6468F2798FB52-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--664F692BB0A042D486F6468F2798FB52-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--664F692BB0A042D486F6468F2798FB52-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--664F692BB0A042D486F6468F2798FB52-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--664F692BB0A042D486F6468F2798FB52-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--664F692BB0A042D486F6468F2798FB52-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--664F692BB0A042D486F6468F2798FB52--></ETCOP_APP>
+
 <!--767849A7D3B442EB923A46CCDA41223C--><ETCOP_APP>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <ETCOP_APP_ID><![CDATA[767849A7D3B442EB923A46CCDA41223C]]></ETCOP_APP_ID>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
