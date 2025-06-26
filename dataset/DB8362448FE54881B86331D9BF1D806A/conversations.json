@@ -1,0 +1,467 @@
+[
+    {
+        "run_id": "15f3bbbf-1a16-4b6a-b68c-36c4691a0dcf",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea este pedido"
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Crea este pedido"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Attached files:\n/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_DC95rbV1eAXALlISScvCgtnm",
+                        "function": {
+                            "name": "AudioTool",
+                            "arguments": "{\"path\": \"/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg\"}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Transcription(text='Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.', logprobs=None)",
+                "tool_call_id": "call_DC95rbV1eAXALlISScvCgtnm"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_pp22rtPZrmcZWRPZ7coQmqxr",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"items\": \"[\\\"Hoteles Buenas Noches\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"9E6850C866BD4921AD0EB7F7796CE2C7\\\",\\\"name\\\":\\\"Hoteles Buenas Noches, S.A.\\\",\\\"similarity_percent\\\":\\\"84.0000%\\\"}]}}\"}",
+                "tool_call_id": "call_pp22rtPZrmcZWRPZ7coQmqxr"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_zETCGmNMGvKRqZMw4h6HOsmO",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"Product\", \"items\": \"[\\\"cervezas lager\\\",\\\"vinos blancos\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"C0E3824CC5184B7F9746D195ACAC2CCF\\\",\\\"name\\\":\\\"Cerveza Lager 0,5L\\\",\\\"similarity_percent\\\":\\\"61.9048%\\\"}]},\\\"item_1\\\":{\\\"data\\\":[{\\\"id\\\":\\\"20EA4222B741434A9203471A3B29C343\\\",\\\"name\\\":\\\"Vino Blanco 0,75L\\\",\\\"similarity_percent\\\":\\\"47.6190%\\\"}]}}\"}",
+                "tool_call_id": "call_zETCGmNMGvKRqZMw4h6HOsmO"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_YB71zT0nnKsB67t85ayV0mgQ",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_SalesOrder",
+                            "arguments": "{\"body\": {\"businessPartner\": \"9E6850C866BD4921AD0EB7F7796CE2C7\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"data\":[{\"_identifier\":\"1000390 - 11-06-2025 - 0\",\"_entityName\":\"Order\",\"$ref\":\"Order\\/AB6944965EC4425B8AD1B11F07B7E8C3\",\"id\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-06-11T15:11:13-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-06-11T15:11:13-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesTransaction\":true,\"documentNo\":\"1000390\",\"documentStatus\":\"DR\",\"documentAction\":\"CO\",\"processNow\":false,\"processed\":false,\"documentType\":\"0\",\"documentType$_identifier\":\"** New **\",\"transactionDocument\":\"466AF4B0136A4A3F9F84129711DA8BD3\",\"transactionDocument$_identifier\":\"Standard Order\",\"description\":null,\"delivered\":false,\"reinvoice\":false,\"print\":false,\"selected\":false,\"salesRepresentative\":null,\"orderDate\":\"2025-06-11\",\"scheduledDeliveryDate\":\"2025-06-11\",\"datePrinted\":null,\"accountingDate\":\"2025-06-11\",\"businessPartner\":\"9E6850C866BD4921AD0EB7F7796CE2C7\",\"businessPartner$_identifier\":\"Hoteles Buenas Noches, S.A.\",\"invoiceAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"invoiceAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"partnerAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"partnerAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"orderReference\":null,\"printDiscount\":false,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"formOfPayment\":\"P\",\"paymentTerms\":\"66BA1164A7394344BB9CD1A6ECEED05D\",\"paymentTerms$_identifier\":\"30 days\",\"invoiceTerms\":\"D\",\"deliveryTerms\":\"A\",\"freightCostRule\":\"I\",\"freightAmount\":0,\"deliveryMethod\":\"P\",\"shippingCompany\":null,\"charge\":null,\"chargeAmount\":0,\"priority\":\"5\",\"summedLineAmount\":0,\"grandTotalAmount\":0,\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"priceList\":\"AEE66281A08F42B6BC509B8A80A33C29\",\"priceList$_identifier\":\"Tarifa de ventas\",\"priceIncludesTax\":false,\"salesCampaign\":null,\"project\":null,\"activity\":null,\"posted\":\"N\",\"userContact\":\"CA5D537DFD014F15BFFBA0DB81E1A379\",\"userContact$_identifier\":\"Marcos Pedro\",\"copyFrom\":false,\"dropShipPartner\":null,\"dropShipLocation\":null,\"dropShipContact\":null,\"selfService\":false,\"trxOrganization\":null,\"stDimension\":null,\"ndDimension\":null,\"deliveryNotes\":null,\"incoterms\":null,\"iNCOTERMSDescription\":null,\"generateTemplate\":false,\"deliveryLocation\":null,\"copyFromPO\":false,\"paymentMethod\":\"A97CFD2AFC234B59BB0A72189BD8FC2A\",\"paymentMethod$_identifier\":\"Transferencia\",\"fINPaymentPriority\":null,\"pickFromShipment\":false,\"receiveMaterials\":false,\"createInvoice\":false,\"returnReason\":null,\"addOrphanLine\":false,\"asset\":null,\"calculatePromotions\":false,\"costcenter\":null,\"createOrder\":false,\"rejectReason\":null,\"validUntil\":null,\"quotation\":null,\"reservationStatus\":null,\"createPOLines\":false,\"cashVAT\":false,\"pickfromreceipt\":false,\"cancelandreplace\":false,\"aPRMAddPayment\":false,\"confirmcancelandreplace\":false,\"cancelledorder\":null,\"replacedorder\":null,\"iscancelled\":false,\"replacementorder\":null,\"etafdpUndoclose\":false,\"externalBusinessPartnerReference\":null,\"deliveryStatus\":0,\"invoiceStatus\":0,\"paymentStatus\":0,\"_computedColumns\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"_computedColumns$_identifier\":\"Order_ComputedColumns (AB6944965EC4425B8AD1B11F07B7E8C3)\",\"recordTime\":1749665473647}]},\"status\":0}",
+                "tool_call_id": "call_YB71zT0nnKsB67t85ayV0mgQ"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_MU4wuBfrybYVDC8EpqZOVug2",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_SalesOrderLines",
+                            "arguments": "{\"body\": [{\"salesOrder\": \"AB6944965EC4425B8AD1B11F07B7E8C3\", \"product\": \"C0E3824CC5184B7F9746D195ACAC2CCF\", \"unitPrice\": 0, \"orderedQuantity\": 10}, {\"salesOrder\": \"AB6944965EC4425B8AD1B11F07B7E8C3\", \"product\": \"20EA4222B741434A9203471A3B29C343\", \"unitPrice\": 0, \"orderedQuantity\": 10}]}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"data\":[{\"_identifier\":\"1000390 - 11-06-2025 - 0.00 - 10 - 0.00\",\"_entityName\":\"OrderLine\",\"$ref\":\"OrderLine\\/E2E6D3C6EC774EF3A7492809C3E843AF\",\"id\":\"E2E6D3C6EC774EF3A7492809C3E843AF\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-06-11T15:11:17-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-06-11T15:11:17-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesOrder\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"salesOrder$_identifier\":\"1000390 - 11-06-2025 - 0.00\",\"lineNo\":10,\"businessPartner\":\"9E6850C866BD4921AD0EB7F7796CE2C7\",\"businessPartner$_identifier\":\"Hoteles Buenas Noches, S.A.\",\"partnerAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"partnerAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"orderDate\":\"2025-06-11\",\"scheduledDeliveryDate\":\"2025-06-11\",\"dateDelivered\":null,\"invoiceDate\":null,\"description\":null,\"product\":\"C0E3824CC5184B7F9746D195ACAC2CCF\",\"product$_identifier\":\"Cerveza Lager 0,5L\",\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"directShipment\":false,\"uOM\":\"100\",\"uOM$_identifier\":\"Unit\",\"orderedQuantity\":10,\"reservedQuantity\":0,\"deliveredQuantity\":0,\"invoicedQuantity\":0,\"shippingCompany\":null,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"listPrice\":2.64,\"unitPrice\":0,\"priceLimit\":0,\"lineNetAmount\":0,\"discount\":100,\"freightAmount\":0,\"charge\":null,\"chargeAmount\":0,\"tax\":\"696801EA1AAF46A4AF56E367B40459AE\",\"tax$_identifier\":\"Entregas IVA 21%\",\"resourceAssignment\":null,\"sOPOReference\":null,\"attributeSetValue\":null,\"descriptionOnly\":false,\"orderQuantity\":null,\"orderUOM\":null,\"priceAdjustment\":null,\"standardPrice\":0,\"cancelPriceAdjustment\":false,\"orderDiscount\":null,\"editLineAmount\":false,\"taxableAmount\":0,\"goodsShipmentLine\":null,\"returnReason\":null,\"grossUnitPrice\":0,\"lineGrossAmount\":0,\"grossListPrice\":null,\"costcenter\":null,\"baseGrossUnitPrice\":0,\"asset\":null,\"warehouseRule\":null,\"stDimension\":null,\"quotationLine\":null,\"ndDimension\":null,\"createReservation\":null,\"project\":null,\"reservationStatus\":null,\"manageReservation\":false,\"managePrereservation\":false,\"explode\":false,\"bOMParent\":null,\"replacedorderline\":null,\"printDescription\":false,\"overdueReturnDays\":null,\"selectOrderLine\":false,\"operativeUOM\":null,\"operativeQuantity\":null,\"etafdpQtyclose\":0,\"returnline\":null,\"recordTime\":1749665477197},{\"_identifier\":\"1000390 - 11-06-2025 - 0.00 - 20 - 0.00\",\"_entityName\":\"OrderLine\",\"$ref\":\"OrderLine\\/A7994F7B746E40F981607FDC5B87A005\",\"id\":\"A7994F7B746E40F981607FDC5B87A005\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-06-11T15:11:18-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-06-11T15:11:18-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesOrder\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"salesOrder$_identifier\":\"1000390 - 11-06-2025 - 0.00\",\"lineNo\":20,\"businessPartner\":\"9E6850C866BD4921AD0EB7F7796CE2C7\",\"businessPartner$_identifier\":\"Hoteles Buenas Noches, S.A.\",\"partnerAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"partnerAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"orderDate\":\"2025-06-11\",\"scheduledDeliveryDate\":\"2025-06-11\",\"dateDelivered\":null,\"invoiceDate\":null,\"description\":null,\"product\":\"20EA4222B741434A9203471A3B29C343\",\"product$_identifier\":\"Vino Blanco 0,75L\",\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"directShipment\":false,\"uOM\":\"100\",\"uOM$_identifier\":\"Unit\",\"orderedQuantity\":10,\"reservedQuantity\":0,\"deliveredQuantity\":0,\"invoicedQuantity\":0,\"shippingCompany\":null,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"listPrice\":2.64,\"unitPrice\":0,\"priceLimit\":0,\"lineNetAmount\":0,\"discount\":100,\"freightAmount\":0,\"charge\":null,\"chargeAmount\":0,\"tax\":\"696801EA1AAF46A4AF56E367B40459AE\",\"tax$_identifier\":\"Entregas IVA 21%\",\"resourceAssignment\":null,\"sOPOReference\":null,\"attributeSetValue\":null,\"descriptionOnly\":false,\"orderQuantity\":null,\"orderUOM\":null,\"priceAdjustment\":null,\"standardPrice\":0,\"cancelPriceAdjustment\":false,\"orderDiscount\":null,\"editLineAmount\":false,\"taxableAmount\":0,\"goodsShipmentLine\":null,\"returnReason\":null,\"grossUnitPrice\":0,\"lineGrossAmount\":0,\"grossListPrice\":null,\"costcenter\":null,\"baseGrossUnitPrice\":0,\"asset\":null,\"warehouseRule\":null,\"stDimension\":null,\"quotationLine\":null,\"ndDimension\":null,\"createReservation\":null,\"project\":null,\"reservationStatus\":null,\"manageReservation\":false,\"managePrereservation\":false,\"explode\":false,\"bOMParent\":null,\"replacedorderline\":null,\"printDescription\":false,\"overdueReturnDays\":null,\"selectOrderLine\":false,\"operativeUOM\":null,\"operativeQuantity\":null,\"etafdpQtyclose\":0,\"returnline\":null,\"recordTime\":1749665478328}]},\"status\":0}",
+                "tool_call_id": "call_MU4wuBfrybYVDC8EpqZOVug2"
+            }
+        ],
+        "considerations": "In this call, the AI summarizes the entire sales order creation process: retrieving IDs, creating the sales order header, and inserting all sales order lines. It should confirm each step and provide a link to the created sales order.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "El pedido ha sido creado exitosamente para el cliente **Hoteles Buenas Noches, S.A.**. Los detalles son los siguientes:\n\n### Productos:\n1. **Cerveza Lager 0,5L** - Cantidad: 10\n2. **Vino Blanco 0,75L** - Cantidad: 10\n\nPuedes revisar el pedido en el siguiente enlace:\n[Ver Pedido](http://localhost:8080/etendo/?tabId=294&recordId=AB6944965EC4425B8AD1B11F07B7E8C3)\n\n---\n\n### \u2705 Verificaci\u00f3n Final:\n- [x] Detalles extra\u00eddos y validados correctamente.\n- [x] IDs almacenados y reutilizados.\n- [x] Encabezado del pedido creado exitosamente.\n- [x] L\u00edneas del pedido insertadas correctamente.\n- [x] Validaci\u00f3n del total no aplica ya que no se especificaron precios en el audio."
+        },
+        "creation_date": "2025-06-11-16:07:18"
+    },
+    {
+        "run_id": "2905f38e-b4b3-4196-a213-a527e781939f",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea este pedido"
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Crea este pedido"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Attached files:\n/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_DC95rbV1eAXALlISScvCgtnm",
+                        "function": {
+                            "name": "AudioTool",
+                            "arguments": "{\"path\": \"/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg\"}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Transcription(text='Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.', logprobs=None)",
+                "tool_call_id": "call_DC95rbV1eAXALlISScvCgtnm"
+            }
+        ],
+        "considerations": "In this call, the AI performs a similarity searche for a Business Partner.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_pp22rtPZrmcZWRPZ7coQmqxr",
+                    "function": {
+                        "name": "POST_webhooks_SimSearch",
+                        "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"items\": \"[\\\"Hoteles Buenas Noches\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-06-11-16:04:36"
+    },
+    {
+        "run_id": "59c6c7aa-888d-4056-931c-aebb91cb263f",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea este pedido"
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Crea este pedido"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Attached files:\n/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_DC95rbV1eAXALlISScvCgtnm",
+                        "function": {
+                            "name": "AudioTool",
+                            "arguments": "{\"path\": \"/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg\"}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Transcription(text='Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.', logprobs=None)",
+                "tool_call_id": "call_DC95rbV1eAXALlISScvCgtnm"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_pp22rtPZrmcZWRPZ7coQmqxr",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"items\": \"[\\\"Hoteles Buenas Noches\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"9E6850C866BD4921AD0EB7F7796CE2C7\\\",\\\"name\\\":\\\"Hoteles Buenas Noches, S.A.\\\",\\\"similarity_percent\\\":\\\"84.0000%\\\"}]}}\"}",
+                "tool_call_id": "call_pp22rtPZrmcZWRPZ7coQmqxr"
+            }
+        ],
+        "considerations": "In this call, the AI performs similarity searches for a list of Products.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_zETCGmNMGvKRqZMw4h6HOsmO",
+                    "function": {
+                        "name": "POST_webhooks_SimSearch",
+                        "arguments": "{\"body\": {\"entityName\": \"Product\", \"items\": \"[\\\"cervezas lager\\\",\\\"vinos blancos\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-06-11-16:06:40"
+    },
+    {
+        "run_id": "66d1574f-31af-4f62-98a0-39d88f7f9794",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea este pedido"
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Crea este pedido"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Attached files:\n/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_DC95rbV1eAXALlISScvCgtnm",
+                        "function": {
+                            "name": "AudioTool",
+                            "arguments": "{\"path\": \"/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg\"}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Transcription(text='Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.', logprobs=None)",
+                "tool_call_id": "call_DC95rbV1eAXALlISScvCgtnm"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_pp22rtPZrmcZWRPZ7coQmqxr",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"items\": \"[\\\"Hoteles Buenas Noches\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"9E6850C866BD4921AD0EB7F7796CE2C7\\\",\\\"name\\\":\\\"Hoteles Buenas Noches, S.A.\\\",\\\"similarity_percent\\\":\\\"84.0000%\\\"}]}}\"}",
+                "tool_call_id": "call_pp22rtPZrmcZWRPZ7coQmqxr"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_zETCGmNMGvKRqZMw4h6HOsmO",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"Product\", \"items\": \"[\\\"cervezas lager\\\",\\\"vinos blancos\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"C0E3824CC5184B7F9746D195ACAC2CCF\\\",\\\"name\\\":\\\"Cerveza Lager 0,5L\\\",\\\"similarity_percent\\\":\\\"61.9048%\\\"}]},\\\"item_1\\\":{\\\"data\\\":[{\\\"id\\\":\\\"20EA4222B741434A9203471A3B29C343\\\",\\\"name\\\":\\\"Vino Blanco 0,75L\\\",\\\"similarity_percent\\\":\\\"47.6190%\\\"}]}}\"}",
+                "tool_call_id": "call_zETCGmNMGvKRqZMw4h6HOsmO"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_YB71zT0nnKsB67t85ayV0mgQ",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_SalesOrder",
+                            "arguments": "{\"body\": {\"businessPartner\": \"9E6850C866BD4921AD0EB7F7796CE2C7\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"data\":[{\"_identifier\":\"1000390 - 11-06-2025 - 0\",\"_entityName\":\"Order\",\"$ref\":\"Order\\/AB6944965EC4425B8AD1B11F07B7E8C3\",\"id\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-06-11T15:11:13-03:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-06-11T15:11:13-03:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesTransaction\":true,\"documentNo\":\"1000390\",\"documentStatus\":\"DR\",\"documentAction\":\"CO\",\"processNow\":false,\"processed\":false,\"documentType\":\"0\",\"documentType$_identifier\":\"** New **\",\"transactionDocument\":\"466AF4B0136A4A3F9F84129711DA8BD3\",\"transactionDocument$_identifier\":\"Standard Order\",\"description\":null,\"delivered\":false,\"reinvoice\":false,\"print\":false,\"selected\":false,\"salesRepresentative\":null,\"orderDate\":\"2025-06-11\",\"scheduledDeliveryDate\":\"2025-06-11\",\"datePrinted\":null,\"accountingDate\":\"2025-06-11\",\"businessPartner\":\"9E6850C866BD4921AD0EB7F7796CE2C7\",\"businessPartner$_identifier\":\"Hoteles Buenas Noches, S.A.\",\"invoiceAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"invoiceAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"partnerAddress\":\"BFE1FB707BA84A6D8AF61A785F3CE1C1\",\"partnerAddress$_identifier\":\".Valencia, Av. de las Fuentes, 56\",\"orderReference\":null,\"printDiscount\":false,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"formOfPayment\":\"P\",\"paymentTerms\":\"66BA1164A7394344BB9CD1A6ECEED05D\",\"paymentTerms$_identifier\":\"30 days\",\"invoiceTerms\":\"D\",\"deliveryTerms\":\"A\",\"freightCostRule\":\"I\",\"freightAmount\":0,\"deliveryMethod\":\"P\",\"shippingCompany\":null,\"charge\":null,\"chargeAmount\":0,\"priority\":\"5\",\"summedLineAmount\":0,\"grandTotalAmount\":0,\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"priceList\":\"AEE66281A08F42B6BC509B8A80A33C29\",\"priceList$_identifier\":\"Tarifa de ventas\",\"priceIncludesTax\":false,\"salesCampaign\":null,\"project\":null,\"activity\":null,\"posted\":\"N\",\"userContact\":\"CA5D537DFD014F15BFFBA0DB81E1A379\",\"userContact$_identifier\":\"Marcos Pedro\",\"copyFrom\":false,\"dropShipPartner\":null,\"dropShipLocation\":null,\"dropShipContact\":null,\"selfService\":false,\"trxOrganization\":null,\"stDimension\":null,\"ndDimension\":null,\"deliveryNotes\":null,\"incoterms\":null,\"iNCOTERMSDescription\":null,\"generateTemplate\":false,\"deliveryLocation\":null,\"copyFromPO\":false,\"paymentMethod\":\"A97CFD2AFC234B59BB0A72189BD8FC2A\",\"paymentMethod$_identifier\":\"Transferencia\",\"fINPaymentPriority\":null,\"pickFromShipment\":false,\"receiveMaterials\":false,\"createInvoice\":false,\"returnReason\":null,\"addOrphanLine\":false,\"asset\":null,\"calculatePromotions\":false,\"costcenter\":null,\"createOrder\":false,\"rejectReason\":null,\"validUntil\":null,\"quotation\":null,\"reservationStatus\":null,\"createPOLines\":false,\"cashVAT\":false,\"pickfromreceipt\":false,\"cancelandreplace\":false,\"aPRMAddPayment\":false,\"confirmcancelandreplace\":false,\"cancelledorder\":null,\"replacedorder\":null,\"iscancelled\":false,\"replacementorder\":null,\"etafdpUndoclose\":false,\"externalBusinessPartnerReference\":null,\"deliveryStatus\":0,\"invoiceStatus\":0,\"paymentStatus\":0,\"_computedColumns\":\"AB6944965EC4425B8AD1B11F07B7E8C3\",\"_computedColumns$_identifier\":\"Order_ComputedColumns (AB6944965EC4425B8AD1B11F07B7E8C3)\",\"recordTime\":1749665473647}]},\"status\":0}",
+                "tool_call_id": "call_YB71zT0nnKsB67t85ayV0mgQ"
+            }
+        ],
+        "considerations": "In this call, the AI adds multiple lines to an existing Sales Order, specifying product IDs, quantities, and unit prices. The sales order ID must be the same for all lines. The quantity and the unit price should match the requested values.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_MU4wuBfrybYVDC8EpqZOVug2",
+                    "function": {
+                        "name": "POST_sws_com_etendoerp_etendorx_datasource_SalesOrderLines",
+                        "arguments": "{\"body\": [{\"salesOrder\": \"AB6944965EC4425B8AD1B11F07B7E8C3\", \"product\": \"C0E3824CC5184B7F9746D195ACAC2CCF\", \"unitPrice\": 0, \"orderedQuantity\": 10}, {\"salesOrder\": \"AB6944965EC4425B8AD1B11F07B7E8C3\", \"product\": \"20EA4222B741434A9203471A3B29C343\", \"unitPrice\": 0, \"orderedQuantity\": 10}]}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-06-11-16:07:05"
+    },
+    {
+        "run_id": "f4555b3f-90a1-4113-aaa5-7aef8e440913",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Crea este pedido"
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "Crea este pedido"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Attached files:\n/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg"
+                    }
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_DC95rbV1eAXALlISScvCgtnm",
+                        "function": {
+                            "name": "AudioTool",
+                            "arguments": "{\"path\": \"/Users/franciscoroig/Desktop/Workspaces/etendo_core/modules/com.etendoerp.copilot/copilotAttachedFiles/e86c43dd-72cd-4e52-8baa-ee83e3ade524/AudioPedidoHotel_4700712048203183164.ogg\"}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Transcription(text='Hola, soy el encargado de hoteles Buenas Noches y quisiera encargar 10 cervezas lager y 10 vinos blancos.', logprobs=None)",
+                "tool_call_id": "call_DC95rbV1eAXALlISScvCgtnm"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_pp22rtPZrmcZWRPZ7coQmqxr",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"BusinessPartner\", \"items\": \"[\\\"Hoteles Buenas Noches\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"9E6850C866BD4921AD0EB7F7796CE2C7\\\",\\\"name\\\":\\\"Hoteles Buenas Noches, S.A.\\\",\\\"similarity_percent\\\":\\\"84.0000%\\\"}]}}\"}",
+                "tool_call_id": "call_pp22rtPZrmcZWRPZ7coQmqxr"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_zETCGmNMGvKRqZMw4h6HOsmO",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"entityName\": \"Product\", \"items\": \"[\\\"cervezas lager\\\",\\\"vinos blancos\\\"]\", \"minSimPercent\": \"30\", \"qtyResults\": \"1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"item_0\\\":{\\\"data\\\":[{\\\"id\\\":\\\"C0E3824CC5184B7F9746D195ACAC2CCF\\\",\\\"name\\\":\\\"Cerveza Lager 0,5L\\\",\\\"similarity_percent\\\":\\\"61.9048%\\\"}]},\\\"item_1\\\":{\\\"data\\\":[{\\\"id\\\":\\\"20EA4222B741434A9203471A3B29C343\\\",\\\"name\\\":\\\"Vino Blanco 0,75L\\\",\\\"similarity_percent\\\":\\\"47.6190%\\\"}]}}\"}",
+                "tool_call_id": "call_zETCGmNMGvKRqZMw4h6HOsmO"
+            }
+        ],
+        "considerations": "In this call, the AI should initialize a Sales Order with the given business partner. Other details like lines will be added later.",
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_YB71zT0nnKsB67t85ayV0mgQ",
+                    "function": {
+                        "name": "POST_sws_com_etendoerp_etendorx_datasource_SalesOrder",
+                        "arguments": "{\"body\": {\"businessPartner\": \"9E6850C866BD4921AD0EB7F7796CE2C7\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-06-11-16:06:52"
+    }
+]
