@@ -10,7 +10,9 @@
 Examples
 POST sws/com.etendoerp.etendorx.datasource/PurchaseOrder
 {
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF"
+    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
+    "orderDate": "2025-10-02",
+    "orderReference": "12345"
 }]]></DESCRIPTION>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--101B5A97700347D2B5E66176B306CA7D-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
@@ -117,7 +119,14 @@ The field locationAddress should have the ID of the Location created previously.
 <!--832A798A3D0F417C95D3A5A7D7851DD5-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--832A798A3D0F417C95D3A5A7D7851DD5-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--832A798A3D0F417C95D3A5A7D7851DD5-->  <NAME><![CDATA[SalesOrder]]></NAME>
-<!--832A798A3D0F417C95D3A5A7D7851DD5-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Sales Order in the system. A Sales Order is a transactional document used to register the selling of items to a Business Partner/Customer.]]></DESCRIPTION>
+<!--832A798A3D0F417C95D3A5A7D7851DD5-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Sales Order in the system. A Sales Order is a transactional document used to register the selling of items to a Business Partner/Customer. This endpoint is valid only for the header (lines must be created with SalesOrderLines)
+Examples
+POST sws/com.etendoerp.etendorx.datasource/SalesOrder
+{
+    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
+    "orderDate": "2025-10-02",
+    "orderReference": "12345"
+}]]></DESCRIPTION>
 <!--832A798A3D0F417C95D3A5A7D7851DD5-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--832A798A3D0F417C95D3A5A7D7851DD5-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--832A798A3D0F417C95D3A5A7D7851DD5--></ETAPI_OPENAPI_REQ>
@@ -180,7 +189,9 @@ Creation example with only required fields:
 Examples
 POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
 {
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF"
+    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
+    "invoiceDate": "2025-10-02",
+    "orderReference": "12345"
 }]]></DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
