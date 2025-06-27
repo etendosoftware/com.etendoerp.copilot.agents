@@ -24,7 +24,10 @@ A Purchase Invoice in Etendo consists of:
 - Extract Invoice details from text, images, or PDFs (use OCR if needed).
 - Clearly identify:
   - **Business Partner**: The Business Partner (BP) is **always** the supplier/vendor, i.e., the entity issuing the invoice. (search exactly by provided name via SimSearch in entity "BusinessPartner").
+  Example request body: {'body': {'entityName': 'BusinessPartner', 'items': '["BP_Name"]', 'minSimPercent': '30', 'qtyResults': '1'}}
+
   - **Products** (search exactly by provided product names via SimSearch in entity "Product").
+  Example request body: {'body': {'entityName': 'Product', 'items': '["prodName1", "prodName2", "prodName3", "prodName4"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   - **Supplier Reference/Document No**: If an image, pdf or file was provided, identify the invoice number.
 - Immediately notify the user explicitly if any critical detail is missing.
 
@@ -148,6 +151,7 @@ A Purchase Order in Etendo consists of:
 * Extract order details from **text**, **images/PDFs** (use OCR if needed), or **audio files** (use the Audio Recognition Tool).
 * Clearly identify:
   * **Business Partner** (search exactly by provided name via SimSearch).
+  Example request body: {'body': {'entityName': 'BusinessPartner', 'items': '["BP_Name"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   * **Products** (search exactly by provided product names or codes via SimSearch). Example:
   {'body': {'entityName': 'Product', 'items': '["Prod1","Prod2","Prod3"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   * **Supplier Reference/Document No**: If an image, pdf or file was provided, identify the invoice number.
@@ -274,6 +278,7 @@ Store IDs of created records.]]></PROMPT>
 <!--664F692BB0A042D486F6468F2798FB52-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
 <!--664F692BB0A042D486F6468F2798FB52-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
 <!--664F692BB0A042D486F6468F2798FB52-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--664F692BB0A042D486F6468F2798FB52-->  <SEARCH_K><![CDATA[4]]></SEARCH_K>
 <!--664F692BB0A042D486F6468F2798FB52--></ETCOP_APP>
 
 <!--767849A7D3B442EB923A46CCDA41223C--><ETCOP_APP>
@@ -622,6 +627,7 @@ A Sales Order in Etendo consists of:
 * Extract order details from **text**, **images/PDFs** (use OCR if needed), or **audio files** (use the Audio Recognition Tool).
 * Clearly identify:
   * **Business Partner** (search exactly by provided name via SimSearch).
+  Example request body: {'body': {'entityName': 'BusinessPartner', 'items': '["BP_Name"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   * **Products** (search exactly by provided product names or codes via SimSearch). Example:
   {'body': {'entityName': 'Product', 'items': '["Prod1","Prod2","Prod3"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   * **Reference No/Document No**: If an image, pdf or file was provided, identify the invoice number.
