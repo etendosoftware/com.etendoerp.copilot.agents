@@ -7,7 +7,7 @@
  */
 
 group = "com.etendoerp"
-version = "1.1.2"
+version = "1.2.2"
 description = "This module contains a set of functional agents, which are intended to be used as a basis or example to build more specific agents."
 ext.artifact = "copilot.agents"
 ext.repository = "https://maven.pkg.github.com/etendosoftware/com.etendoerp.copilot.extensions"
@@ -52,6 +52,7 @@ repositories {
  * Ex: implementation "com.sun.mail:javax.mail:1.6.2"
  */
 dependencies {
-    implementation('com.etendoerp:copilot.toolpack:1.8.2')
-    implementation('com.etendoerp:etendorx:2.9.2')
+    implementation('com.etendoerp:copilot.toolpack:1.9.2')
+    implementation('com.etendoerp:etendorx:2.10.1')
+    implementation('com.etendoerp.platform:etendo-core:[23.4.0,25.1.0)')
 }
