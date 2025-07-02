@@ -1,0 +1,99 @@
+Por favor, crea una factura para Bebidas Alegres, S.L. incluyendo estos productos: Cerveza Lager 0,5L a 1,75 x48, Cerveza Ale 0,5L a 1,36 x24, Vino Tinto a 3,45 x12, y Vino Blanco  a 3,55 x12.
+<END_OF_INSTANCE>
+
+Generate an invoice for Bebidas Alegres, S.L. listing the following items: Cerveza Lager 0,5L priced at 1,75 each, quantity 48; Cerveza Ale 0,5L at 1,36 x24; Vino Tinto at 3,45 x12, and Vino Blanco  at 3,55 x12.
+<END_OF_INSTANCE>
+
+Solicito la generación de una invoice para Bebidas Alegres, S.L. con los productos: Cerveza Lager 0,5L (48 unidades a 1,75), Cerveza Ale 0,5L (24 unidades a 1,36), Vino Tinto (12 unidades a 3,45), y Vino Blanco  (12 unidades a 3,55).
+<END_OF_INSTANCE>
+
+Please prepare an invoice for the business partner Bebidas Alegres, S.L. featuring these products: Cerveza Lager 0,5L x48 at 1,75, Cerveza Ale 0,5L x24 at 1,36, Vino Tinto x12 at 3,45, and Vino Blanco  x12 at 3,55.
+<END_OF_INSTANCE>
+
+Genera una factura para Bebidas Alegres, S.L. con los siguientes artículos: Cerveza Lager 0,5L a 1,75 por unidad, cantidad 48; Cerveza Ale 0,5L a 1,36 por unidad, cantidad 24; Vino Tinto a 3,45 por unidad, cantidad 12; Vino Blanco  a 3,55 por unidad, cantidad 12.
+<END_OF_INSTANCE>
+
+Create an invoice addressed to Bebidas Alegres, S.L. that includes: Cerveza Lager 0,5L (48 units at 1,75 each), Cerveza Ale 0,5L (24 units at 1,36), Vino Tinto (12 units at 3,45), and Vino Blanco  (12 units at 3,55).
+<END_OF_INSTANCE>
+
+Por favor, realiza una factura para Bebidas Alegres, S.L. con los productos listados: Cerveza Lager 0,5L x48 a 1,75, Cerveza Ale 0,5L x24 a 1,36, Vino Tinto x12 a 3,45, y Vino Blanco  x12 a 3,55.
+<END_OF_INSTANCE>
+
+Kindly generate an invoice for Bebidas Alegres, S.L. including the items: Cerveza Lager 0,5L (48 units, price 1,75), Cerveza Ale 0,5L (24 units, price 1,36), Vino Tinto (12 units, price 3,45), and Vino Blanco  (12 units, price 3,55).
+<END_OF_INSTANCE>
+
+Factura para Bebidas Alegres, S.L. con productos: Cerveza Lager 0,5L, cantidad 48, precio unitario 1,75; Cerveza Ale 0,5L, cantidad 24, precio unitario 1,36; Vino Tinto, cantidad 12, precio unitario 3,45; y Vino Blanco , cantidad 12, precio unitario 3,55.
+<END_OF_INSTANCE>
+
+Please draft an invoice for Bebidas Alegres, S.L. listing Cerveza Lager 0,5L (48 units at 1,75 each), Cerveza Ale 0,5L (24 units at 1,36), Vino Tinto (12 units at 3,45), and Vino Blanco  (12 units at 3,55).
+<END_OF_INSTANCE>
+
+Crea una invoice dirigida a Bebidas Alegres, S.L. con los siguientes productos y cantidades: Cerveza Lager 0,5L x48 a 1,75, Cerveza Ale 0,5L x24 a 1,36, Vino Tinto x12 a 3,45, Vino Blanco  x12 a 3,55.
+<END_OF_INSTANCE>
+
+Generate an invoice for Bebidas Alegres, S.L. that includes these products: Cerveza Lager 0,5L (48 units at 1,75), Cerveza Ale 0,5L (24 units at 1,36), Vino Tinto (12 units at 3,45), and Vino Blanco  (12 units at 3,55).
+<END_OF_INSTANCE>
+
+Por favor, prepara una invoice para Bebidas Alegres, S.L. con los artículos: Cerveza Lager 0,5L 48 unidades a 1,75, Cerveza Ale 0,5L 24 unidades a 1,36, Vino Tinto 12 unidades a 3,45, y Vino Blanco  12 unidades a 3,55.
+<END_OF_INSTANCE>
+
+Create an invoice for the partner Bebidas Alegres, S.L. including: Cerveza Lager 0,5L (Qty: 48, Unit Price: 1,75), Cerveza Ale 0,5L (Qty: 24, Unit Price: 1,36), Vino Tinto (Qty: 12, Unit Price: 3,45), and Vino Blanco  (Qty: 12, Unit Price: 3,55).
+<END_OF_INSTANCE>
+
+Realiza una factura para Bebidas Alegres, S.L. con los productos siguientes: Cerveza Lager 0,5L (48 uds. a 1,75), Cerveza Ale 0,5L (24 uds. a 1,36), Vino Tinto (12 uds. a 3,45), y Vino Blanco  (12 uds. a 3,55).
+<END_OF_INSTANCE>
+
+Generate a billing document for Bebidas Alegres, S.L. including these items and quantities: Cerveza Lager 0,5L x48 at 1,75, Cerveza Ale 0,5L x24 at 1,36, Vino Tinto x12 at 3,45, Vino Blanco  x12 at 3,55.
+<END_OF_INSTANCE>
+
+Por favor, crea una invoice para el cliente Bebidas Alegres, S.L. con: Cerveza Lager 0,5L 48 unidades a 1,75, Cerveza Ale 0,5L 24 unidades a 1,36, Vino Tinto 12 unidades a 3,45, y Vino Blanco  12 unidades a 3,55.
+<END_OF_INSTANCE>
+
+Please issue an invoice for Bebidas Alegres, S.L. with the following products: Cerveza Lager 0,5L at 1,75 (48 units), Cerveza Ale 0,5L at 1,36 (24 units), Vino Tinto at 3,45 (12 units), and Vino Blanco  at 3,55 (12 units).
+<END_OF_INSTANCE>
+
+Solicito una factura para Bebidas Alegres, S.L. incluyendo: Cerveza Lager 0,5L 48 a 1,75, Cerveza Ale 0,5L 24 a 1,36, Vino Tinto 12 a 3,45, y Vino Blanco  12 a 3,55.
+<END_OF_INSTANCE>
+
+Kindly prepare an invoice for Bebidas Alegres, S.L. with these items: Cerveza Lager 0,5L x48 at 1,75, Cerveza Ale 0,5L x24 at 1,36, Vino Tinto x12 at 3,45, and Vino Blanco  x12 at 3,55.
+<END_OF_INSTANCE>
+
+Genera una factura para el socio Bebidas Alegres, S.L. con productos: Cerveza Lager 0,5L (48 unidades a 1,75), Cerveza Ale 0,5L (24 unidades a 1,36), Vino Tinto (12 unidades a 3,45), Vino Blanco  (12 unidades a 3,55).
+<END_OF_INSTANCE>
+
+Please create an invoice for Bebidas Alegres, S.L. containing these products and quantities: Cerveza Lager 0,5L, 48 units at 1,75; Cerveza Ale 0,5L, 24 units at 1,36; Vino Tinto, 12 units at 3,45; and Vino Blanco , 12 units at 3,55.
+<END_OF_INSTANCE>
+
+Factura para Bebidas Alegres, S.L. con los siguientes productos y cantidades: Cerveza Lager 0,5L x48 a 1,75, Cerveza Ale 0,5L x24 a 1,36, Vino Tinto x12 a 3,45, Vino Blanco  x12 a 3,55.
+<END_OF_INSTANCE>
+
+Please prepare an invoice for Bebidas Alegres, S.L. including the products: Cerveza Lager 0,5L (48 units at 1,75), Cerveza Ale 0,5L (24 units at 1,36), Vino Tinto (12 units at 3,45), Vino Blanco  (12 units at 3,55).
+<END_OF_INSTANCE>
+
+Crea una factura para Bebidas Alegres, S.L. con los productos: Cerveza Lager 0,5L a 1,75 x48, Cerveza Ale 0,5L a 1,36 x24, Vino Tinto a 3,45 x12, y Vino Blanco  a 3,55 x12.
+<END_OF_INSTANCE>
+
+Generate an invoice for Bebidas Alegres, S.L. listing these products with quantities and prices: Cerveza Lager 0,5L - 48 units at 1,75, Cerveza Ale 0,5L - 24 units at 1,36, Vino Tinto - 12 units at 3,45, and Vino Blanco  - 12 units at 3,55.
+<END_OF_INSTANCE>
+
+Por favor, realiza una invoice para el cliente Bebidas Alegres, S.L. con: Cerveza Lager 0,5L, 48 unidades a 1,75; Cerveza Ale 0,5L, 24 unidades a 1,36; Vino Tinto, 12 unidades a 3,45; y Vino Blanco , 12 unidades a 3,55.
+<END_OF_INSTANCE>
+
+Please generate a billing invoice for Bebidas Alegres, S.L. that includes: Cerveza Lager 0,5L (qty 48, unit price 1,75), Cerveza Ale 0,5L (qty 24, unit price 1,36), Vino Tinto (qty 12, unit price 3,45), and Vino Blanco  (qty 12, unit price 3,55).
+<END_OF_INSTANCE>
+
+Solicito la emisión de una factura para Bebidas Alegres, S.L. con los artículos: Cerveza Lager 0,5L x48 a 1,75, Cerveza Ale 0,5L x24 a 1,36, Vino Tinto x12 a 3,45, y Vino Blanco  x12 a 3,55.
+<END_OF_INSTANCE>
+
+Kindly create an invoice for Bebidas Alegres, S.L. listing: Cerveza Lager 0,5L 48 units at 1,75, Cerveza Ale 0,5L 24 units at 1,36, Vino Tinto 12 units at 3,45, and Vino Blanco  12 units at 3,55.
+<END_OF_INSTANCE>
+
+Por favor, genera una factura para Bebidas Alegres, S.L. con los productos: Cerveza Lager 0,5L (48 a 1,75), Cerveza Ale 0,5L (24 a 1,36), Vino Tinto (12 a 3,45), y Vino Blanco  (12 a 3,55).
+<END_OF_INSTANCE>
+
+Create an invoice for Bebidas Alegres, S.L. with the items: Cerveza Lager 0,5L (48 units at 1,75), Cerveza Ale 0,5L (24 units at 1,36), Vino Tinto (12 units at 3,45), and Vino Blanco  (12 units at 3,55).
+<END_OF_INSTANCE>
+
+Genera una invoice para Bebidas Alegres, S.L. detallando: Cerveza Lager 0,5L x48 @ 1,75, Cerveza Ale 0,5L x24 @ 1,36, Vino Tinto x12 @ 3,45, y Vino Blanco  x12 @ 3,55.
+<END_OF_INSTANCE>
+
