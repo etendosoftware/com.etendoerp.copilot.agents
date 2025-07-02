@@ -1,0 +1,25 @@
+{
+    "num_templates_analyzed": 20,
+    "lexical_diversity_nltk": {
+        "distinct_1_grams": {
+            "distinct_count": 95,
+            "total_count": 996,
+            "ratio": 0.09538152610441768,
+            "status": "Success"
+        },
+        "distinct_2_grams": {
+            "distinct_count": 198,
+            "total_count": 976,
+            "ratio": 0.2028688524590164,
+            "status": "Success"
+        }
+    },
+    "levenshtein_distance": {
+        "average_normalized_distance": 0.5053482029725945,
+        "status": "Success"
+    },
+    "semantic_diversity_sbert": {
+        "average_cosine_distance": 0.15294077145425897,
+        "status": "Success"
+    }
+}

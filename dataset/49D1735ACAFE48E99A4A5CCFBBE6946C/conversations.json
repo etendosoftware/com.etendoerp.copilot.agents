@@ -1,0 +1,397 @@
+[
+    {
+        "run_id": "8a0f0309-dc06-48f6-85e1-173742273413",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Create a purchase order to \"refrescos naturales\" of limonada x 124 units .. Price 0.23"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_9PBp39ogrgmzlRmpmS73yt4q",
+                        "function": {
+                            "name": "transfer_to_purchaseorderexpert",
+                            "arguments": "{}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Successfully transferred to PurchaseOrderExpert",
+                "tool_call_id": "call_9PBp39ogrgmzlRmpmS73yt4q"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_fu94H40SiOWLjyMnBRjfqccp",
+                    "function": {
+                        "name": "POST_webhooks_SimSearch",
+                        "arguments": "{\"body\": {\"searchTerm\": \"refrescos naturales\", \"entityName\": \"BusinessPartner\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-05-08-10:37:00"
+    },
+    {
+        "run_id": "b22727e5-b2b7-4857-b074-7ac5742d3baa",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Create a purchase order to \"refrescos naturales\" of limonada x 124 units .. Price 0.23"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_9PBp39ogrgmzlRmpmS73yt4q",
+                        "function": {
+                            "name": "transfer_to_purchaseorderexpert",
+                            "arguments": "{}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Successfully transferred to PurchaseOrderExpert",
+                "tool_call_id": "call_9PBp39ogrgmzlRmpmS73yt4q"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_fu94H40SiOWLjyMnBRjfqccp",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"refrescos naturales\", \"entityName\": \"BusinessPartner\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"2E7F35F3ACE94769BAD7A99BF71691B1\\\",\\n    \\\"name\\\": \\\"Refrescos Naturales, S.A.\\\",\\n    \\\"similarity_percent\\\": \\\"83.3333%\\\"\\n}]}\"}",
+                "tool_call_id": "call_fu94H40SiOWLjyMnBRjfqccp"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_Zr5Cao0DmUYFAIgFyHkksPpS",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"limonada\", \"entityName\": \"Product\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"3BD16BA206D24E41B56E0964854220EA\\\",\\n    \\\"name\\\": \\\"Limonada 0,5L\\\",\\n    \\\"similarity_percent\\\": \\\"64.2857%\\\"\\n}]}\"}",
+                "tool_call_id": "call_Zr5Cao0DmUYFAIgFyHkksPpS"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_tcf9Y8U8KFahivEGwlwLYU2p",
+                    "function": {
+                        "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseOrder",
+                        "arguments": "{\"body\": {\"businessPartner\": \"2E7F35F3ACE94769BAD7A99BF71691B1\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-05-08-10:38:06"
+    },
+    {
+        "run_id": "bd82ea5b-ca1b-4e8d-b40f-85b1f711f307",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Create a purchase order to \"refrescos naturales\" of limonada x 124 units .. Price 0.23"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_9PBp39ogrgmzlRmpmS73yt4q",
+                        "function": {
+                            "name": "transfer_to_purchaseorderexpert",
+                            "arguments": "{}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Successfully transferred to PurchaseOrderExpert",
+                "tool_call_id": "call_9PBp39ogrgmzlRmpmS73yt4q"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_fu94H40SiOWLjyMnBRjfqccp",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"refrescos naturales\", \"entityName\": \"BusinessPartner\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"2E7F35F3ACE94769BAD7A99BF71691B1\\\",\\n    \\\"name\\\": \\\"Refrescos Naturales, S.A.\\\",\\n    \\\"similarity_percent\\\": \\\"83.3333%\\\"\\n}]}\"}",
+                "tool_call_id": "call_fu94H40SiOWLjyMnBRjfqccp"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_Zr5Cao0DmUYFAIgFyHkksPpS",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"limonada\", \"entityName\": \"Product\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"3BD16BA206D24E41B56E0964854220EA\\\",\\n    \\\"name\\\": \\\"Limonada 0,5L\\\",\\n    \\\"similarity_percent\\\": \\\"64.2857%\\\"\\n}]}\"}",
+                "tool_call_id": "call_Zr5Cao0DmUYFAIgFyHkksPpS"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_tcf9Y8U8KFahivEGwlwLYU2p",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseOrder",
+                            "arguments": "{\"body\": {\"businessPartner\": \"2E7F35F3ACE94769BAD7A99BF71691B1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"status\":0,\"data\":[{\"_identifier\":\"1000473 - 08-05-2025 - 0\",\"_entityName\":\"Order\",\"$ref\":\"Order\\/3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"id\":\"3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-05-08T10:35:48+02:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-05-08T10:35:48+02:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesTransaction\":false,\"documentNo\":\"1000473\",\"documentStatus\":\"DR\",\"documentAction\":\"CO\",\"processNow\":false,\"processed\":false,\"documentType\":\"0\",\"documentType$_identifier\":\"** New **\",\"transactionDocument\":\"AB22CE8FFA5E4AF29F2AC90FCDD400D8\",\"transactionDocument$_identifier\":\"Purchase Order\",\"description\":null,\"delivered\":false,\"reinvoice\":false,\"print\":false,\"selected\":false,\"salesRepresentative\":\"100\",\"salesRepresentative$_identifier\":\"Admin\",\"orderDate\":\"2025-05-08\",\"scheduledDeliveryDate\":\"2025-05-08\",\"datePrinted\":null,\"accountingDate\":\"2025-05-08\",\"businessPartner\":\"2E7F35F3ACE94769BAD7A99BF71691B1\",\"businessPartner$_identifier\":\"Refrescos Naturales, S.A.\",\"invoiceAddress\":\"956538F38D294CE0B818009461C4F755\",\"invoiceAddress$_identifier\":\".Pamplona, C\\\\Estafeta, 87\",\"partnerAddress\":\"956538F38D294CE0B818009461C4F755\",\"partnerAddress$_identifier\":\".Pamplona, C\\\\Estafeta, 87\",\"orderReference\":null,\"printDiscount\":false,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"formOfPayment\":\"P\",\"paymentTerms\":\"66BA1164A7394344BB9CD1A6ECEED05D\",\"paymentTerms$_identifier\":\"30 days\",\"invoiceTerms\":\"I\",\"deliveryTerms\":\"A\",\"freightCostRule\":\"I\",\"freightAmount\":0,\"deliveryMethod\":\"P\",\"shippingCompany\":null,\"charge\":null,\"chargeAmount\":0,\"priority\":\"5\",\"summedLineAmount\":0,\"grandTotalAmount\":0,\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"priceList\":\"6D7DC81160CB46908C60DEC86AC97566\",\"priceList$_identifier\":\"Tarifa Refrescos Naturales\",\"priceIncludesTax\":false,\"salesCampaign\":null,\"project\":null,\"activity\":null,\"posted\":\"N\",\"userContact\":\"6822CC074A064323B639A7087ED14859\",\"userContact$_identifier\":\"Mar\u00eda Luz\",\"copyFrom\":false,\"dropShipPartner\":null,\"dropShipLocation\":null,\"dropShipContact\":null,\"selfService\":false,\"trxOrganization\":null,\"stDimension\":null,\"ndDimension\":null,\"deliveryNotes\":null,\"incoterms\":null,\"iNCOTERMSDescription\":null,\"generateTemplate\":false,\"deliveryLocation\":null,\"copyFromPO\":false,\"paymentMethod\":\"A97CFD2AFC234B59BB0A72189BD8FC2A\",\"paymentMethod$_identifier\":\"Transferencia\",\"fINPaymentPriority\":null,\"pickFromShipment\":false,\"receiveMaterials\":false,\"createInvoice\":false,\"returnReason\":null,\"addOrphanLine\":false,\"asset\":null,\"calculatePromotions\":false,\"costcenter\":null,\"createOrder\":false,\"rejectReason\":null,\"validUntil\":null,\"quotation\":null,\"reservationStatus\":null,\"createPOLines\":false,\"cashVAT\":false,\"pickfromreceipt\":false,\"cancelandreplace\":false,\"aPRMAddPayment\":false,\"confirmcancelandreplace\":false,\"cancelledorder\":null,\"replacedorder\":null,\"iscancelled\":false,\"replacementorder\":null,\"externalBusinessPartnerReference\":null,\"deliveryStatus\":0,\"invoiceStatus\":0,\"paymentStatus\":0,\"_computedColumns\":\"3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"_computedColumns$_identifier\":\"Order_ComputedColumns (3FEAE4F4CD2C4820A2F26DBFE9B7F774)\",\"recordTime\":1746693348952}]}}",
+                "tool_call_id": "call_tcf9Y8U8KFahivEGwlwLYU2p"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_Zr6HdDiqtA0hSufCZFqO2I1J",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseOrderLines",
+                            "arguments": "{\"body\": {\"salesOrder\": \"3FEAE4F4CD2C4820A2F26DBFE9B7F774\", \"product\": \"3BD16BA206D24E41B56E0964854220EA\", \"unitPrice\": 0.23, \"orderedQuantity\": 124}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"status\":0,\"data\":[{\"_identifier\":\"1000473 - 08-05-2025 - 34.51 - 10 - 28.52\",\"_entityName\":\"OrderLine\",\"$ref\":\"OrderLine\\/6E193B5EB10442A0B6AE543D898B784B\",\"id\":\"6E193B5EB10442A0B6AE543D898B784B\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-05-08T10:35:51+02:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-05-08T10:35:51+02:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesOrder\":\"3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"salesOrder$_identifier\":\"1000473 - 08-05-2025 - 34.51\",\"lineNo\":10,\"businessPartner\":\"2E7F35F3ACE94769BAD7A99BF71691B1\",\"businessPartner$_identifier\":\"Refrescos Naturales, S.A.\",\"partnerAddress\":\"956538F38D294CE0B818009461C4F755\",\"partnerAddress$_identifier\":\".Pamplona, C\\\\Estafeta, 87\",\"orderDate\":\"2025-05-08\",\"scheduledDeliveryDate\":\"2025-05-08\",\"dateDelivered\":null,\"invoiceDate\":null,\"description\":null,\"product\":\"3BD16BA206D24E41B56E0964854220EA\",\"product$_identifier\":\"Limonada 0,5L\",\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"directShipment\":false,\"uOM\":\"100\",\"uOM$_identifier\":\"Unit\",\"orderedQuantity\":124,\"reservedQuantity\":0,\"deliveredQuantity\":0,\"invoicedQuantity\":0,\"shippingCompany\":null,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"listPrice\":0.55,\"unitPrice\":0.23,\"priceLimit\":0,\"lineNetAmount\":28.52,\"discount\":58.18,\"freightAmount\":0,\"charge\":null,\"chargeAmount\":0,\"tax\":\"18A499249FF74A68B79510F0AD341141\",\"tax$_identifier\":\"Adquisiciones IVA 21%\",\"resourceAssignment\":null,\"sOPOReference\":null,\"attributeSetValue\":null,\"descriptionOnly\":false,\"orderQuantity\":null,\"orderUOM\":null,\"priceAdjustment\":null,\"standardPrice\":0.23,\"cancelPriceAdjustment\":false,\"orderDiscount\":null,\"editLineAmount\":false,\"taxableAmount\":28.52,\"goodsShipmentLine\":null,\"returnReason\":null,\"grossUnitPrice\":0,\"lineGrossAmount\":0,\"grossListPrice\":null,\"costcenter\":null,\"baseGrossUnitPrice\":0,\"asset\":null,\"warehouseRule\":null,\"stDimension\":null,\"quotationLine\":null,\"ndDimension\":null,\"createReservation\":null,\"project\":null,\"reservationStatus\":null,\"manageReservation\":false,\"managePrereservation\":false,\"explode\":false,\"bOMParent\":null,\"replacedorderline\":null,\"printDescription\":false,\"overdueReturnDays\":null,\"selectOrderLine\":false,\"operativeUOM\":null,\"operativeQuantity\":null,\"returnline\":null,\"recordTime\":1746693351913}]}}",
+                "tool_call_id": "call_Zr6HdDiqtA0hSufCZFqO2I1J"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "- Retrieved IDs:\n  - Business Partner ID: 2E7F35F3ACE94769BAD7A99BF71691B1 (\"Refrescos Naturales, S.A.\")\n  - Product ID (Limonada 0,5L): 3BD16BA206D24E41B56E0964854220EA\n- Created Order Header (ID: 3FEAE4F4CD2C4820A2F26DBFE9B7F774)\n- Inserted Order Line:\n  - Limonada 0,5L, Quantity: 124, Price: 0.23\n\nYou can review the order here:\nhttp://localhost:8080/etendo/?tabId=294&recordId=3FEAE4F4CD2C4820A2F26DBFE9B7F774\n\n---\n### \u26a0\ufe0f Self-Check (Mandatory)\n```\n[x] Extracted and validated all required details (Business Partner, products, quantities, prices).\n[x] Stored and reused all required IDs.\n[x] Successfully created Order Header.\n[x] Successfully inserted all order lines (no lines missing).\n[ ] Validated the total amount (if OCR was used).\n```\nOrder creation is complete and accurate. If you need to add more lines or review totals, let me know!"
+        },
+        "creation_date": "2025-05-08-10:39:54"
+    },
+    {
+        "run_id": "bd86a041-3b1d-4e59-9d42-deeb35af5d2d",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Create a purchase order to \"refrescos naturales\" of limonada x 124 units .. Price 0.23"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_9PBp39ogrgmzlRmpmS73yt4q",
+                        "function": {
+                            "name": "transfer_to_purchaseorderexpert",
+                            "arguments": "{}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Successfully transferred to PurchaseOrderExpert",
+                "tool_call_id": "call_9PBp39ogrgmzlRmpmS73yt4q"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_fu94H40SiOWLjyMnBRjfqccp",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"refrescos naturales\", \"entityName\": \"BusinessPartner\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"2E7F35F3ACE94769BAD7A99BF71691B1\\\",\\n    \\\"name\\\": \\\"Refrescos Naturales, S.A.\\\",\\n    \\\"similarity_percent\\\": \\\"83.3333%\\\"\\n}]}\"}",
+                "tool_call_id": "call_fu94H40SiOWLjyMnBRjfqccp"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_Zr5Cao0DmUYFAIgFyHkksPpS",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"limonada\", \"entityName\": \"Product\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"3BD16BA206D24E41B56E0964854220EA\\\",\\n    \\\"name\\\": \\\"Limonada 0,5L\\\",\\n    \\\"similarity_percent\\\": \\\"64.2857%\\\"\\n}]}\"}",
+                "tool_call_id": "call_Zr5Cao0DmUYFAIgFyHkksPpS"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_tcf9Y8U8KFahivEGwlwLYU2p",
+                        "function": {
+                            "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseOrder",
+                            "arguments": "{\"body\": {\"businessPartner\": \"2E7F35F3ACE94769BAD7A99BF71691B1\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"response\":{\"status\":0,\"data\":[{\"_identifier\":\"1000473 - 08-05-2025 - 0\",\"_entityName\":\"Order\",\"$ref\":\"Order\\/3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"id\":\"3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"client\":\"23C59575B9CF467C9620760EB255B389\",\"client$_identifier\":\"F&B International Group\",\"organization\":\"E443A31992CB4635AFCAEABE7183CE85\",\"organization$_identifier\":\"F&B Espa\u00f1a - Regi\u00f3n Norte\",\"active\":true,\"creationDate\":\"2025-05-08T10:35:48+02:00\",\"createdBy\":\"100\",\"createdBy$_identifier\":\"Admin\",\"updated\":\"2025-05-08T10:35:48+02:00\",\"updatedBy\":\"100\",\"updatedBy$_identifier\":\"Admin\",\"salesTransaction\":false,\"documentNo\":\"1000473\",\"documentStatus\":\"DR\",\"documentAction\":\"CO\",\"processNow\":false,\"processed\":false,\"documentType\":\"0\",\"documentType$_identifier\":\"** New **\",\"transactionDocument\":\"AB22CE8FFA5E4AF29F2AC90FCDD400D8\",\"transactionDocument$_identifier\":\"Purchase Order\",\"description\":null,\"delivered\":false,\"reinvoice\":false,\"print\":false,\"selected\":false,\"salesRepresentative\":\"100\",\"salesRepresentative$_identifier\":\"Admin\",\"orderDate\":\"2025-05-08\",\"scheduledDeliveryDate\":\"2025-05-08\",\"datePrinted\":null,\"accountingDate\":\"2025-05-08\",\"businessPartner\":\"2E7F35F3ACE94769BAD7A99BF71691B1\",\"businessPartner$_identifier\":\"Refrescos Naturales, S.A.\",\"invoiceAddress\":\"956538F38D294CE0B818009461C4F755\",\"invoiceAddress$_identifier\":\".Pamplona, C\\\\Estafeta, 87\",\"partnerAddress\":\"956538F38D294CE0B818009461C4F755\",\"partnerAddress$_identifier\":\".Pamplona, C\\\\Estafeta, 87\",\"orderReference\":null,\"printDiscount\":false,\"currency\":\"102\",\"currency$_identifier\":\"EUR\",\"formOfPayment\":\"P\",\"paymentTerms\":\"66BA1164A7394344BB9CD1A6ECEED05D\",\"paymentTerms$_identifier\":\"30 days\",\"invoiceTerms\":\"I\",\"deliveryTerms\":\"A\",\"freightCostRule\":\"I\",\"freightAmount\":0,\"deliveryMethod\":\"P\",\"shippingCompany\":null,\"charge\":null,\"chargeAmount\":0,\"priority\":\"5\",\"summedLineAmount\":0,\"grandTotalAmount\":0,\"warehouse\":\"B2D40D8A5D644DD89E329DC297309055\",\"warehouse$_identifier\":\"Espa\u00f1a Regi\u00f3n Norte\",\"priceList\":\"6D7DC81160CB46908C60DEC86AC97566\",\"priceList$_identifier\":\"Tarifa Refrescos Naturales\",\"priceIncludesTax\":false,\"salesCampaign\":null,\"project\":null,\"activity\":null,\"posted\":\"N\",\"userContact\":\"6822CC074A064323B639A7087ED14859\",\"userContact$_identifier\":\"Mar\u00eda Luz\",\"copyFrom\":false,\"dropShipPartner\":null,\"dropShipLocation\":null,\"dropShipContact\":null,\"selfService\":false,\"trxOrganization\":null,\"stDimension\":null,\"ndDimension\":null,\"deliveryNotes\":null,\"incoterms\":null,\"iNCOTERMSDescription\":null,\"generateTemplate\":false,\"deliveryLocation\":null,\"copyFromPO\":false,\"paymentMethod\":\"A97CFD2AFC234B59BB0A72189BD8FC2A\",\"paymentMethod$_identifier\":\"Transferencia\",\"fINPaymentPriority\":null,\"pickFromShipment\":false,\"receiveMaterials\":false,\"createInvoice\":false,\"returnReason\":null,\"addOrphanLine\":false,\"asset\":null,\"calculatePromotions\":false,\"costcenter\":null,\"createOrder\":false,\"rejectReason\":null,\"validUntil\":null,\"quotation\":null,\"reservationStatus\":null,\"createPOLines\":false,\"cashVAT\":false,\"pickfromreceipt\":false,\"cancelandreplace\":false,\"aPRMAddPayment\":false,\"confirmcancelandreplace\":false,\"cancelledorder\":null,\"replacedorder\":null,\"iscancelled\":false,\"replacementorder\":null,\"externalBusinessPartnerReference\":null,\"deliveryStatus\":0,\"invoiceStatus\":0,\"paymentStatus\":0,\"_computedColumns\":\"3FEAE4F4CD2C4820A2F26DBFE9B7F774\",\"_computedColumns$_identifier\":\"Order_ComputedColumns (3FEAE4F4CD2C4820A2F26DBFE9B7F774)\",\"recordTime\":1746693348952}]}}",
+                "tool_call_id": "call_tcf9Y8U8KFahivEGwlwLYU2p"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_Zr6HdDiqtA0hSufCZFqO2I1J",
+                    "function": {
+                        "name": "POST_sws_com_etendoerp_etendorx_datasource_PurchaseOrderLines",
+                        "arguments": "{\"body\": {\"salesOrder\": \"3FEAE4F4CD2C4820A2F26DBFE9B7F774\", \"product\": \"3BD16BA206D24E41B56E0964854220EA\", \"unitPrice\": 0.23, \"orderedQuantity\": 124}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-05-08-10:39:07"
+    },
+    {
+        "run_id": "d12c9ed5-5443-41a4-8f0d-e5ffabadfb50",
+        "messages": [
+            {
+                "role": "user",
+                "content": "Create a purchase order to \"refrescos naturales\" of limonada x 124 units .. Price 0.23"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_9PBp39ogrgmzlRmpmS73yt4q",
+                        "function": {
+                            "name": "transfer_to_purchaseorderexpert",
+                            "arguments": "{}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "Successfully transferred to PurchaseOrderExpert",
+                "tool_call_id": "call_9PBp39ogrgmzlRmpmS73yt4q"
+            },
+            {
+                "role": "assistant",
+                "content": "",
+                "tool_calls": [
+                    {
+                        "id": "call_fu94H40SiOWLjyMnBRjfqccp",
+                        "function": {
+                            "name": "POST_webhooks_SimSearch",
+                            "arguments": "{\"body\": {\"searchTerm\": \"refrescos naturales\", \"entityName\": \"BusinessPartner\"}}"
+                        },
+                        "type": "function"
+                    }
+                ]
+            },
+            {
+                "role": "tool",
+                "content": "{\"message\":\"{\\\"data\\\": [{\\n    \\\"id\\\": \\\"2E7F35F3ACE94769BAD7A99BF71691B1\\\",\\n    \\\"name\\\": \\\"Refrescos Naturales, S.A.\\\",\\n    \\\"similarity_percent\\\": \\\"83.3333%\\\"\\n}]}\"}",
+                "tool_call_id": "call_fu94H40SiOWLjyMnBRjfqccp"
+            }
+        ],
+        "expected_response": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+                {
+                    "id": "call_Zr5Cao0DmUYFAIgFyHkksPpS",
+                    "function": {
+                        "name": "POST_webhooks_SimSearch",
+                        "arguments": "{\"body\": {\"searchTerm\": \"limonada\", \"entityName\": \"Product\"}}"
+                    },
+                    "type": "function"
+                }
+            ]
+        },
+        "creation_date": "2025-05-08-10:37:44"
+    }
+]
