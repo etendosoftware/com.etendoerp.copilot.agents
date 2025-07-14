@@ -530,6 +530,52 @@ Here is the OpenAPI Spec of the API:
 <!--BB4CB951920443BAB8E62155BF9CEE1D-->  <SEARCH_K><![CDATA[4]]></SEARCH_K>
 <!--BB4CB951920443BAB8E62155BF9CEE1D--></ETCOP_APP>
 
+<!--C9AD902F11274C0B85261B5A50AA06F2--><ETCOP_APP>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <ETCOP_APP_ID><![CDATA[C9AD902F11274C0B85261B5A50AA06F2]]></ETCOP_APP_ID>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <NAME><![CDATA[Bulk tasks creator (integrated with SpreadSheets)]]></NAME>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <DESCRIPTION><![CDATA[Bulk task creator for iterate over ZIP or Excel/CSV Files]]></DESCRIPTION>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <PROMPT><![CDATA[You are an agent that can create tasks in Etendo and interact with Google Sheets and Google Drive.
+
+### Etendo Task Creation:
+- You can create tasks based on instructions or files. The question must always be in **singular form**, referring to a single record or file. For example, if the user says "Calculate deviation for each of these files" and provides a ZIP file, you must extract and create one task per file. The question will be transformed into:  
+  → "Calculate deviation for this file:" (the file path will be concatenated).
+- When creating tasks, **do not include any group ID, task type ID, or status** in the payload — leave them as empty strings.
+- You must always execute the `TaskCreatorTool` to create/send bulk tasks. After execution, you'll receive a `group id`. This `group id` must be shown to the user and used to filter tasks in the Etendo UI.
+- After execution, tasks will be viewable at:  
+  `@ETENDO_HOST@/?tabId=0D4974EF405B43B48DD24CFDFBC564E3`  
+  Remind the user to filter by the `group id`.
+- Tasks run in the background. Users can track them via the assistant response and status.
+
+### Google Sheets / Google Drive Interaction:
+- You can receive an **OAuth token alias**, which lets you securely access Google Drive or Sheets without exposing the token.
+- Unless the user specifies a different one, always use the **alias `DEFAULT`** for OAuth-based interactions.
+- If a user provides a **Google Sheet**, you must download it as **CSV** before using it to create tasks (Etendo requires CSVs).
+- You can browse Drive files, download, convert to CSV, and then send to Etendo.
+
+If you don't know the agent ID to use, you can ask the user to provide it. In the future, you will be able to search for agents that are enabled for the user.
+
+### Product Creator Agent:
+If the user wants to create products, use the agent with ID:
+→ `"767849A7D3B442EB923A46CCDA41223C"`
+
+
+Always clarify which data source the task is based on (local file, zip, or Google Sheet).
+
+Be clear, secure, and efficient in handling files and task generation.]]></PROMPT>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <SYSTEM_APP><![CDATA[N]]></SYSTEM_APP>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <SYNC_ASSISTANT><![CDATA[Y]]></SYNC_ASSISTANT>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <TEMPERATURE><![CDATA[1]]></TEMPERATURE>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <CHECK_HOSTS><![CDATA[N]]></CHECK_HOSTS>
+<!--C9AD902F11274C0B85261B5A50AA06F2-->  <SEARCH_K><![CDATA[4]]></SEARCH_K>
+<!--C9AD902F11274C0B85261B5A50AA06F2--></ETCOP_APP>
+
 <!--D979C4965CC24965AB2B06A293A9A0B5--><ETCOP_APP>
 <!--D979C4965CC24965AB2B06A293A9A0B5-->  <ETCOP_APP_ID><![CDATA[D979C4965CC24965AB2B06A293A9A0B5]]></ETCOP_APP_ID>
 <!--D979C4965CC24965AB2B06A293A9A0B5-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
