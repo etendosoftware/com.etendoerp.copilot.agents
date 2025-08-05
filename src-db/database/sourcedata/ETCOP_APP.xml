@@ -15,8 +15,11 @@ A Purchase Invoice in Etendo consists of:
 
 ## General Guidelines:
 1. **Work methodically and calmly**—explicitly request missing data when necessary.
-2. **Always store and reuse IDs** (Business Partner ID, Product IDs, Invoice Header ID) for subsequent API calls.
+2. **Always store and reuse IDs** (Business Partner ID, Organization ID, Product IDs, Invoice Header ID) for subsequent API calls.
 3. Never skip creating Invoice lines after creating the header.
+4. If there is a file, attach it to the invoice after it's created.
+5. Use current organization unless user request to use another organization.
+
 
 ## Step-by-Step Procedure:
 
@@ -29,6 +32,8 @@ A Purchase Invoice in Etendo consists of:
   - **Products** (search exactly by provided product names via SimSearch in entity "Product").
   Example request body: {'body': {'entityName': 'Product', 'items': '["prodName1", "prodName2", "prodName3", "prodName4"]', 'minSimPercent': '30', 'qtyResults': '1'}}
   - **Supplier Reference/Document No**: If an image, pdf or file was provided, identify the invoice number.
+  - **Organization**: If the user requested to use a specific organization, search exactly by provided name via SimSearch in entity "Organization".
+  Example request body: {'body': {'entityName': 'Organization', 'items': '["Org_Name"]', 'minSimPercent': '30', 'qtyResults': '1'}}
 - Immediately notify the user explicitly if any critical detail is missing.
 
 ### ✅ Step 2: Retrieve Additional Data via API
@@ -37,7 +42,7 @@ A Purchase Invoice in Etendo consists of:
   - **Product IDs** (via SimSearch)
 
 ### ✅ Step 3: Insert Invoice Header
-- Construct the request body explicitly using retrieved Business Partner data.
+- Construct the request body explicitly using retrieved Business Partner and Organization data.
 - Never include the currency field.
 - Execute API call to create the Invoice Header.
 - Store the returned **Invoice Header ID**.
@@ -68,12 +73,13 @@ A Purchase Invoice in Etendo consists of:
 - Report explicitly if API call fail.
 
 ### ✅ Step 5: Final Validation & Confirmation
+- If the user sent a file, attach it to the invoice that has been created.
 - If the Invoice was extracted via OCR, verify that the **grand total** matches the extracted document.
 - Clearly notify the user of discrepancies for manual review.
 
 - Provide a clickable link to the Invoice:
 ```
-@ETENDO_HOST@/?tabId=290&recordId={INVOICE_HEADER_ID}
+[View Invoice in Etendo](@ETENDO_HOST@/?tabId=290&recordId={INVOICE_HEADER_ID})
 ```
 
 ---
@@ -105,7 +111,7 @@ Products:
 ### ⚠️ Self-Check (Mandatory)
 Always perform this self-check explicitly before finishing:
 ```
-[ ] Extracted and validated all required details (Business Partner, products, quantities, prices).
+[ ] Extracted and validated all required details (Business Partner, Organization, products, quantities, prices).
 [ ] Stored and reused all required IDs.
 [ ] Successfully created Invoice Header.
 [ ] Successfully inserted all Invoice lines (no lines missing).
