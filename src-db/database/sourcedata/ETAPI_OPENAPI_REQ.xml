@@ -173,7 +173,7 @@ The field name must be a descriptive name for the location such as “office”,
 The field locationAddress should have the ID of the Location created previously.]]></DESCRIPTION>
 <!--761C7B91C8FD426AA297E15326140B0B-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--761C7B91C8FD426AA297E15326140B0B-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--761C7B91C8FD426AA297E15326140B0B-->  <GET_DESCRIPTION><![CDATA[Associates a location with a business partner. ]]></GET_DESCRIPTION>
+<!--761C7B91C8FD426AA297E15326140B0B-->  <GET_DESCRIPTION><![CDATA[Retrieves the association between a business partner and a location. ]]></GET_DESCRIPTION>
 <!--761C7B91C8FD426AA297E15326140B0B-->  <POST_DESCRIPTION><![CDATA[Associate a location with a business partner. The business partner and the location must already be created in the system. This association is required for the third party to be able to use this location in the system. 
 The field name must be a descriptive name for the location such as “office”, “home” or other. If not provided, make it up.
 The field locationAddress should have the ID of the Location created previously.]]></POST_DESCRIPTION>
@@ -318,11 +318,11 @@ POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
 <!--B60CC7B1BE234E5184CD952036E73C65-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--B60CC7B1BE234E5184CD952036E73C65-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--B60CC7B1BE234E5184CD952036E73C65-->  <GET_DESCRIPTION><![CDATA[Reads the specific data of a Business Partner that is a Vendor. ]]></GET_DESCRIPTION>
-<!--B60CC7B1BE234E5184CD952036E73C65-->  <POST_DESCRIPTION><![CDATA[Set the specific data of a Business Partner that is a Vendor. To fill this data, the Business Partner must be created first.
+<!--B60CC7B1BE234E5184CD952036E73C65-->  <POST_DESCRIPTION><![CDATA[Creates the specific data of a Business Partner that is a Vendor. To fill this data, the Business Partner must be created first.
 This is the same table as BusinessPartner, so the ID is the same as c_bpartner_id.
 You must use a Pricelist ID obtained by a search.
 The creditLimit is a number, by default 0.]]></POST_DESCRIPTION>
-<!--B60CC7B1BE234E5184CD952036E73C65-->  <PUT_DESCRIPTION><![CDATA[modifys the specific data of a Business Partner that is a Vendor. To fill this data, the Business Partner must be created first.
+<!--B60CC7B1BE234E5184CD952036E73C65-->  <PUT_DESCRIPTION><![CDATA[modifies the specific data of a Business Partner that is a Vendor. To fill this data, the Business Partner must be created first.
 This is the same table as BusinessPartner, so the ID is the same as c_bpartner_id.
 You must use a Pricelist ID obtained by a search.
 The creditLimit is a number, by default 0.]]></PUT_DESCRIPTION>
