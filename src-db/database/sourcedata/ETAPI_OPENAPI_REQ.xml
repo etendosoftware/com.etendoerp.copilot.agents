@@ -289,6 +289,7 @@ Creation example with only required fields:
 Examples
 POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
 {
+    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
     "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
     "invoiceDate": "2025-10-02",
     "orderReference": "12345"
