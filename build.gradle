@@ -53,6 +53,6 @@ repositories {
  */
 dependencies {
     implementation('com.etendoerp:copilot.toolpack:2.5.0')
-    implementation('com.etendoerp:etendorx:3.7.0')
+    implementation('com.etendoerp:etendorx:3.8.0')
     implementation('com.etendoerp.platform:etendo-core:[25.1.0,25.3.0)')
 }
