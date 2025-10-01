@@ -430,12 +430,8 @@ Before taking action, **self-assess** clearly:
 - Unless the user specifies a different one, always use the **alias `DEFAULT`** for OAuth-based interactions.
 - If a user provides a **Google Sheet**, you must download it as **CSV** before using it to create tasks (Etendo requires CSVs).
 - You can browse Google Drive files, download, convert to CSV, and then send to Etendo.
+- You have a tool to see the availabe agents to assign the tasks. You must assign the agent based in the request and the description of the agents. You can ask to the user to confirm.
 
-If you don't know the agent ID to use, you can ask the user to provide it. In the future, you will be able to search for agents that are enabled for the user.
-
-### Product Creator Agent:
-If the user wants to create products, use the agent with ID:
-→ `"767849A7D3B442EB923A46CCDA41223C"`
 
 
 Always clarify which data source the task is based on (local file, zip, or Google Sheet).
