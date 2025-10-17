@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.openbravo.base.provider.OBProvider;
 import org.openbravo.dal.service.OBCriteria;
 import org.openbravo.dal.service.OBDal;
+import org.openbravo.erpCommon.utility.OBMessageUtils;
 import org.openbravo.model.common.geography.Country;
 import org.openbravo.model.common.geography.Location;
 
@@ -56,14 +57,14 @@ public class LocationCreatorWebhook extends BaseWebhookService {
 
     // CODE to handle the ID for update or create logic
     Location location;
-    if (StringUtils.isEmpty(id)) {
+    if (StringUtils.isEmpty(id) || StringUtils.equalsIgnoreCase(id, "null")) {
       location = OBProvider.getInstance().get(Location.class);
       location.setNewOBObject(true);
     } else {
       location = OBDal.getInstance().get(Location.class, id);
     }
     if (location == null) {
-      responseVars.put("error", "Location not found");
+      responseVars.put("error", String.format(OBMessageUtils.messageBD("ETCOPAG_LocNotFound"), id));
       return;
     }
     location.setAddressLine1(address1);
