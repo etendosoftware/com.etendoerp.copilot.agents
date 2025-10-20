@@ -45,13 +45,14 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
   private static final String TEST_POSTAL = "12345";
   private static final String TEST_COUNTRY_ISO = "US";
   private static final String SUCCESS_MESSAGE = "Location processed successfully: null";
-  
+
   // Test constants for update operations
   private static final String TEST_LOCATION_ID = "testLocationId";
   private static final String TEST_UPDATED_ADDRESS = "456 Updated Street";
   private static final String TEST_UPDATED_CITY = "Updated City";
   private static final String TEST_UPDATED_POSTAL = "54321";
   private static final String TEST_UPDATED_COUNTRY_ISO = "CA";
+  public static final String MISSING_PARAMETER_ADDRESS_1 = "Missing parameter: Address1";
 
   @Mock
   private OBDal mockOBDal;
@@ -206,7 +207,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
 
     // Then
     assertTrue(responseVars.containsKey(ERROR_KEY));
-    assertEquals("Missing parameter: Address1", responseVars.get(ERROR_KEY));
+    assertEquals(MISSING_PARAMETER_ADDRESS_1, responseVars.get(ERROR_KEY));
   }
 
   @Test
@@ -309,7 +310,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     Location mockLocation = mock(Location.class);
     OBProvider mockProvider = mock(OBProvider.class);
     OBCriteria<Country> mockCountryCriteria = mock(OBCriteria.class);
-    
+
     // Mock countries for the list
     Country mockCountry1 = mock(Country.class);
     Country mockCountry2 = mock(Country.class);
@@ -418,7 +419,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
 
     // Then
     assertTrue(responseVars.containsKey(ERROR_KEY));
-    assertEquals("Missing parameter: Address1", responseVars.get(ERROR_KEY));
+    assertEquals(MISSING_PARAMETER_ADDRESS_1, responseVars.get(ERROR_KEY));
   }
 
   @Test
@@ -437,6 +438,6 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
 
     // Then
     assertTrue(responseVars.containsKey(ERROR_KEY));
-    assertEquals("Missing parameter: Address1", responseVars.get(ERROR_KEY));
+    assertEquals(MISSING_PARAMETER_ADDRESS_1, responseVars.get(ERROR_KEY));
   }
 }
