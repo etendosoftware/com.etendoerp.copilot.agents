@@ -25,6 +25,7 @@ public class LocationCreatorWebhook extends BaseWebhookService {
 
   private static final Logger LOG = LogManager.getLogger();
   private static final String MESSAGE = "message";
+  public static final String ERROR = "error";
 
   /**
    * Processes the incoming webhook request to create or update a location.
@@ -44,7 +45,7 @@ public class LocationCreatorWebhook extends BaseWebhookService {
     String[] paramNames = { "Address1", "City", "Postal", "CountryISOCode" };
     for (int i = 0; i < paramNames.length; i++) {
       if (StringUtils.isEmpty(parameter.get(paramNames[i]))) {
-        responseVars.put("error", String.format("Missing parameter: %s", paramNames[i]));
+        responseVars.put(ERROR, String.format("Missing parameter: %s", paramNames[i]));
         return;
       }
     }
@@ -64,7 +65,7 @@ public class LocationCreatorWebhook extends BaseWebhookService {
       location = OBDal.getInstance().get(Location.class, id);
     }
     if (location == null) {
-      responseVars.put("error", String.format(OBMessageUtils.messageBD("ETCOPAG_LocNotFound"), id));
+      responseVars.put(ERROR, String.format(OBMessageUtils.messageBD("ETCOPAG_LocNotFound"), id));
       return;
     }
     location.setAddressLine1(address1);
@@ -76,7 +77,7 @@ public class LocationCreatorWebhook extends BaseWebhookService {
     countryCrit.setMaxResults(1);
     Country country = (Country) countryCrit.uniqueResult();
     if (country == null) {
-      responseVars.put("error", "Country not found");
+      responseVars.put(ERROR, "Country not found");
       StringBuilder countryList = new StringBuilder();
       for (Country c : OBDal.getInstance().createCriteria(Country.class).list()) {
         countryList.append(c.getId()).append(" - ").append(c.getName()).append("\n");
