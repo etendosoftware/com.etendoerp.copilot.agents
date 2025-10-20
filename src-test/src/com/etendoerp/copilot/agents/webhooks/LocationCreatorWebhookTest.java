@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -52,7 +53,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
   private static final String TEST_UPDATED_CITY = "Updated City";
   private static final String TEST_UPDATED_POSTAL = "54321";
   private static final String TEST_UPDATED_COUNTRY_ISO = "CA";
-  
+
   // Error message constants
   private static final String MISSING_PARAMETER_ADDRESS_1 = "Missing parameter: Address1";
   private static final String MISSING_PARAMETER_CITY = "Missing parameter: City";
@@ -60,12 +61,12 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
   private static final String MISSING_PARAMETER_COUNTRY_ISO = "Missing parameter: CountryISOCode";
   private static final String COUNTRY_NOT_FOUND = "Country not found";
   private static final String LOCATION_NOT_FOUND_TEMPLATE = "Location not found for ID: %s";
-  
+
   // Test ID constants
   private static final String TEST_LOCATION_ID_NOT_FOUND = "testLocationIdNotFound";
   private static final String TEST_LOCATION_123 = "LOCATION_123";
   private static final String SUCCESS_MESSAGE_WITH_ID = "Location processed successfully: LOCATION_123";
-  
+
   // Country mock constants
   private static final String US_COUNTRY_ID = "US-ID";
   private static final String US_COUNTRY_NAME = "United States";
@@ -90,7 +91,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     MockitoAnnotations.openMocks(this);
     locationCreatorWebhook = new LocationCreatorWebhook();
 
-    // Setup OBDal static mock
+    // Setup static mocks
     mockedOBDal = mockStatic(OBDal.class);
     mockedOBProvider = mockStatic(OBProvider.class);
     mockedOBContext = mockStatic(OBContext.class);
@@ -119,28 +120,87 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     }
   }
 
+  // --- Utility Methods for Parameter Building (Refactored) ---
+
+  /**
+   * Builds the parameters map for location creation or update using specified values.
+   */
+  private static @NotNull Map<String, String> buildLocationParameters(
+      String id,
+      String address,
+      String city,
+      String postal,
+      String countryIso) {
+
+    Map<String, String> parameters = new HashMap<>();
+    if (id != null) {
+      parameters.put(ID_PARAM, id);
+    }
+    if (address != null) {
+      parameters.put(ADDRESS1_PARAM, address);
+    }
+    if (city != null) {
+      parameters.put(CITY_PARAM, city);
+    }
+    if (postal != null) {
+      parameters.put(POSTAL_PARAM, postal);
+    }
+    if (countryIso != null) {
+      parameters.put(COUNTRY_ISO_CODE_PARAM, countryIso);
+    }
+    return parameters;
+  }
+
+  /**
+   * Gets parameters for a successful creation (using TEST constants).
+   */
+  private static @NotNull Map<String, String> getParameters() {
+    return buildLocationParameters(
+        null, // ID nulo para creación
+        TEST_ADDRESS,
+        TEST_CITY,
+        TEST_POSTAL,
+        TEST_COUNTRY_ISO
+    );
+  }
+
+  /**
+   * Gets parameters for a successful update (using TEST_UPDATED constants).
+   */
+  private static Map<String, String> getUpdateParameters(String testLocationId) {
+    return buildLocationParameters(
+        testLocationId,
+        TEST_UPDATED_ADDRESS,
+        TEST_UPDATED_CITY,
+        TEST_UPDATED_POSTAL,
+        TEST_UPDATED_COUNTRY_ISO
+    );
+  }
+
+  // --- Success Creation Tests (Consolidated) ---
+
   @Test
   public void testCreateLocationSuccessWithoutId() {
-    testCreateLocationSuccessWithId(null);
+    testCreateLocationSuccessScenario(null, null, SUCCESS_MESSAGE);
   }
 
   @Test
   public void testCreateLocationSuccessWithIdNull() {
-    testCreateLocationSuccessWithId("null");
+    testCreateLocationSuccessScenario("null", null, SUCCESS_MESSAGE);
   }
 
+  @Test
+  public void testCreateLocationSuccessWithSpecificId() {
+    testCreateLocationSuccessScenario(null, TEST_LOCATION_123, SUCCESS_MESSAGE_WITH_ID);
+  }
 
-  private void testCreateLocationSuccessWithId(String idParameter) {
+  private void testCreateLocationSuccessScenario(String inputIdParam, String mockLocationId, String expectedMessage) {
     // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ADDRESS1_PARAM, TEST_ADDRESS);
-    parameters.put(CITY_PARAM, TEST_CITY);
-    parameters.put(POSTAL_PARAM, TEST_POSTAL);
-    parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_COUNTRY_ISO);
+    Map<String, String> parameters = getParameters();
 
-    // Add ID parameter only if it's not null
-    if (idParameter != null) {
-      parameters.put(ID_PARAM, idParameter);
+    // Add ID parameter only if it's not null and it's an input ID (not the ID of the saved object)
+    if (inputIdParam != null) {
+      parameters.put(ID_PARAM, inputIdParam);
     }
 
     Location mockLocation = mock(Location.class);
@@ -152,43 +212,10 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     mockedOBProvider.when(OBProvider::getInstance).thenReturn(mockProvider);
     when(mockProvider.get(Location.class)).thenReturn(mockLocation);
 
-    mockedOBDal.when(OBDal::getInstance).thenReturn(mock(OBDal.class));
-    when(OBDal.getInstance().createCriteria(Country.class)).thenReturn(mockCountryCriteria);
-    when(mockCountryCriteria.uniqueResult()).thenReturn(mockCountry);
-
-    Map<String, String> responseVars = new HashMap<>();
-    locationCreatorWebhook.get(parameters, responseVars);
-
-    // Then
-    verify(mockLocation).setAddressLine1(TEST_ADDRESS);
-    verify(mockLocation).setCityName(TEST_CITY);
-    verify(mockLocation).setPostalCode(TEST_POSTAL);
-    verify(mockLocation).setCountry(mockCountry);
-    verify(OBDal.getInstance()).save(mockLocation);
-    verify(OBDal.getInstance()).flush();
-
-    assertTrue(responseVars.containsKey(MESSAGE_KEY));
-    assertEquals(SUCCESS_MESSAGE, responseVars.get(MESSAGE_KEY));
-  }
-
-  @Test
-  public void testCreateLocationSuccessWithSpecificId() {
-    // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ADDRESS1_PARAM, TEST_ADDRESS);
-    parameters.put(CITY_PARAM, TEST_CITY);
-    parameters.put(POSTAL_PARAM, TEST_POSTAL);
-    parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_COUNTRY_ISO);
-
-    Location mockLocation = mock(Location.class);
-    Country mockCountry = mock(Country.class);
-    OBCriteria<Country> mockCountryCriteria = mock(OBCriteria.class);
-    OBProvider mockProvider = mock(OBProvider.class);
-
-    // When
-    mockedOBProvider.when(OBProvider::getInstance).thenReturn(mockProvider);
-    when(mockProvider.get(Location.class)).thenReturn(mockLocation);
-    when(mockLocation.getId()).thenReturn(TEST_LOCATION_123);
+    // If we are checking the ID in the success message, we must mock the ID of the created Location
+    if (mockLocationId != null) {
+      when(mockLocation.getId()).thenReturn(mockLocationId);
+    }
 
     mockedOBDal.when(OBDal::getInstance).thenReturn(mock(OBDal.class));
     when(OBDal.getInstance().createCriteria(Country.class)).thenReturn(mockCountryCriteria);
@@ -206,8 +233,11 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     verify(OBDal.getInstance()).flush();
 
     assertTrue(responseVars.containsKey(MESSAGE_KEY));
-    assertEquals(SUCCESS_MESSAGE_WITH_ID, responseVars.get(MESSAGE_KEY));
+    assertEquals(expectedMessage, responseVars.get(MESSAGE_KEY));
   }
+
+
+  // --- Missing Parameter Tests ---
 
   @Test
   public void testCreateLocationMissingAddress1() {
@@ -231,19 +261,8 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
 
   private void testMissingParameter(String missingParam, String expectedErrorMessage) {
     // Given
-    Map<String, String> parameters = new HashMap<>();
-    if (!ADDRESS1_PARAM.equals(missingParam)) {
-      parameters.put(ADDRESS1_PARAM, TEST_ADDRESS);
-    }
-    if (!CITY_PARAM.equals(missingParam)) {
-      parameters.put(CITY_PARAM, TEST_CITY);
-    }
-    if (!POSTAL_PARAM.equals(missingParam)) {
-      parameters.put(POSTAL_PARAM, TEST_POSTAL);
-    }
-    if (!COUNTRY_ISO_CODE_PARAM.equals(missingParam)) {
-      parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_COUNTRY_ISO);
-    }
+    Map<String, String> parameters = getParameters();
+    parameters.remove(missingParam); // Remove the parameter
 
     Map<String, String> responseVars = new HashMap<>();
 
@@ -254,6 +273,35 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     assertTrue(responseVars.containsKey(ERROR_KEY));
     assertEquals(expectedErrorMessage, responseVars.get(ERROR_KEY));
   }
+
+  // --- Invalid Parameter Value Tests (Consolidated) ---
+
+  @Test
+  public void testCreateLocationWithEmptyAddress() {
+    testInvalidParameterValue(ADDRESS1_PARAM, "", MISSING_PARAMETER_ADDRESS_1);
+  }
+
+  @Test
+  public void testCreateLocationWithNullAddress() {
+    testInvalidParameterValue(ADDRESS1_PARAM, null, MISSING_PARAMETER_ADDRESS_1);
+  }
+
+  private void testInvalidParameterValue(String invalidParamKey, String invalidValue, String expectedErrorMessage) {
+    // Given
+    Map<String, String> parameters = getParameters();
+    parameters.put(invalidParamKey, invalidValue); // Set the invalid value
+
+    Map<String, String> responseVars = new HashMap<>();
+
+    // When
+    locationCreatorWebhook.get(parameters, responseVars);
+
+    // Then
+    assertTrue(responseVars.containsKey(ERROR_KEY));
+    assertEquals(expectedErrorMessage, responseVars.get(ERROR_KEY));
+  }
+
+  // --- Country Not Found Tests ---
 
   @Test
   public void testCreateLocationCountryNotFound() {
@@ -276,10 +324,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
 
   private void testCountryNotFound(java.util.List<Country> countryList, boolean validateCountryContent) {
     // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ADDRESS1_PARAM, TEST_ADDRESS);
-    parameters.put(CITY_PARAM, TEST_CITY);
-    parameters.put(POSTAL_PARAM, TEST_POSTAL);
+    Map<String, String> parameters = getParameters();
     parameters.put(COUNTRY_ISO_CODE_PARAM, "INVALID");
 
     Location mockLocation = mock(Location.class);
@@ -302,21 +347,20 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     assertTrue(responseVars.containsKey(ERROR_KEY));
     assertEquals(COUNTRY_NOT_FOUND, responseVars.get(ERROR_KEY));
     assertTrue(responseVars.containsKey(COUNTRIES_KEY));
-    
+
     if (validateCountryContent) {
       String countries = responseVars.get(COUNTRIES_KEY);
       assertTrue(countries.contains(US_COUNTRY_ID + " - " + US_COUNTRY_NAME));
       assertTrue(countries.contains(CA_COUNTRY_ID + " - " + CA_COUNTRY_NAME));
     }
-  }  @Test
+  }
+
+  // --- Update Tests ---
+
+  @Test
   public void testUpdateLocationSuccess() {
     // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ID_PARAM, TEST_LOCATION_ID);
-    parameters.put(ADDRESS1_PARAM, TEST_UPDATED_ADDRESS);
-    parameters.put(CITY_PARAM, TEST_UPDATED_CITY);
-    parameters.put(POSTAL_PARAM, TEST_UPDATED_POSTAL);
-    parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_UPDATED_COUNTRY_ISO);
+    Map<String, String> parameters = getUpdateParameters(TEST_LOCATION_ID);
 
     Location mockLocation = mock(Location.class);
     Country mockCountry = mock(Country.class);
@@ -340,18 +384,14 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     verify(OBDal.getInstance()).flush();
 
     assertTrue(responseVars.containsKey(MESSAGE_KEY));
+    // The message is "Location processed successfully: null" because the location ID is not mocked for the message
     assertEquals(SUCCESS_MESSAGE, responseVars.get(MESSAGE_KEY));
   }
 
   @Test
   public void testUpdateLocationNotFound() {
     // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ID_PARAM, TEST_LOCATION_ID_NOT_FOUND);
-    parameters.put(ADDRESS1_PARAM, TEST_UPDATED_ADDRESS);
-    parameters.put(CITY_PARAM, TEST_UPDATED_CITY);
-    parameters.put(POSTAL_PARAM, TEST_UPDATED_POSTAL);
-    parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_UPDATED_COUNTRY_ISO);
+    Map<String, String> parameters = getUpdateParameters(TEST_LOCATION_ID_NOT_FOUND);
 
     // When
     mockedOBDal.when(OBDal::getInstance).thenReturn(mock(OBDal.class));
@@ -367,33 +407,5 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
     assertEquals(String.format(LOCATION_NOT_FOUND_TEMPLATE, TEST_LOCATION_ID_NOT_FOUND), responseVars.get(ERROR_KEY));
     // Verify that no message key is set since it should exit early
     assertTrue(!responseVars.containsKey(MESSAGE_KEY));
-  }
-
-  @Test
-  public void testCreateLocationWithEmptyParameters() {
-    testInvalidParameterValue("", MISSING_PARAMETER_ADDRESS_1);
-  }
-
-  @Test
-  public void testCreateLocationWithNullParameters() {
-    testInvalidParameterValue(null, MISSING_PARAMETER_ADDRESS_1);
-  }
-
-  private void testInvalidParameterValue(String invalidValue, String expectedErrorMessage) {
-    // Given
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(ADDRESS1_PARAM, invalidValue); // Test invalid value
-    parameters.put(CITY_PARAM, TEST_CITY);
-    parameters.put(POSTAL_PARAM, TEST_POSTAL);
-    parameters.put(COUNTRY_ISO_CODE_PARAM, TEST_COUNTRY_ISO);
-
-    Map<String, String> responseVars = new HashMap<>();
-
-    // When
-    locationCreatorWebhook.get(parameters, responseVars);
-
-    // Then
-    assertTrue(responseVars.containsKey(ERROR_KEY));
-    assertEquals(expectedErrorMessage, responseVars.get(ERROR_KEY));
   }
 }
