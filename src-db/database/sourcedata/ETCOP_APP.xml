@@ -604,9 +604,13 @@ When setting a Price List for a Business Partner Customer or Vendor, ensure the 
     "priceList": "80715A63378C422CB71FE3155100B0AD"
   }
 
+SimSearch is a Webhook that implements a similarity-driven search method. This can help search for entities whose identifier is not exactly the same as the search term.
+It complements the use of GETs.
 
-Here is the OpenAPI Spec of the API:
-@bpapi@
+Entity names to use SimSearch:
+- “PricingPriceList” for price lists
+- “BusinessPartner” for Business Partner
+- “BusinessPartnerCategory” for business partner categories
 
 
 Recommended flow:
