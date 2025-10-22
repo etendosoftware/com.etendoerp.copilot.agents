@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -125,7 +124,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
   /**
    * Builds the parameters map for location creation or update using specified values.
    */
-  private static @NotNull Map<String, String> buildLocationParameters(
+  private static Map<String, String> buildLocationParameters(
       String id,
       String address,
       String city,
@@ -154,7 +153,7 @@ public class LocationCreatorWebhookTest extends WeldBaseTest {
   /**
    * Gets parameters for a successful creation (using TEST constants).
    */
-  private static @NotNull Map<String, String> getParameters() {
+  private static Map<String, String> getParameters() {
     return buildLocationParameters(
         null, // ID nulo para creación
         TEST_ADDRESS,
