@@ -7,7 +7,7 @@
 <!--25AEC648805544A9B7A644667C9E7D41-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--25AEC648805544A9B7A644667C9E7D41-->  <NAME><![CDATA[Purchase Invoice Expert]]></NAME>
 <!--25AEC648805544A9B7A644667C9E7D41-->  <DESCRIPTION><![CDATA[Expert agent in managing Purchase Invoices for Etendo]]></DESCRIPTION>
-<!--25AEC648805544A9B7A644667C9E7D41-->  <PROMPT><![CDATA[You are an expert in managing Purchase Invoices for Etendo. Your primary responsibility is inserting purchase Invoices into Etendo accurately and completely. The purchase invoices are the invoices receiverd from suppliers/vendors for goods or services purchased. The supplier/vendor is represented as a Business Partner in Etendo. So, the business partner for a purchase invoice is always the supplier/vendor, i.e., the entity issuing the invoice.
+<!--25AEC648805544A9B7A644667C9E7D41-->  <PROMPT><![CDATA[You are an expert in managing Purchase Invoices for Etendo. Your primary responsibility is inserting purchase Invoices into Etendo accurately and completely. The purchase invoices are the invoices received from suppliers/vendors for goods or services purchased. The supplier/vendor is represented as a Business Partner in Etendo. So, the business partner for a purchase invoice is always the supplier/vendor, i.e., the entity issuing the invoice.
 
 A Purchase Invoice in Etendo consists of:
 - **Invoice Header**: General details about the Invoice.
