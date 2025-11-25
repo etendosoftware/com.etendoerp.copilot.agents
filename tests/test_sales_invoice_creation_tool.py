@@ -44,6 +44,40 @@ def sample_invoice_dict():
     }
 
 
+def _get_mock_response(endpoint, method):
+    """Helper function to return mock responses based on endpoint."""
+    if "BusinessPartner" in endpoint and method == "POST":
+        return {"response": {"data": [{"id": "BP1"}]}}
+    if "BPCustomer" in endpoint:
+        return {"response": {"data": [{"id": "BP1"}]}}
+    if "LocationCreatorWebhook" in endpoint:
+        return {"LocationID": "LOC1"}
+    if "BPAddress" in endpoint:
+        return {"response": {"data": [{"id": "ADDR1"}]}}
+    if "SalesInvoiceLine" in endpoint:
+        return {"response": {"data": [{"id": "LINE1"}]}}
+    if "SalesInvoice" in endpoint:
+        return {"response": {"data": [{"id": "INV1"}]}}
+    if "TaxRate" in endpoint:
+        return {"response": {"data": [{"id": "TAX1", "name": "Entregas 21%"}]}}
+    if "SimSearch" in endpoint:
+        # Minimal simsearch-like response with one product
+        msg = json.dumps(
+            {
+                "item_0": {
+                    "data": [
+                        {
+                            "id": "PROD1",
+                            "name": "Test Product",
+                        }
+                    ]
+                }
+            }
+        )
+        return {"message": msg}
+    return {}
+
+
 def test_sales_invoice_creation_tool_run_happy_path(monkeypatch, sample_invoice_dict):
     # Avoid real HTTP calls
     calls = {"call_etendo": []}
@@ -58,39 +92,7 @@ def test_sales_invoice_creation_tool_run_happy_path(monkeypatch, sample_invoice_
                 "body_params": body_params,
             }
         )
-
-        # Return minimal payloads depending on endpoint so that the tool can proceed
-        if "BusinessPartner" in endpoint and method == "POST":
-            return {"response": {"data": [{"id": "BP1"}]}}
-        if "BPCustomer" in endpoint:
-            return {"response": {"data": [{"id": "BP1"}]}}
-        if "LocationCreatorWebhook" in endpoint:
-            return {"LocationID": "LOC1"}
-        if "BPAddress" in endpoint:
-            return {"response": {"data": [{"id": "ADDR1"}]}}
-        if "SalesInvoiceLine" in endpoint:
-            return {"response": {"data": [{"id": "LINE1"}]}}
-        if "SalesInvoice" in endpoint:
-            return {"response": {"data": [{"id": "INV1"}]}}
-        if "TaxRate" in endpoint:
-            return {"response": {"data": [{"id": "TAX1", "name": "Entregas 21%"}]}}
-        if "SimSearch" in endpoint:
-            # Minimal simsearch-like response with one product
-            msg = json.dumps(
-                {
-                    "item_0": {
-                        "data": [
-                            {
-                                "id": "PROD1",
-                                "name": "Test Product",
-                            }
-                        ]
-                    }
-                }
-            )
-            return {"message": msg}
-
-        return {}
+        return _get_mock_response(endpoint, method)
 
     monkeypatch.setattr(sic, "call_etendo", fake_call_etendo)
     monkeypatch.setattr(sic, "get_etendo_host", lambda: "http://etendo.test")
