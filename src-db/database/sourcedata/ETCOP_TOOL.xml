@@ -19,7 +19,7 @@
     "parameters": {
       "type": "object",
       "properties": {
-        "BusinessPartner": {
+        "businesspartner": {
           "description": "Business Partner name (REQUIRED for invoice creation)",
           "title": "Businesspartner",
           "type": "string"
@@ -48,6 +48,25 @@
           "items": {"$ref": "#\/$defs\/InvoiceLine"},
           "title": "Lines",
           "type": "array"
+        },
+        "generic_product_id": {
+          "anyOf": [
+            {"type": "string"},
+            {"type": "null"}
+          ],
+          "default": null,
+          "title": "Generic Product Id"
+        },
+        "tax_configs": {
+          "anyOf": [
+            {
+              "items": {"$ref": "#\/$defs\/TaxConfig"},
+              "type": "array"
+            },
+            {"type": "null"}
+          ],
+          "default": null,
+          "title": "Tax Configs"
         }
       }
     }

@@ -6,7 +6,9 @@ It handles business partner detection/creation, address management, and invoice 
 """
 
 import json
-from typing import Optional, Type
+from typing import List, Optional, Type
+
+from pydantic import BaseModel
 
 from copilot.core.tool_input import ToolInput
 from copilot.core.tool_wrapper import ToolOutput, ToolWrapper
@@ -21,6 +23,19 @@ from tools.schemas.invoice import InvoiceAddress, InvoiceLine, InvoiceSchema
 
 # Constants
 SIMSEARCH_ENDPOINT = "/webhooks/SimSearch"
+
+class TaxConfig(BaseModel):
+    """Represents a configured tax mapping."""
+
+    rate: float
+    id: str
+
+
+class InvoiceSchemaWithConfig(InvoiceSchema):
+    """Invoice schema with optional runtime configuration knobs."""
+
+    generic_product_id: Optional[str] = None  # Explicit generic product override
+    tax_configs: Optional[List[TaxConfig]] = None  # List of rate/id mappings
 
 
 class SalesInvoiceCreationTool(ToolWrapper):
@@ -41,9 +56,9 @@ class SalesInvoiceCreationTool(ToolWrapper):
     Handles business partner detection/creation, address management, and invoice line processing.
     Requires invoice data following the InvoiceSchema structure.
     """
-    args_schema: Type[ToolInput] = InvoiceSchema
+    args_schema: Type[ToolInput] = InvoiceSchemaWithConfig
 
-    def run(self, input_params: InvoiceSchema, *args, **kwargs) -> ToolOutput:
+    def run(self, input_params: InvoiceSchemaWithConfig, *args, **kwargs) -> ToolOutput:
         """Execute the sales invoice creation process."""
         # Initialize execution log
         execution_log = []
@@ -52,11 +67,13 @@ class SalesInvoiceCreationTool(ToolWrapper):
             if not input_params:
                 raise ToolException("input_params is required")
 
-            # Convert dict to InvoiceSchema instance if needed
+            # Convert dict or base schema to InvoiceSchemaWithConfig instance if needed
             if isinstance(input_params, dict):
-                invoice = InvoiceSchema(**input_params)
-            else:
+                invoice = InvoiceSchemaWithConfig(**input_params)
+            elif isinstance(input_params, InvoiceSchemaWithConfig):
                 invoice = input_params
+            else:
+                invoice = InvoiceSchemaWithConfig(**input_params.model_dump())
 
             # Get Etendo connection details from context
             etendo_url = get_etendo_host()
@@ -151,7 +168,12 @@ class SalesInvoiceCreationTool(ToolWrapper):
             # Create invoice lines
             execution_log.append("\n📦 Creating Invoice Lines...")
             line_ids, lines_log = self._create_invoice_lines(
-                invoice_id, invoice.lines, etendo_url, token
+                invoice_id,
+                invoice.lines,
+                invoice.tax_configs,
+                invoice.generic_product_id,
+                etendo_url,
+                token,
             )
             execution_log.extend(lines_log)
 
@@ -359,7 +381,7 @@ class SalesInvoiceCreationTool(ToolWrapper):
             )
             
             if data:
-                print(f"BP Customer configuration updated successfully")
+                print("BP Customer configuration updated successfully")
             else:
                 # Log warning but don't fail the entire process
                 print("Warning: Failed to configure BP Customer, but continuing...")
@@ -598,7 +620,13 @@ class SalesInvoiceCreationTool(ToolWrapper):
             raise
 
     def _create_invoice_lines(
-        self, invoice_id: str, lines: list, etendo_url: str, token: str
+        self,
+        invoice_id: str,
+        lines: list,
+        tax_configs: Optional[List[TaxConfig]],
+        generic_product_id: Optional[str],
+        etendo_url: str,
+        token: str,
     ) -> tuple:
         """
         Create invoice lines for the sales invoice.
@@ -614,22 +642,30 @@ class SalesInvoiceCreationTool(ToolWrapper):
             print(f"\nProcessing line {idx}: {line.product}")
             log.append(f"\n  Line {idx}: {line.product}")
 
-            # Search for product (returns tuple: product_id, original_name)
-            product_id, original_name = self._search_product(
-                line.product, etendo_url, token
+            product_id, original_name = self._resolve_product(
+                line.product,
+                generic_product_id,
+                etendo_url,
+                token,
             )
 
             if original_name:
-                # Generic product was used
                 log.append("    ⚠ Product not found, using generic product")
                 log.append(f"    📝 Original product: {original_name}")
             else:
                 log.append(f"    ✓ Product found: {product_id}")
 
-            # Get tax ID
-            tax_id = self._get_tax_id(line.tax_rate, etendo_url, token)
+            tax_id, tax_from_config = self._resolve_tax(
+                line.tax_rate, tax_configs, etendo_url, token
+            )
+
             if tax_id:
-                log.append(f"    💰 Tax rate: {line.tax_rate}% (ID: {tax_id})")
+                if tax_from_config:
+                    log.append(
+                        f"    💰 Tax rate: {line.tax_rate}% (Configured ID: {tax_id})"
+                    )
+                else:
+                    log.append(f"    💰 Tax rate: {line.tax_rate}% (ID: {tax_id})")
             else:
                 log.append("    💰 Tax rate: System auto-select")
 
@@ -646,7 +682,58 @@ class SalesInvoiceCreationTool(ToolWrapper):
         print(f"\nCreated {len(line_ids)} invoice lines")
         return (line_ids, log)
 
-    def _search_product(self, product_name: str, etendo_url: str, token: str) -> tuple:
+    def _resolve_product(
+        self,
+        product_name: Optional[str],
+        generic_product_id: Optional[str],
+        etendo_url: str,
+        token: str,
+    ) -> tuple:
+        """Resolve product ID using SimSearch with optional generic override."""
+
+        return self._search_product(
+            product_name, etendo_url, token, generic_product_id
+        )
+
+    def _resolve_tax(
+        self,
+        tax_rate: Optional[float],
+        tax_configs: Optional[List[TaxConfig]],
+        etendo_url: str,
+        token: str,
+    ) -> tuple:
+        """Resolve tax ID using configuration mapping before querying Etendo."""
+
+        configured_tax_id = self._get_tax_id_from_config(tax_rate, tax_configs)
+        if configured_tax_id:
+            return (configured_tax_id, True)
+
+        return (self._get_tax_id(tax_rate, etendo_url, token), False)
+
+    def _get_tax_id_from_config(
+        self, tax_rate: Optional[float], tax_configs: Optional[List[TaxConfig]]
+    ) -> Optional[str]:
+        """Return configured tax ID for the provided tax rate."""
+
+        if tax_rate is None or not tax_configs:
+            return None
+
+        for config in tax_configs:
+            try:
+                if float(config.rate) == float(tax_rate):
+                    return config.id
+            except (TypeError, ValueError):
+                continue
+
+        return None
+
+    def _search_product(
+        self,
+        product_name: Optional[str],
+        etendo_url: str,
+        token: str,
+        generic_product_override: Optional[str] = None,
+    ) -> tuple:
         """
         Search for product using SimSearch.
         If not found, search for "Producto Generico".
@@ -656,7 +743,9 @@ class SalesInvoiceCreationTool(ToolWrapper):
                    original_product_name is set only when generic product is used
         """
         if not product_name:
-            generic_id = self._get_generic_product(etendo_url, token)
+            generic_id = self._get_generic_product(
+                etendo_url, token, generic_product_override
+            )
             return (generic_id, None)
 
         print(f"Searching product: {product_name}")
@@ -694,19 +783,29 @@ class SalesInvoiceCreationTool(ToolWrapper):
 
             # Product not found, use generic product
             print(f"Product '{product_name}' not found, using generic product")
-            generic_id = self._get_generic_product(etendo_url, token)
+            generic_id = self._get_generic_product(
+                etendo_url, token, generic_product_override
+            )
             return (generic_id, product_name)
 
         except Exception as e:
             copilot_debug(f"Error searching product: {str(e)}")
-            generic_id = self._get_generic_product(etendo_url, token)
+            generic_id = self._get_generic_product(
+                etendo_url, token, generic_product_override
+            )
             return (generic_id, product_name)
 
-    def _get_generic_product(self, etendo_url: str, token: str) -> str:
+    def _get_generic_product(
+        self, etendo_url: str, token: str, override_id: Optional[str] = None
+    ) -> str:
         """
         Search for "Producto Generico" using SimSearch.
         Raises ToolException if not found.
         """
+        if override_id:
+            print('Using configured generic product override')
+            return override_id
+
         print('Searching for "Producto Generico"')
 
         try:

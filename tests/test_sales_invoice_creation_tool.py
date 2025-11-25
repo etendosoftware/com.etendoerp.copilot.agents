@@ -1,12 +1,21 @@
 import json
 import importlib
+import sys
+import types
 
 import pytest
 
 
 # Import the tool module dynamically so we can monkeypatch its globals easily
 sic = importlib.import_module("tools.SalesInvoiceCreationTool")
-from tools.SalesInvoiceCreationTool import SalesInvoiceCreationTool, InvoiceSchema, InvoiceLine, InvoiceAddress
+from copilot.core.exceptions import ToolException
+from tools.SalesInvoiceCreationTool import (
+    SalesInvoiceCreationTool,
+    InvoiceSchema,
+    InvoiceLine,
+    InvoiceAddress,
+    TaxConfig,
+)
 
 
 class FakeResp:
@@ -155,3 +164,224 @@ def test_sales_invoice_creation_tool_header_error(monkeypatch, sample_invoice_di
     assert "Failed to create Invoice Header" in out["error"]
     # For header failure we expect completed_steps to contain BP and address ids
     assert {"business_partner_id": "BP1"} in out["completed_steps"][0].values() or out["completed_steps"]
+
+
+def test_process_businesspartner_uses_cif_lookup(monkeypatch, sample_invoice_dict):
+    tool = SalesInvoiceCreationTool()
+    invoice = InvoiceSchema(**sample_invoice_dict)
+    created = {"called": False}
+
+    def fake_search(self, cif, url, token):
+        assert cif == sample_invoice_dict["cif"]
+        return "BP-CIF"
+
+    def fake_create(self, invoice_data, url, token):
+        created["called"] = True
+        return "UNEXPECTED"
+
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_search_bp_by_cif", fake_search)
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_create_businesspartner", fake_create)
+
+    bp_id, log = tool._process_businesspartner(invoice, "url", "token")
+
+    assert bp_id == "BP-CIF"
+    assert not created["called"]
+    assert any("Found by CIF" in entry for entry in log)
+
+
+def test_process_businesspartner_normalizes_null_cif_before_creation(monkeypatch, sample_invoice_dict):
+    tool = SalesInvoiceCreationTool()
+    sample_invoice_dict["cif"] = " null "
+    invoice = InvoiceSchema(**sample_invoice_dict)
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_search_bp_by_cif", lambda *a, **k: None)
+
+    captured = {}
+
+    def fake_create(self, invoice_data, url, token):
+        captured["cif"] = invoice_data.cif
+        raise ToolException("CIF/Tax ID is required to create a new Business Partner")
+
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_create_businesspartner", fake_create)
+
+    with pytest.raises(ToolException):
+        tool._process_businesspartner(invoice, "url", "token")
+
+    assert captured["cif"] is None
+
+
+def test_create_address_without_data_returns_placeholder():
+    tool = SalesInvoiceCreationTool()
+
+    address_id, log = tool._create_address("BP1", None, "url", "token")
+
+    assert address_id == "NO_ADDRESS"
+    assert any("No address" in entry for entry in log)
+
+
+def test_create_address_returns_warning_when_location_fails(monkeypatch, sample_invoice_dict):
+    tool = SalesInvoiceCreationTool()
+    address = InvoiceAddress(**sample_invoice_dict["address"])
+
+    def failing_location(self, addr, url, token):
+        raise ToolException("kaboom")
+
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_create_location", failing_location)
+
+    addr_id, log = tool._create_address("BP1", address, "url", "token")
+
+    assert addr_id == "ADDRESS_CREATION_FAILED"
+    assert any("Address creation failed" in entry for entry in log)
+
+
+def test_create_location_builds_expected_payload(monkeypatch, sample_invoice_dict):
+    tool = SalesInvoiceCreationTool()
+    address = InvoiceAddress(**sample_invoice_dict["address"])
+    captured = {}
+
+    def fake_call(url, method, endpoint, access_token, body_params):
+        captured["url"] = url
+        captured["method"] = method
+        captured["endpoint"] = endpoint
+        captured["payload"] = body_params
+        return {"LocationID": "LOC-9"}
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    location_id = tool._create_location(address, "http://etendo.test", "TOKEN")
+
+    assert location_id == "LOC-9"
+    assert captured["method"] == "POST"
+    assert captured["endpoint"].endswith("LocationCreatorWebhook")
+    assert captured["payload"]["CountryISOCode"] == address.country
+
+
+def test_resolve_product_uses_generic_when_search_returns_nothing(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+
+    def fake_call(url, method, endpoint, access_token, body_params):
+        return {"message": json.dumps({"item_0": {"data": []}})}
+
+    generic_calls = {"count": 0}
+
+    def fake_generic(self, etendo_url, token, override=None):
+        generic_calls["count"] += 1
+        return "GENERIC-ID"
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_get_generic_product", fake_generic)
+
+    product_id, original = tool._resolve_product("Missing", None, "url", "token")
+
+    assert product_id == "GENERIC-ID"
+    assert original == "Missing"
+    assert generic_calls["count"] == 1
+
+
+def test_get_generic_product_respects_override(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+
+    def fail_call(*_args, **_kwargs):
+        raise AssertionError("Should not call SimSearch when override provided")
+
+    monkeypatch.setattr(sic, "call_etendo", fail_call)
+
+    assert tool._get_generic_product("url", "token", override_id="OVERRIDE") == "OVERRIDE"
+
+
+def test_resolve_tax_prefers_config_mapping(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+    configs = [TaxConfig(rate=21, id="CFG-TAX")]
+
+    def fail_get_tax(self, *args, **kwargs):  # pragma: no cover - guard path
+        raise AssertionError("Should not hit remote search when config matches")
+
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_get_tax_id", fail_get_tax)
+
+    tax_id, from_config = tool._resolve_tax(21, configs, "url", "token")
+
+    assert tax_id == "CFG-TAX"
+    assert from_config is True
+
+
+def test_get_tax_id_prefers_entregas_entries(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+
+    def fake_call(url, method, endpoint, access_token, body_params):
+        return {
+            "response": {
+                "data": [
+                    {"id": "TAX-2", "name": "Generic 21%"},
+                    {"id": "TAX-1", "name": "Entregas 21%"},
+                ]
+            }
+        }
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    tax_id = tool._get_tax_id(21, "url", "token")
+
+    assert tax_id == "TAX-1"
+
+
+def test_create_invoice_lines_uses_config_tax_and_logs_generic(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+    line = InvoiceLine(product="Original", quantity=1, unit_price=10, tax_rate=21)
+    created = []
+
+    def fake_search(self, product_name, etendo_url, token, override_id):
+        return ("GENERIC", product_name)
+
+    def fake_create(self, invoice_id, product_id, line_data, tax_id, original_name, url, token):
+        created.append(
+            {
+                "invoice_id": invoice_id,
+                "product_id": product_id,
+                "tax_id": tax_id,
+                "original_name": original_name,
+            }
+        )
+        return "LINE-1"
+
+    def fail_tax_lookup(self, *args, **kwargs):  # pragma: no cover - guard path
+        raise AssertionError("Should not look up tax remotely")
+
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_search_product", fake_search)
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_create_invoice_line", fake_create)
+    monkeypatch.setattr(SalesInvoiceCreationTool, "_get_tax_id", fail_tax_lookup)
+
+    configs = [TaxConfig(rate=21, id="CFG-TAX")]
+
+    line_ids, log = tool._create_invoice_lines("INV1", [line], configs, None, "url", "token")
+
+    assert line_ids == ["LINE-1"]
+    assert created[0]["product_id"] == "GENERIC"
+    assert created[0]["tax_id"] == "CFG-TAX"
+    assert created[0]["original_name"] == "Original"
+    assert any("Original product" in entry for entry in log)
+
+
+def test_create_invoice_line_sets_description_and_tax(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+    line = InvoiceLine(product="Line Product", quantity=2, unit_price=5, tax_rate=21)
+    captured = {}
+
+    def fake_call(url, method, endpoint, access_token, body_params):
+        captured.update(body_params)
+        return {"response": {"data": [{"id": "LINE-ID"}]}}
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    line_id = tool._create_invoice_line(
+        "INV42",
+        "PROD",
+        line,
+        "TAX-ID",
+        "Original Name",
+        "url",
+        "token",
+    )
+
+    assert line_id == "LINE-ID"
+    assert captured["tax"] == "TAX-ID"
+    assert captured["description"].endswith("Original Name")
+    assert captured["invoicedQuantity"] == "2.0"
