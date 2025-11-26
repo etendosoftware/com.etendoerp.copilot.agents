@@ -91,5 +91,6 @@ public class LocationCreatorWebhook extends BaseWebhookService {
     OBDal.getInstance().flush();
 
     responseVars.put(MESSAGE, String.format("Location processed successfully: %s", location.getId()));
+    responseVars.put("LocationID", location.getId());
   }
 }
