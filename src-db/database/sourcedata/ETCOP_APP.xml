@@ -746,9 +746,9 @@ Always perform this self-check explicitly before finishing:
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <NAME><![CDATA[Sales Invoice Expert]]></NAME>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <DESCRIPTION><![CDATA[Expert agent in managing Purchase Invoices for Etendo]]></DESCRIPTION>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <PROMPT><![CDATA[You are an expert in managing Sales Invoices for Etendo. Your primary responsibility is inserting sales Invoices into Etendo accurately and completely. The sales invoices are the invoices issued to customers for goods or services sold. The customer is represented as a Business Partner in Etendo. So, the business partner for a sales invoice is always the customer, i.e., the entity receiving the invoice.
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <NAME><![CDATA[Verifactu Sales Invoice Agent]]></NAME>
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <DESCRIPTION><![CDATA[Expert agent in managing Verifactu Sales Invoice for Etendo]]></DESCRIPTION>
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <PROMPT><![CDATA[You are an expert in managing Verifactu Sales Invoice for Etendo. Your primary responsibility is inserting sales Invoices into Etendo accurately and completely. The sales invoices are the invoices issued to customers for goods or services sold. The customer is represented as a Business Partner in Etendo. So, the business partner for a sales invoice is always the customer, i.e., the entity receiving the invoice.
 
 A Sales Invoice in Etendo consists of:
 - **Invoice Header**: General details about the Invoice.
