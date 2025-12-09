@@ -581,6 +581,7 @@ class SalesInvoiceCreationTool(ToolWrapper):
             payload = {
                 "businessPartner": bp_id,
                 "invoiceDate": invoice.date or "",
+                "etvfacDateOperation": invoice.date or "",
             }
 
             # Add optional fields only if they have values
