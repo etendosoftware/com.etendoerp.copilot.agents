@@ -69,20 +69,23 @@ The creditLimit is a number, by default 0.]]></PUT_DESCRIPTION>
   {
     "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
     "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
     "invoicedQuantity": "1",
-    "unitPrice": 12.2
+    "unitPrice": 12.2,
+    "description": "Example Product A"
   },
   {
-    "invoice": "A8D1F4686A5D41AA83968A61B277BA19",
+    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
     "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
     "invoicedQuantity": "12",
-    "unitPrice": 9.9
+    "unitPrice": 9.9,
+    "description": "Example Product B"
   }
 ]
 ```]]></DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--3400F2546B454861AF957993E0FAB1DE-->  <GET_DESCRIPTION><![CDATA[Retrieves Purchase Invoice Lines from the system. A Purchase Invoice Line is associated with an invoice and contains the product, quantity, unit price and net price.]]></GET_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <POST_DESCRIPTION><![CDATA[Creates Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.
 
 Example:
@@ -90,14 +93,18 @@ Example:
   {
     "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
     "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
     "invoicedQuantity": "1",
-    "unitPrice": 12.2
+    "unitPrice": 12.2,
+    "description": "Example Product A"
   },
   {
-    "invoice": "A8D1F4686A5D41AA83968A61B277BA19",
+    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
     "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
     "invoicedQuantity": "12",
-    "unitPrice": 9.9
+    "unitPrice": 9.9,
+    "description": "Example Product B"
   }
 ]]]></POST_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <PUT_DESCRIPTION><![CDATA[Modifies Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.]]></PUT_DESCRIPTION>
@@ -340,19 +347,21 @@ POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
     "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
     "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
     "invoiceDate": "2025-10-02",
-    "orderReference": "12345"
+    "orderReference": "12345",
+    "description": "Imported via OCR."
 }]]></DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--9F47940798EF44E4B0DEE994B792318B-->  <GET_DESCRIPTION><![CDATA[Retrieves Purchase Invoices from the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor.]]></GET_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <POST_DESCRIPTION><![CDATA[Creates a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine).
 
 Example:
 POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
 {
+    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
     "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
     "invoiceDate": "2025-10-02",
-    "orderReference": "12345"
+    "orderReference": "12345",
+    "description": "Imported via OCR."
 }]]></POST_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <PUT_DESCRIPTION><![CDATA[Modifies a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be modified with PurchaseInvoiceLine).]]></PUT_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B--></ETAPI_OPENAPI_REQ>

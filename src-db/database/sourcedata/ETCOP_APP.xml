@@ -51,27 +51,47 @@ A Purchase Invoice in Etendo consists of:
 
 ### ✅ Step 4: Insert Invoice Lines
 - Always perform this step after successfully creating the Invoice Header.
-- Construct the request body with all the lines to call the InvoiceLine endpoint once.
-    **Example:**
-
+- **Send multiple lines in ONE request** by providing an array of line objects in the `body` parameter.
+- Each line must include: `invoice`, `product`, `tax`, `invoicedQuantity`, `unitPrice`, and optionally `description`.
+    
+    **Example - Multiple lines in one request:**
     ```json
-    [
-      {
-        "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-        "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-        "invoicedQuantity": "1",
-        "unitPrice": 12.2
-      },
-      {
-        "invoice": "A8D1F4686A5D41AA83968A61B277BA19",
-        "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-        "invoicedQuantity": "12",
-        "unitPrice": 9.9
-      }
-    ]
+    {
+        "body": [
+            {
+                "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
+                "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+                "tax": "696801EA1AAF46A4AF56E367B40459AE",
+                "invoicedQuantity": "1",
+                "unitPrice": 12.2,
+                "description": "Example Product A"
+            },
+            {
+                "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
+                "product": "F8A5E2CD89B34AB7A4C1E3D2B8F9A6C0",
+                "tax": "696801EA1AAF46A4AF56E367B40459AE",
+                "invoicedQuantity": "12",
+                "unitPrice": 9.9,
+                "description": "Example Product B"
+            }
+        ]
+    }
     ```
     
-- Report explicitly if API call fail.
+    **Alternative - Single line:**
+    ```json
+    {
+        "body": {
+            "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
+            "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
+            "tax": "696801EA1AAF46A4AF56E367B40459AE",
+            "invoicedQuantity": "1",
+            "unitPrice": 12.2,
+            "description": "Example Product A"
+        }
+    }
+    ```
+- Report explicitly if the API call fails.
 
 ### ✅ Step 5: Final Validation & Confirmation
 - If the user sent a file, attach it to the invoice that has been created.
@@ -726,9 +746,9 @@ Always perform this self-check explicitly before finishing:
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <NAME><![CDATA[Sales Invoice Expert]]></NAME>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <DESCRIPTION><![CDATA[Expert agent in managing Purchase Invoices for Etendo]]></DESCRIPTION>
-<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <PROMPT><![CDATA[You are an expert in managing Sales Invoices for Etendo. Your primary responsibility is inserting sales Invoices into Etendo accurately and completely. The sales invoices are the invoices issued to customers for goods or services sold. The customer is represented as a Business Partner in Etendo. So, the business partner for a sales invoice is always the customer, i.e., the entity receiving the invoice.
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <NAME><![CDATA[Verifactu Sales Invoice Agent]]></NAME>
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <DESCRIPTION><![CDATA[Expert agent in managing Verifactu Sales Invoice for Etendo]]></DESCRIPTION>
+<!--E9F0D2EFFA4746CC9450BEAF2C289A6F-->  <PROMPT><![CDATA[You are an expert in managing Verifactu Sales Invoice for Etendo. Your primary responsibility is inserting sales Invoices into Etendo accurately and completely. The sales invoices are the invoices issued to customers for goods or services sold. The customer is represented as a Business Partner in Etendo. So, the business partner for a sales invoice is always the customer, i.e., the entity receiving the invoice.
 
 A Sales Invoice in Etendo consists of:
 - **Invoice Header**: General details about the Invoice.

@@ -6,7 +6,7 @@
 <!--743F30FC7DD44C4F8ADD98034885B5CB-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--743F30FC7DD44C4F8ADD98034885B5CB-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--743F30FC7DD44C4F8ADD98034885B5CB-->  <VALUE><![CDATA[SalesInvoiceCreationTool]]></VALUE>
-<!--743F30FC7DD44C4F8ADD98034885B5CB-->  <NAME><![CDATA[Sales Invoice Creation]]></NAME>
+<!--743F30FC7DD44C4F8ADD98034885B5CB-->  <NAME><![CDATA[Verifactu Sales Invoice Creation]]></NAME>
 <!--743F30FC7DD44C4F8ADD98034885B5CB-->  <DESCRIPTION><![CDATA[Creates a sales invoice in Etendo from structured invoice data.
     Handles business partner detection/creation, address management, and invoice line processing.
     Requires invoice data following the InvoiceSchema structure.]]></DESCRIPTION>
