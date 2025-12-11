@@ -299,19 +299,16 @@ Store IDs of created records.]]></PROMPT>
 
 If a user requests to create a product:
 1. Search for an appropriate product category.
-   - If none exists, create a new product category that fits the request.
+   - If none exists, create a new product category that fits the request. 
+   - If the user does not provide a search key for the product category, generate one automatically that is short, uppercase, alphanumeric, and representative of the category name.
 2. Add the product to the price list version indicated by the user. If none, then ignore this step.
 3. If no UOM is specified, use uom_id='100'.
 4. If no Price List version is specified, search the price List version called "Tarifa de ventas".
 5. The price charge is important, if the prices is provided, dont forget to try to save the Price.
 6. Remember, the ProductPrice is created after the Product.
 
-
 Use the following entities for similarity search:
-- PricingPriceListVersion: to search for price list versions. Its necessary to create the ProductPrice.
-
-Here is the OpenAPI Spec of the API:
-@prodapi@]]></PROMPT>
+- PricingPriceListVersion: to search for price list versions. Its necessary to create the ProductPrice.]]></PROMPT>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <APPTYPE><![CDATA[multimodel]]></APPTYPE>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <CODE_INTERPRETER><![CDATA[N]]></CODE_INTERPRETER>
 <!--767849A7D3B442EB923A46CCDA41223C-->  <RETRIEVAL><![CDATA[N]]></RETRIEVAL>
