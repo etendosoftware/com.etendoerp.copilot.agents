@@ -385,3 +385,67 @@ def test_create_invoice_line_sets_description_and_tax(monkeypatch):
     assert captured["tax"] == "TAX-ID"
     assert captured["description"].endswith("Original Name")
     assert captured["invoicedQuantity"] == "2.0"
+
+
+def test_create_businesspartner_handles_generic_exception(monkeypatch, sample_invoice_dict):
+    tool = SalesInvoiceCreationTool()
+    invoice = InvoiceSchema(**sample_invoice_dict)
+
+    def fake_call(*args, **kwargs):
+        raise RuntimeError("Database connection error")
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    with pytest.raises(ToolException) as exc_info:
+        tool._create_businesspartner(invoice, "url", "token")
+
+    assert "Failed to create Business Partner" in str(exc_info.value)
+    assert "Database connection error" in str(exc_info.value)
+
+
+def test_get_tax_id_returns_none_on_exception(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+
+    def fake_call(*args, **kwargs):
+        raise RuntimeError("Network error")
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    result = tool._get_tax_id(21.0, "url", "token")
+
+    assert result is None
+
+
+def test_get_tax_id_returns_first_result_when_no_entregas(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+
+    def fake_call(url, method, endpoint, access_token, body_params):
+        return {
+            "response": {
+                "data": [
+                    {"id": "TAX-1", "name": "Generic 21%"},
+                    {"id": "TAX-2", "name": "Another 21%"},
+                ]
+            }
+        }
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    tax_id = tool._get_tax_id(21.0, "url", "token")
+
+    assert tax_id == "TAX-1"
+
+
+def test_create_invoice_line_raises_on_exception(monkeypatch):
+    tool = SalesInvoiceCreationTool()
+    line = InvoiceLine(product="Test", quantity=1, unit_price=10, tax_rate=21)
+
+    def fake_call(*args, **kwargs):
+        raise RuntimeError("API error")
+
+    monkeypatch.setattr(sic, "call_etendo", fake_call)
+
+    with pytest.raises(RuntimeError) as exc_info:
+        tool._create_invoice_line("INV1", "PROD1", line, "TAX1", None, "url", "token")
+
+    assert "API error" in str(exc_info.value)
