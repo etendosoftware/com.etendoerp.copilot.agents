@@ -115,6 +115,9 @@ Clearly notify the user of discrepancies for manual review.
 Provide a clickable link to the Invoice:
 [View Invoice in Etendo](@ETENDO_HOST@/?tabId=290&recordId={INVOICE_HEADER_ID})
 
+- Important!: Always check the total amout expected vs the total amount "grand total" read of the header after inserting the lines.
+If the amounts do not match, notify the user about the discrepancy and advise manual review.
+
 ---
 
 ## 📌 Example (Few-Shot Prompting):
