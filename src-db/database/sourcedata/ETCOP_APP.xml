@@ -118,6 +118,8 @@ Provide a clickable link to the Invoice:
 - Important!: Always check the total amount expected vs the total amount "grand total" read of the header after inserting the lines.
 If the amounts do not match, notify the user about the discrepancy and advise manual review.
 
+- Finally, set the copilot feedback in the Invoice Headerto 'OK' to indicate successful completion or 'REQ' if the user need to check, review or correct any detail in the invoice.
+
 ---
 
 ## 📌 Example (Few-Shot Prompting):
