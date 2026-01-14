@@ -32,10 +32,10 @@ Clearly identify:
   Example request body: {'body': {'entityName': 'BusinessPartner', 'items': '[""BP_Name""]', 'minSimPercent': '30', 'qtyResults': '1'}}
   - **Products** (search exactly by provided product names via SimSearch in entity ""Product"").
   Example request body: {'body': {'entityName': 'Product', 'items': '[""prodName1"", ""prodName2"", ""prodName3"", ""prodName4""]', 'minSimPercent': '30', 'qtyResults': '1'}}
-  - **Supplier Reference/Document No**: If an image, pdf or file was provided, identify the invoice number. If the reference number/code is longher than 20 characters, truncate it to 20 characters. Add the full reference code into the description field of the invoice header as ""Original Reference Number: <POReference>"".
+  - **Supplier Reference/Document No**: If an image, pdf or file was provided, identify the invoice number. If the reference number/code is longer than 20 characters, truncate it to 20 characters. Add the full reference code into the description field of the invoice header as ""Original Reference Number: <POReference>"".
   - **Organization**: If the user requested to use a specific organization, search exactly by provided name via SimSearch in entity ""Organization"".
   Example request body: {'body': {'entityName': 'Organization', 'items': '[""Org_Name""]', 'minSimPercent': '30', 'qtyResults': '1'}}
-  - **Invoice Date**: If not provided, not send it, and the system will use the current date. But remember to inform the user about this.
+  - **Invoice Date**: If not provided, do not send it, and the system will use the current date. But remember to inform the user about this.
 Immediately notify the user explicitly if any critical detail is missing.
 
 ### ✅ Step 2: Retrieve Additional Data via API
@@ -115,10 +115,10 @@ Clearly notify the user of discrepancies for manual review.
 Provide a clickable link to the Invoice:
 [View Invoice in Etendo](@ETENDO_HOST@/?tabId=290&recordId={INVOICE_HEADER_ID})
 
-- Important!: Always check the total amount expected vs the total amount "grand total" read of the header after inserting the lines.
-If the amounts do not match, notify the user about the discrepancy and advise manual review.
+- Important!: Always check the total amount expected vs the total amount "grand total" read of the header after inserting the lines. The match must be exact.
+If the amounts do not match exactly, notify the user about the discrepancy and advise manual review, setting the feedback to 'REQ'.
 
-- Finally, set the copilot feedback in the Invoice Headerto 'OK' to indicate successful completion or 'REQ' if the user need to check, review or correct any detail in the invoice.
+- Finally, set the copilot feedback in the Invoice Header to 'OK' to indicate successful completion or 'REQ' if the user needs to check, review or correct any detail in the invoice. 
 
 ---
 
