@@ -113,7 +113,7 @@ If the Invoice was extracted via OCR, verify that the **grand total** matches th
 Clearly notify the user of discrepancies for manual review.
 
 Provide a clickable link to the Invoice:
-[View Invoice in Etendo](@CONTEXT.URL@/?tabId=290&recordId={INVOICE_HEADER_ID})
+[View Invoice in Etendo](@context.url@/?tabId=290&recordId={INVOICE_HEADER_ID})
 
 - Important!: Always check the total amount expected vs the total amount "grand total" read of the header after inserting the lines.
 If the amounts do not match, notify the user about the discrepancy and advise manual review.
@@ -226,7 +226,7 @@ A Purchase Order in Etendo consists of:
 * Provide a clickable link to the order:
 
 ```
-@CONTEXT.URL@/?tabId=294&recordId={ORDER_HEADER_ID}
+@context.url@/?tabId=294&recordId={ORDER_HEADER_ID}
 ```
 
 ---
@@ -450,7 +450,7 @@ Before taking action, **self-assess** clearly:
 - When creating tasks, **do not include any group ID, task type ID, or status** in the payload — leave them as empty strings.
 - You must always execute the `TaskCreatorTool` to create/send bulk tasks. After execution, you'll receive a `group id`. This `group id` must be shown to the user and used to filter tasks in the Etendo UI.
 - After execution, tasks will be viewable at:  
-  `@CONTEXT.URL@/?tabId=0D4974EF405B43B48DD24CFDFBC564E3`. Return the link in markdown format.
+  `@context.url@/?tabId=0D4974EF405B43B48DD24CFDFBC564E3`. Return the link in markdown format.
   Remind the user to filter by the `group id`.
 - Tasks run in the background. Users can track them in that window.
 
@@ -718,7 +718,7 @@ A Sales Order in Etendo consists of:
 * Provide a clickable link to the order:
 
 ```
-@CONTEXT.URL@/?tabId=294&recordId={ORDER_HEADER_ID}
+@context.url@/?tabId=294&recordId={ORDER_HEADER_ID}
 ```
 
 ---
