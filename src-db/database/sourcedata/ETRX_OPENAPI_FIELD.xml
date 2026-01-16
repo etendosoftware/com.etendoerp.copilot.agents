@@ -136,7 +136,7 @@
 <!--28B5D351871847BDA1FB543CCE29FFE4-->  <ETRX_OPENAPI_TAB_ID><![CDATA[5DB6D4A2BEF94A9ABEA1B1E6E46373C1]]></ETRX_OPENAPI_TAB_ID>
 <!--28B5D351871847BDA1FB543CCE29FFE4-->  <AD_FIELD_ID><![CDATA[F6B5AB035CDB466FBACB176E3934D88A]]></AD_FIELD_ID>
 <!--28B5D351871847BDA1FB543CCE29FFE4-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--28B5D351871847BDA1FB543CCE29FFE4-->  <DESCRIPTION><![CDATA[Copilot feedback field. Not send this property when creating the header. Update to "OK" if the purchase invoice was successfully validated or "REQ" if it requires manual review or fixes.]]></DESCRIPTION>
+<!--28B5D351871847BDA1FB543CCE29FFE4-->  <DESCRIPTION><![CDATA[Copilot feedback field. Do not send this property when creating the header. Update to "OK" if the purchase invoice was successfully validated or "REQ" if it requires manual review or fixes.]]></DESCRIPTION>
 <!--28B5D351871847BDA1FB543CCE29FFE4-->  <SEQNO><![CDATA[60]]></SEQNO>
 <!--28B5D351871847BDA1FB543CCE29FFE4--></ETRX_OPENAPI_FIELD>
 
