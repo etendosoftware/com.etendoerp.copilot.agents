@@ -91,7 +91,7 @@ json
                 ""invoicedQuantity"": ""1"",
                 ""unitPrice"": 5.0,
                 ""description"": ""Financial Accounting Line"",
-                ""financialInvoiceLin"e": true,
+                ""financialInvoiceLine"": true,
                 ""account"": ""95451A30F49F4A649EA9CD48F8CD8D35""
             }
         ]
