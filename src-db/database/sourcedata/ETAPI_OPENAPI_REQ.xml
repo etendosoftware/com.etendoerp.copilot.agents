@@ -60,9 +60,10 @@ The creditLimit is a number, by default 0.]]></PUT_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <NAME><![CDATA[PurchaseInvoiceLine]]></NAME>
-<!--3400F2546B454861AF957993E0FAB1DE-->  <DESCRIPTION><![CDATA[Crea, modifica o elimina líneas de facturas de compra en el sistema. Una línea de factura de compra está asociada a una factura (campo `invoice`) y contiene el producto, la cantidad, el precio unitario y el precio neto.
+<!--3400F2546B454861AF957993E0FAB1DE-->  <DESCRIPTION><![CDATA[Create or modify purchase invoice lines in the system. A purchase invoice line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price, and net price.
+If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.
 
-**Ejemplo:**
+**Example:**
 
 ```json
 [
@@ -81,12 +82,22 @@ The creditLimit is a number, by default 0.]]></PUT_DESCRIPTION>
     "invoicedQuantity": "12",
     "unitPrice": 9.9,
     "description": "Example Product B"
+  },
+  {
+    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
+    "invoicedQuantity": "1",
+    "unitPrice": 5.0,
+    "description": "Financial Accounting Line",
+    "financialInvoiceLine": true,
+    "account": "95451A30F49F4A649EA9CD48F8CD8D35"
   }
 ]
 ```]]></DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <POST_DESCRIPTION><![CDATA[Creates Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.
+If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.
 
 Example:
 [
@@ -105,9 +116,19 @@ Example:
     "invoicedQuantity": "12",
     "unitPrice": 9.9,
     "description": "Example Product B"
+  },
+  {
+    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
+    "tax": "696801EA1AAF46A4AF56E367B40459AE",
+    "invoicedQuantity": "1",
+    "unitPrice": 5.0,
+    "description": "Financial Accounting Line",
+    "financialInvoiceLine": true,
+    "account": "95451A30F49F4A649EA9CD48F8CD8D35"
   }
 ]]]></POST_DESCRIPTION>
-<!--3400F2546B454861AF957993E0FAB1DE-->  <PUT_DESCRIPTION><![CDATA[Modifies Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.]]></PUT_DESCRIPTION>
+<!--3400F2546B454861AF957993E0FAB1DE-->  <PUT_DESCRIPTION><![CDATA[Modifies Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.
+If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.]]></PUT_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE--></ETAPI_OPENAPI_REQ>
 
 <!--43CC3E1944124996ADA92B52B445CB7B--><ETAPI_OPENAPI_REQ>
@@ -124,6 +145,17 @@ Example:
 - Parameter searchKey must be filled, with a random 6 letters if not provided.]]></POST_DESCRIPTION>
 <!--43CC3E1944124996ADA92B52B445CB7B-->  <PUT_DESCRIPTION><![CDATA[Modifies a Business Partner in the system. A Business Partner is a company or person that the company has a business relationship with (e.g. a customer, vendor, or employee).]]></PUT_DESCRIPTION>
 <!--43CC3E1944124996ADA92B52B445CB7B--></ETAPI_OPENAPI_REQ>
+
+<!--5461CC3D761C4089860C92572521F47C--><ETAPI_OPENAPI_REQ>
+<!--5461CC3D761C4089860C92572521F47C-->  <ETAPI_OPENAPI_REQ_ID><![CDATA[5461CC3D761C4089860C92572521F47C]]></ETAPI_OPENAPI_REQ_ID>
+<!--5461CC3D761C4089860C92572521F47C-->  <AD_CLIENT_ID><![CDATA[0]]></AD_CLIENT_ID>
+<!--5461CC3D761C4089860C92572521F47C-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
+<!--5461CC3D761C4089860C92572521F47C-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
+<!--5461CC3D761C4089860C92572521F47C-->  <NAME><![CDATA[GLItem]]></NAME>
+<!--5461CC3D761C4089860C92572521F47C-->  <DESCRIPTION><![CDATA[A G/L item is an account item to be used for direct account posting.]]></DESCRIPTION>
+<!--5461CC3D761C4089860C92572521F47C-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
+<!--5461CC3D761C4089860C92572521F47C-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
+<!--5461CC3D761C4089860C92572521F47C--></ETAPI_OPENAPI_REQ>
 
 <!--5AABA324CB00441AA97213E6DE3F2430--><ETAPI_OPENAPI_REQ>
 <!--5AABA324CB00441AA97213E6DE3F2430-->  <ETAPI_OPENAPI_REQ_ID><![CDATA[5AABA324CB00441AA97213E6DE3F2430]]></ETAPI_OPENAPI_REQ_ID>
@@ -532,6 +564,7 @@ POST http://localhost:8080/etendo/sws/com.etendoerp.etendorx.datasource/Purchase
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <NAME><![CDATA[TaxRate]]></NAME>
+<!--FE7D203E404041E680BE66DBDD5D1E4A-->  <DESCRIPTION><![CDATA[Tax rates to be used in application transactions.]]></DESCRIPTION>
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--FE7D203E404041E680BE66DBDD5D1E4A-->  <GET_DESCRIPTION><![CDATA[Get the available Tax Rates in Etendo. You can filter by "rate" property that is the % of tax.]]></GET_DESCRIPTION>
