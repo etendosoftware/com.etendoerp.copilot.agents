@@ -7,7 +7,7 @@
  */
 
 group = "com.etendoerp"
-version = "2.11.2"
+version = "2.11.3"
 description = "This module contains a set of functional agents, which are intended to be used as a basis or example to build more specific agents."
 ext.artifact = "copilot.agents"
 ext.repository = "https://maven.pkg.github.com/etendosoftware/com.etendoerp.copilot.extensions"
