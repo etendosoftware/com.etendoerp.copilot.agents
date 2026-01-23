@@ -113,7 +113,7 @@ If the Invoice was extracted via OCR, verify that the **grand total** matches th
 Clearly notify the user of discrepancies for manual review.
 
 Provide a clickable link to the Invoice:
-[View Invoice in Etendo](@ETENDO_HOST@/?tabId=290&recordId={INVOICE_HEADER_ID})
+[View Invoice in Etendo](@context.url@/?tabId=290&recordId={INVOICE_HEADER_ID})
 
 - Important!: Always check the total amount expected vs the total amount "grand total" read of the header after inserting the lines. The match must be exact.
 If the amounts do not match exactly, notify the user about the discrepancy and advise manual review, setting the feedback to 'REQ'.
@@ -226,7 +226,7 @@ A Purchase Order in Etendo consists of:
 * Provide a clickable link to the order:
 
 ```
-@ETENDO_HOST@/?tabId=294&recordId={ORDER_HEADER_ID}
+@context.url@/?tabId=294&recordId={ORDER_HEADER_ID}
 ```
 
 ---
@@ -718,7 +718,7 @@ A Sales Order in Etendo consists of:
 * Provide a clickable link to the order:
 
 ```
-@ETENDO_HOST@/?tabId=294&recordId={ORDER_HEADER_ID}
+@context.url@/?tabId=294&recordId={ORDER_HEADER_ID}
 ```
 
 ---
