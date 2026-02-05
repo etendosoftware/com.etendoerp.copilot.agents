@@ -52,7 +52,6 @@ Immediately report any API errors clearly.
 
 ### ✅ Step 4: Insert Invoice Lines
 Always perform this step after successfully creating the Invoice Header.
-If there are multiple lines, **Send them in ONE request** by providing an array of line objects.
 Each line must include: invoice, product, tax, invoicedQuantity, unitPrice, and optionally description.
 Report explicitly if the API call fails.
 

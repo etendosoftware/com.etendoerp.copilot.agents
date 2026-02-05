@@ -311,29 +311,10 @@ Creation example with only required fields:
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <NAME><![CDATA[PurchaseInvoice]]></NAME>
-<!--9F47940798EF44E4B0DEE994B792318B-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine)
-Examples
-POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
-{
-    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
-    "invoiceDate": "2025-10-02",
-    "orderReference": "12345",
-    "description": "Imported via OCR."
-}]]></DESCRIPTION>
+<!--9F47940798EF44E4B0DEE994B792318B-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine)]]></DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--9F47940798EF44E4B0DEE994B792318B-->  <POST_DESCRIPTION><![CDATA[Creates a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine).
-
-Example:
-POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
-{
-    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
-    "invoiceDate": "2025-10-02",
-    "orderReference": "12345",
-    "description": "Imported via OCR."
-}]]></POST_DESCRIPTION>
+<!--9F47940798EF44E4B0DEE994B792318B-->  <POST_DESCRIPTION><![CDATA[Creates a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine).]]></POST_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <PUT_DESCRIPTION><![CDATA[Modifies a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be modified with PurchaseInvoiceLine).]]></PUT_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B--></ETAPI_OPENAPI_REQ>
 
