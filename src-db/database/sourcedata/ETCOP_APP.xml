@@ -54,7 +54,7 @@ Immediately report any API errors clearly.
 Always perform this step after successfully creating the Invoice Header.
 Each line must include: invoice, product, tax, invoicedQuantity, unitPrice, and optionally description.
 If there is only one line, send it in one request.
-If there are multiple lines, send them as an array in one request
+If there are multiple lines, send them as an array in one request.
 Report explicitly if the API call fails.
 
 ### ✅ Step 5: Final Validation & Confirmation
