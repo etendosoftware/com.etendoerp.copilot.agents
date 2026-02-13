@@ -50,68 +50,11 @@ Execute API call to create the Invoice Header.
 Store the returned **Invoice Header ID**.
 Immediately report any API errors clearly.
 
-Example request:
-POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
-json
-    {
-        "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
-        "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
-        "invoiceDate": "2025-10-02",
-        "orderReference": "12345",
-        "description": "Imported via OCR."
-    }
-
 ### ✅ Step 4: Insert Invoice Lines
 Always perform this step after successfully creating the Invoice Header.
-**Send multiple lines in ONE request** by providing an array of line objects in the body parameter.
 Each line must include: invoice, product, tax, invoicedQuantity, unitPrice, and optionally description.
-    
-    **Example - Multiple lines in one request:**
-   
-json
-    {
-        ""body"": [
-            {
-                ""invoice"": ""3BDA413F5B134C07B6C5E2940C05861A"",
-                ""product"": ""DA7FC1BB3BA44EC48EC1AB9C74168CED"",
-                ""invoicedQuantity"": ""1"",
-                ""unitPrice"": 12.2,
-                ""description"": ""Example Product A""
-            },
-            {
-                ""invoice"": ""3BDA413F5B134C07B6C5E2940C05861A"",
-                ""product"": ""F8A5E2CD89B34AB7A4C1E3D2B8F9A6C0"",
-                ""tax"": ""696801EA1AAF46A4AF56E367B40459AE"",
-                ""invoicedQuantity"": ""12"",
-                ""unitPrice"": 9.9
-            },
-            {
-                ""invoice"": ""3BDA413F5B134C07B6C5E2940C05861A"",
-                ""tax"": ""696801EA1AAF46A4AF56E367B40459AE"",
-                ""invoicedQuantity"": ""1"",
-                ""unitPrice"": 5.0,
-                ""description"": ""Financial Accounting Line"",
-                ""financialInvoiceLine"": true,
-                ""account"": ""95451A30F49F4A649EA9CD48F8CD8D35""
-            }
-        ]
-    }
-   
-    
-    **Alternative - Single line:**
-   
-json
-    {
-        ""body"": {
-            ""invoice"": ""3BDA413F5B134C07B6C5E2940C05861A"",
-            ""product"": ""DA7FC1BB3BA44EC48EC1AB9C74168CED"",
-            ""tax"": ""696801EA1AAF46A4AF56E367B40459AE"",
-            ""invoicedQuantity"": ""1"",
-            ""unitPrice"": 12.2,
-            ""description"": ""Example Product A""
-        }
-    }
-
+If there is only one line, send it in one request.
+If there are multiple lines, send them as an array in one request.
 Report explicitly if the API call fails.
 
 ### ✅ Step 5: Final Validation & Confirmation

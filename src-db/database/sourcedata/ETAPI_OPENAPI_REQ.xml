@@ -61,72 +61,11 @@ The creditLimit is a number, by default 0.]]></PUT_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <NAME><![CDATA[PurchaseInvoiceLine]]></NAME>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <DESCRIPTION><![CDATA[Create or modify purchase invoice lines in the system. A purchase invoice line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price, and net price.
-If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.
-
-**Example:**
-
-```json
-[
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "1",
-    "unitPrice": 12.2,
-    "description": "Example Product A"
-  },
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "12",
-    "unitPrice": 9.9,
-    "description": "Example Product B"
-  },
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "1",
-    "unitPrice": 5.0,
-    "description": "Financial Accounting Line",
-    "financialInvoiceLine": true,
-    "account": "95451A30F49F4A649EA9CD48F8CD8D35"
-  }
-]
-```]]></DESCRIPTION>
+If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.]]></DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <POST_DESCRIPTION><![CDATA[Creates Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.
-If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.
-
-Example:
-[
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "1",
-    "unitPrice": 12.2,
-    "description": "Example Product A"
-  },
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "product": "DA7FC1BB3BA44EC48EC1AB9C74168CED",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "12",
-    "unitPrice": 9.9,
-    "description": "Example Product B"
-  },
-  {
-    "invoice": "3BDA413F5B134C07B6C5E2940C05861A",
-    "tax": "696801EA1AAF46A4AF56E367B40459AE",
-    "invoicedQuantity": "1",
-    "unitPrice": 5.0,
-    "description": "Financial Accounting Line",
-    "financialInvoiceLine": true,
-    "account": "95451A30F49F4A649EA9CD48F8CD8D35"
-  }
-]]]></POST_DESCRIPTION>
+If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.]]></POST_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE-->  <PUT_DESCRIPTION><![CDATA[Modifies Purchase Invoice Lines in the system. A Purchase Invoice Line is associated with an invoice (field `invoice`) and contains the product, quantity, unit price and net price.
 If the field `financialInvoiceLine` is set to true, the line is treated as a financial accounting line and must include an `account` field instead of a `product` field.]]></PUT_DESCRIPTION>
 <!--3400F2546B454861AF957993E0FAB1DE--></ETAPI_OPENAPI_REQ>
@@ -372,29 +311,10 @@ Creation example with only required fields:
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_ORG_ID><![CDATA[0]]></AD_ORG_ID>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <ISACTIVE><![CDATA[Y]]></ISACTIVE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <NAME><![CDATA[PurchaseInvoice]]></NAME>
-<!--9F47940798EF44E4B0DEE994B792318B-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine)
-Examples
-POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
-{
-    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
-    "invoiceDate": "2025-10-02",
-    "orderReference": "12345",
-    "description": "Imported via OCR."
-}]]></DESCRIPTION>
+<!--9F47940798EF44E4B0DEE994B792318B-->  <DESCRIPTION><![CDATA[Creates/modify/deletes a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine)]]></DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <TYPE><![CDATA[ETRX_Tab]]></TYPE>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <AD_MODULE_ID><![CDATA[A33B56FDC957457EA394158630822472]]></AD_MODULE_ID>
-<!--9F47940798EF44E4B0DEE994B792318B-->  <POST_DESCRIPTION><![CDATA[Creates a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine).
-
-Example:
-POST sws/com.etendoerp.etendorx.datasource/PurchaseInvoice
-{
-    "organization": "7BABA5FF80494QAFA54DEBD22EC46F01",
-    "businessPartner": "858B90C7AF0A4533863EEC65437382BF",
-    "invoiceDate": "2025-10-02",
-    "orderReference": "12345",
-    "description": "Imported via OCR."
-}]]></POST_DESCRIPTION>
+<!--9F47940798EF44E4B0DEE994B792318B-->  <POST_DESCRIPTION><![CDATA[Creates a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be created with PurchaseInvoiceLine).]]></POST_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B-->  <PUT_DESCRIPTION><![CDATA[Modifies a Purchase Invoice in the system. A Purchase Invoice is a transactional document used to register the buying of items from a provider/vendor. This endpoint is valid only for the header (lines must be modified with PurchaseInvoiceLine).]]></PUT_DESCRIPTION>
 <!--9F47940798EF44E4B0DEE994B792318B--></ETAPI_OPENAPI_REQ>
 
